@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BalanceProjectionModule } from './modules/balance-projection/balance-projection.module';
 import { DeclareBalanceComponent } from './declareBalance/declare-balance/declare-balance.component';
+import { DeclareIncomeComponent } from './modules/declare-income/declare-income.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DeclareBalanceComponent
+    DeclareBalanceComponent,
+    DeclareIncomeComponent
   ],
   imports: [
     BrowserModule,
