@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DeclareBalanceComponent } from './declareBalance/declare-balance/declare-balance.component';
+import { DeclareIncomeComponent } from './modules/declare-income/declare-income.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DeclareBalanceComponent
+    DeclareBalanceComponent,
+    DeclareIncomeComponent
   ],
   imports: [
     BrowserModule,
