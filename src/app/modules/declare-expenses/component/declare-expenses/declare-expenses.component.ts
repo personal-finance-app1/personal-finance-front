@@ -22,7 +22,7 @@ export class DeclareExpensesComponent implements OnInit {
    * 
    * Updates the Global Service and Updates the expenses field on the Accounts table in the database.
    */
-  private updateExpenses() : void {
+  public updateExpenses() : void {
 
     //update the global service
     //update the accounts table in the database.
