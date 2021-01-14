@@ -11,4 +11,6 @@ export class ProjectionService {
   caluclateIncomeExpenseChart(income: number, expenses : number, payPeriods : number) : any {
     
   }
+  calculateBalanceChart(balance : number, payPeriods : number) : any {}
+
 }
