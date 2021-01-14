@@ -7,4 +7,7 @@ import { BalanceProjectionModule } from '../../balance-projection.module';
 export class ProjectionService {
 
   constructor() { }
+
+  calculateBalanceChart(balance : number, payPeriods : number) : any {}
+
 }
