@@ -19,7 +19,6 @@ describe('DeclareIncomeService', () => {
     expect(service).toBeTruthy();
   });
 
-  
   it('should be a number', () => { //Do we need it
     expect(service.income).toEqual(jasmine.any(Number));
   });
@@ -27,7 +26,11 @@ describe('DeclareIncomeService', () => {
   //Is testing input validation
   //Or if the function/method is working correctly
 
+  //input validiation
+  //testing medium, if the program is running as intended
+  //code can change as revisions or new acomplishments are found
   it('should be greater than zero', () => { //Solved by the min attribute in html
+    
     expect(service.income).toBeGreaterThanOrEqual(0);
   });
 
