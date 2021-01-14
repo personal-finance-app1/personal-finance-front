@@ -4,19 +4,19 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DeclareBalanceComponent } from './declareBalance/declare-balance/declare-balance.component';
-import { DeclareIncomeComponent } from './modules/declare-income/declare-income.component';
+import { DeclareIncomeComponent } from './modules/declare-income/component/declare-income.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DeclareBalanceComponent,
     DeclareIncomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

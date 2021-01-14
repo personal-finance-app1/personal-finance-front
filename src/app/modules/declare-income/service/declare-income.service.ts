@@ -1,11 +1,24 @@
 import { Injectable } from '@angular/core';
+//import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeclareIncomeService {
 
+  income: number = 0;
+
   constructor() { }
+
+  public sendIncome(income:number) {
+    this.income = income;
+    
+    // Retrieve the value from inside the input text
+    // Send a Put request to the backend with the body
+  }
+
+  
+
 }
 
 

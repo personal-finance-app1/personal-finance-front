@@ -1,1 +1,9 @@
-<p>declare-income works!</p>
+
+<div>
+    <input type="number" id="income" min="0.00" step="0.01" [(ngModel)]="userInput"/>
+    <button class="" (click)="onSubmit()">Submit</button>
+    <label>{{userInput}}</label> <!-- Pipe the Currency Value here -->
+    <label></label><!-- When an error occurs, display here -->
+</div>
+
+
