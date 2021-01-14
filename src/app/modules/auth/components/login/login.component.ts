@@ -34,7 +34,16 @@ export class LoginComponent implements OnInit , OnChanges{
 
 
   onLogin(){
-    this.authSerice.login(this.loginForm.value.username,this.loginForm.value.password);
+    //this.authSerice.login(this.loginForm.value.username,this.loginForm.value.password);
+
+    if(this.loginForm.value.username == "username" && this.loginForm.value.password == "password"){
+      alert("You are logged in Successfully !! Sorry ... UnderConstruction ....!!!!")
+     window.location.reload();
+    }else{
+
+     alert(" Sorry log in failed ... UnderConstruction ....!!!!")
+     window.location.reload();
+   }
   }
 
 
