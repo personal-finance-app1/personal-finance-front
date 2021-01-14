@@ -1,12 +1,11 @@
 import { TestBed } from '@angular/core/testing';
-
 import { ProjectionService } from './projection.service';
 
 describe('ProjectionService', () => {
   let service: ProjectionService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({providers:[ProjectionService]});
     service = TestBed.inject(ProjectionService);
   });
 
