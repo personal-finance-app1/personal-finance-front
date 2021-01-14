@@ -12,4 +12,11 @@ describe('ProjectionService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  describe('caluclateIncomeExpenseChart', () => {
+    xit('should create chart data', () => {
+      let chart:any = service.caluclateIncomeExpenseChart(900,300,4);
+      expect(chart).toBeTruthy();
+    });
+  });
 });
