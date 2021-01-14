@@ -7,4 +7,12 @@ import { Injectable } from '@angular/core';
 export class DeclareExpensesService {
 
   constructor() { }
+  /**
+   *  Updates the expenses column in the Accounts table.
+   */
+  public updateAccountsTable(): void {
+
+    //sends the httpRequest to the table
+
+  }
 }
