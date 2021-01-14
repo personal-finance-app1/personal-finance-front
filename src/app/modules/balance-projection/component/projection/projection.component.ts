@@ -19,4 +19,9 @@ export class ProjectionComponent implements OnInit {
     
   }
 
+  getAccount() : void {
+    this.account.income = 0;
+    this.account.expenses = 0;
+    this.account.balance = 0;
+  }
 }

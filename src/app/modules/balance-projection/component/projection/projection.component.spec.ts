@@ -31,4 +31,19 @@ describe('ProjectionComponent', () => {
     component.createChart();
     expect(component.chart).toBeTruthy();
   });
+
+ describe('get the account', () => {
+   beforeAll(() => {
+    component.getAccount();
+   });
+   it('get income', ()=> {
+     expect(component.account.income).toBeGreaterThan(0);
+   });
+   it('get expenses', ()=> {
+    expect(component.account.expenses).toBeGreaterThan(0);
+  });
+  it('get balance', ()=> {
+    expect(component.account.balance).toBeGreaterThan(0);
+  });
+ });
 });
