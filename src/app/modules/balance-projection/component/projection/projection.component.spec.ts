@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ProjectionComponent } from './projection.component';
 
 describe('ProjectionComponent', () => {
