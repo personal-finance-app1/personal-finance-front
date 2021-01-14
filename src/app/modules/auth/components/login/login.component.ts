@@ -1,20 +1,20 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
+import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit , OnChanges{
-  loginForm:FormGroup
-  mesg:any;
+export class LoginComponent implements OnInit, OnChanges {
+  loginForm: FormGroup
+  mesg: any;
   color = "red";
 
-  constructor( private authSerice:AuthService) { }
+  constructor(private authSerice: AuthService) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -25,28 +25,29 @@ export class LoginComponent implements OnInit , OnChanges{
 
 
   ngOnChanges(): void {
-    if(true) {
+    if (true) {
       this.mesg = "Account Logged in successfully";
-      this.color="green";
+      this.color = "green";
     }
   }
 
 
 
-  onLogin(){
+  onLogin() {
     //this.authSerice.login(this.loginForm.value.username,this.loginForm.value.password);
 
-    if(this.loginForm.value.username == "username" && this.loginForm.value.password == "password"){
+    if (this.loginForm.value.username == "username" && this.loginForm.value.password == "password") {
       alert("You are logged in Successfully !! Sorry ... UnderConstruction ....!!!!")
-     window.location.reload();
-    }else{
+      window.location.reload();
+    } else {
 
-     alert(" Sorry log in failed ... UnderConstruction ....!!!!")
-     window.location.reload();
-   }
+      alert(" Sorry log in failed ... UnderConstruction ....!!!!")
+      window.location.reload();
+    }
+
+
+
+
   }
 
-
-
-
-}
+} 
