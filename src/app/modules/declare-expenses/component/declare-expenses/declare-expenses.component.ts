@@ -10,8 +10,14 @@ import { DeclareExpensesService } from '../../service/declare-expenses.service';
 export class DeclareExpensesComponent implements OnInit {
 
   expenses: number
+  expensesObservable$: any
 
-  constructor(private declareExpensesService : DeclareExpensesService) { }
+  constructor(private declareExpensesService : DeclareExpensesService) {
+
+    // this.expensesObservable$ = this.globalService.expensesSubject.subscribe({value} => {
+    //   this.expenses = value ;
+    // })
+   }
   /**
    * 
    * Updates the Global Service and Updates the expenses field on the Accounts table in the database.
