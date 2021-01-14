@@ -7,4 +7,10 @@ import { BalanceProjectionModule } from '../../balance-projection.module';
 export class ProjectionService {
 
   constructor() { }
+
+  caluclateIncomeExpenseChart(income: number, expenses : number, payPeriods : number) : any {
+    
+  }
+  calculateBalanceChart(balance : number, payPeriods : number) : any {}
+
 }
