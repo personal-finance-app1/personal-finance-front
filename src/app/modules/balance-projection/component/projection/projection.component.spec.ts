@@ -36,11 +36,13 @@ describe('ProjectionComponent', () => {
    xit('get income', ()=> {
      expect(component.account.income).toBeGreaterThan(0);
    });
+
    xit('get expenses', ()=> {
     expect(component.account.expenses).toBeGreaterThan(0);
   });
-  xit('get balance', ()=> {
-    expect(component.account.balance).toBeGreaterThan(0);
-  });
+ });
+
+ xit('account does not exist', () => {
+    expect(component.account).toBeFalsy();
  });
 });
