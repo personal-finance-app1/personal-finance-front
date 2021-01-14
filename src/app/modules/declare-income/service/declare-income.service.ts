@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class DeclareIncomeService {
 
-  income: number = 0;
+  income: number = 5;
 
   constructor() { }
 
@@ -15,6 +15,10 @@ export class DeclareIncomeService {
     
     // Retrieve the value from inside the input text
     // Send a Put request to the backend with the body
+
+    //input validiation
+    //testing medium, if the program is running as intended
+    //code can change as revisions or new acomplishments are found
   }
 
   
