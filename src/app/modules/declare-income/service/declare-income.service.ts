@@ -6,25 +6,26 @@ import { Injectable } from '@angular/core';
 })
 export class DeclareIncomeService {
 
-  income: number = 5;
+  income: number = 15;
 
   constructor() { }
 
-  public sendIncome(income:number) {
-    this.income = income;
-    
+  public sendIncome(income:number){
+    //this.income= income;
+    console.log("Welcome to sendIncome")
+
+
+
     // Retrieve the value from inside the input text
     // Send a Put request to the backend with the body
 
-    //input validiation
-    //testing medium, if the program is running as intended
-    //code can change as revisions or new acomplishments are found
+
+
+    //call put request method
   }
 
-  
+  // public sendPutRequest(body:number): Observable<Object>{
+  //   return this.http.put("url", body) as Observable<Object>
+  // }
 
 }
-
-
-// method to get the income input from html, and send a put request to the declareIncome controller on the backend
-// Observable Boolean

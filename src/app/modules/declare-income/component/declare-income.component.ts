@@ -9,17 +9,16 @@ import { DeclareIncomeService } from '../service/declare-income.service';
 export class DeclareIncomeComponent implements OnInit {
 
   userInput: number; //Binded from the html
+  error:String;
 
   constructor(private ds: DeclareIncomeService) { }
 
   ngOnInit(): void {
   }
 
-  /**
-   * Once the submit button is pressed, we call the service layer to send the value to the backend
-   */
   public onSubmit(){
-    this.ds.sendIncome(this.userInput);
-  }
 
+    this.ds.sendIncome(this.userInput);
+
+  }
 }
