@@ -1,15 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
+
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit , OnChanges{
+  loginForm:FormGroup
+  mesg:any;
+  color = "red";
 
-  constructor() { }
+  constructor( private authSerice:AuthService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.loginForm = new FormGroup({
+      username: new FormControl('', { validators: [Validators.required] }),
+      password: new FormControl('', { validators: [Validators.required] })
+    });
   }
+
+
+  ngOnChanges(): void {
+    if(true) {
+      this.mesg = "Account Logged in successfully";
+      this.color="green";
+    }
+  }
+
+
+
+  onLogin(){
+    this.authSerice.login(this.loginForm.value.username,this.loginForm.value.password);
+  }
+
+
+
 
 }
