@@ -39,8 +39,5 @@ describe('ProjectionComponent', () => {
    xit('get expenses', ()=> {
     expect(component.account.expenses).toBeGreaterThan(0);
   });
-  xit('get balance', ()=> {
-    expect(component.account.balance).toBeGreaterThan(0);
-  });
  });
 });
