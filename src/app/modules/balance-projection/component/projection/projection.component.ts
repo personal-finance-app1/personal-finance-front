@@ -8,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class ProjectionComponent implements OnInit {
 
   account:any = {income: 1200, expenses: 800, balanace: 1800};
+  chart:any;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  createChart(): void {
+    
   }
 
 }

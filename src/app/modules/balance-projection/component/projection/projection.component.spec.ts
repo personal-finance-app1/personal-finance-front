@@ -22,4 +22,13 @@ describe('ProjectionComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have account', () => {
+    expect(component.account).toBeTruthy();
+  });
+  
+  it('should create chart', ()=> {
+    component.createChart();
+    expect(component.chart).toBeTruthy();
+  });
 });
