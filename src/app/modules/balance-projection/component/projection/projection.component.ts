@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectionComponent implements OnInit {
 
-  account:any = {income: 0, expenses: 0, balance: 0};
+  account:any;
   chart:any;
 
   constructor() { }
@@ -19,7 +19,7 @@ export class ProjectionComponent implements OnInit {
     
   }
 
-  getAccount(income : number, expenses : number, balance : number) : void {
+  getAccount() : void {
    
   }
 }
