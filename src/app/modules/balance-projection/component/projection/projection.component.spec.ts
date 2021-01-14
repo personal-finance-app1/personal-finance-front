@@ -42,7 +42,7 @@ describe('ProjectionComponent', () => {
   });
  });
 
- xit('account does not exist', () => {
-    expect(component.account).toBeFalsy();
- });
+//  xit('account does not exist', () => {
+//     expect(component.account).toBeFalsy();
+//  });
 });
