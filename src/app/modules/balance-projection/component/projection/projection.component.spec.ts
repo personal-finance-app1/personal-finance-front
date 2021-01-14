@@ -40,8 +40,4 @@ describe('ProjectionComponent', () => {
     expect(component.account.expenses).toBeGreaterThan(0);
   });
  });
-
- xit('account does not exist', () => {
-    expect(component.account).toBeFalsy();
- });
 });
