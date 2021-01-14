@@ -18,7 +18,7 @@ describe('ProjectionComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 
@@ -26,7 +26,7 @@ describe('ProjectionComponent', () => {
     expect(component.account).toBeTruthy();
   });
   
-  xit('should create chart', ()=> {
+  xit('should create chart', () => {
     component.createChart();
     expect(component.chart).toBeTruthy();
   });
