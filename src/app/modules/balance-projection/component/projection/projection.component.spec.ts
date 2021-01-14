@@ -16,6 +16,7 @@ describe('ProjectionComponent', () => {
     fixture = TestBed.createComponent(ProjectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    component.getAccount(40,40,40);
   });
 
   it('should be created', () => {
@@ -30,4 +31,16 @@ describe('ProjectionComponent', () => {
     component.createChart();
     expect(component.chart).toBeTruthy();
   });
+
+ describe('get the account', () => {
+   xit('get income', ()=> {
+     expect(component.account.income).toBeGreaterThan(0);
+   });
+   xit('get expenses', ()=> {
+    expect(component.account.expenses).toBeGreaterThan(0);
+  });
+  xit('get balance', ()=> {
+    expect(component.account.balance).toBeGreaterThan(0);
+  });
+ });
 });
