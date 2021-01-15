@@ -17,7 +17,7 @@ export class DeclareIncomeService {
     //send http put request with account$
 
 
-    return this.http.put("url", body) as Observable<int>;
+    return this.http.put("url", account) as Observable<number>;
     
   }
 }
