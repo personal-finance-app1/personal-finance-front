@@ -46,3 +46,6 @@ debug.log
 .DS_Store
 Thumbs.db
 debug.log
+
+# Firebase
+tim-gattie-firebase-service-account.json
