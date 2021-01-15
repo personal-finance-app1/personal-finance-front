@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Account } from 'src/app/models/account';
+import { account$ } from 'src/environments/environment';
 import { DeclareExpensesService } from '../../service/declare-expenses.service';
 
 @Component({
@@ -8,29 +10,32 @@ import { DeclareExpensesService } from '../../service/declare-expenses.service';
 })
 export class DeclareExpensesComponent implements OnInit {
 
-  expenses: number;
   error: string;
+  account: Account = new Account(0, 0, 0);
 
-  constructor(private declareExpensesService : DeclareExpensesService) {
-   }
+  constructor(private declareExpensesService: DeclareExpensesService) {
+    account$.subscribe((value) => {
+      this.account = value;
+    })
+  }
 
   /**
    * 
    * Updates the Global Service and Updates the expenses field on the Accounts table in the database.
    */
-  public updateExpenses() : void {
+  public updateExpenses(): void {
 
     // how to unit test input that is negative
-    if (this.expenses < 0) {
-      console.log('error: negative value')
+    if (this.account.expenses < 0) {
+      this.error = "Error: Input must be positive.";
     }
+    else {
+      //update the global service
+      account$.next(this.account);
 
-
-    //update the global service
-
-
-    // HAS BEEN UNIT TESTED
-    //update the accounts table in the database.
+      // HAS BEEN UNIT TESTED
+      this.error = this.declareExpensesService.updateAccountsTable(this.account);
+    }
 
   }
 
