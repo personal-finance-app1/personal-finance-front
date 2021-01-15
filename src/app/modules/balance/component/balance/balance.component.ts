@@ -46,7 +46,7 @@ export class BalanceComponent implements OnInit {
      }
      
      console.log(this.currentBalance);
-     console.log(this.invalid_balance);
+     console.log(this.invalidMessage);
   }
 
   /**The declare account balance method is used to declare the account balance. We can use this 
