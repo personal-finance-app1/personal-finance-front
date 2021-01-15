@@ -11,9 +11,9 @@ describe('DeclareExpensesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeclareExpensesComponent ]
+      declarations: [DeclareExpensesComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -26,11 +26,16 @@ describe('DeclareExpensesComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call updateAccountsTable', () => {
-    spy = spyOn(service, 'updateAccountsTable');
-    component.updateExpenses();
-    expect(spy).toHaveBeenCalled();
-  });
+  describe('updateExpenses()', () => {
+    xit('should call updateAccountsTable', () => {
+      spy = spyOn(service, 'updateAccountsTable');
+      component.updateExpenses();
+      expect(spy).toHaveBeenCalled();
+    });
 
+    it('user input is negative', () => {
+
+    });
+  });
 
 });
