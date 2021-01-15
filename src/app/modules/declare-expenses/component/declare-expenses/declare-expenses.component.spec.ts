@@ -39,6 +39,7 @@ describe('DeclareExpensesComponent', () => {
       component.account.expenses = -1;
       component.updateExpenses();
       expect(component.error).toBe("Error: Input must be positive.");
+      // expect input reset
     });
 
     xit('user input has a decimal', () => {
@@ -46,6 +47,7 @@ describe('DeclareExpensesComponent', () => {
       component.account.expenses = 1.01;
       component.updateExpenses();
       expect(component.error).toBe("Error: Input must be an integer.");
+      // expect input reset
     });
   });
 
