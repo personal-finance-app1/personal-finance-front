@@ -3,7 +3,6 @@ import { Label, MultiDataSet } from 'ng2-charts';
 import { Account } from 'src/app/models/account';
 import { account$ } from 'src/environments/environment';
 import { ProjectionService } from '../../service/projection-service/projection.service';
-import { ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-projection',
@@ -12,12 +11,12 @@ import { ChartType } from 'chart.js';
 })
 export class ProjectionComponent implements OnInit {
 
-  private account : Account;
-  private balanceChart : any;
+  account : Account;
+  balanceChart : any;
   //private incomeExpenseChart : any;
-  private doughnutChartLabels : Label[] = ['Income', 'Expenses'];
-  private doughnutChartData : MultiDataSet;
-  private payPeriods : number = 6;
+  doughnutChartLabels : Label[] = ['Income', 'Expenses'];
+  doughnutChartData : MultiDataSet;
+  payPeriods : number = 6;
 
 
   constructor(public projectionService : ProjectionService) { }
