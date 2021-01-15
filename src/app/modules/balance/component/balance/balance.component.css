@@ -1,0 +1,24 @@
+.balance_section {
+  width: 800px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  border: 1px solid black;
+}
+
+mat-form-field {
+  width: 200px;
+}
+
+.mat_input {
+  font-size: 150%;
+}
+
+.balance_title {
+  font-size: 200%;
+  margin: 10px;
+}
+
+.current-balance-span {
+  margin: 30px;
+}

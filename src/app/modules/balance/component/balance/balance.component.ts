@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { BalanceService } from '../../service/balance.service';
 
 /**
@@ -16,10 +17,11 @@ import { BalanceService } from '../../service/balance.service';
 })
 
 export class BalanceComponent implements OnInit {
-
-
+  currentBalance = 0;
+  invalidMessage = "";
   /**This read only variable will hold the message we'll send to the user, if they enter an invalid balance. */
   public readonly INVALID_BALANCE_MESSAGE: string;
+  
   /**This boolean property is used to decide whether or not to render the declare balance widget on the screen.*/
   public renderDeclareBalanceWidget: boolean;
   /**This property holds the value of the account we're representing in the view. */
@@ -36,8 +38,8 @@ export class BalanceComponent implements OnInit {
   /**The updateAccountBalance is called when the user pushes the button to update the account balance. 
    * We can use this method to push values to the global service.
   */
-  public updateAccountBalance(): void {
-    //stub
+  public updateAccountBalance(form: NgForm): void {
+    //  
   }
 
   /**The declare account balance method is used to declare the account balance. We can use this 
