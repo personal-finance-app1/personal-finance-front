@@ -39,14 +39,7 @@ export class BalanceComponent implements OnInit {
    * We can use this method to push values to the global service.
   */
   public updateAccountBalance(form: NgForm): void {
-     if(typeof(this.currentBalance) === 'number') {
-      this.currentBalance = +form.value.balance.toFixed(2);
-     } else {
-       this.invalidMessage = "Please enter a valid number";
-     }
-     
-     console.log(this.currentBalance);
-     console.log(this.invalidMessage);
+    //  
   }
 
   /**The declare account balance method is used to declare the account balance. We can use this 
