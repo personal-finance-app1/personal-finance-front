@@ -17,17 +17,15 @@ import { BalanceService } from '../../service/balance.service';
 })
 
 export class BalanceComponent implements OnInit {
-  currentBalance = 0;
-  invalidMessage = "";
+
+  public invalidMessage: string;
   /**This read only variable will hold the message we'll send to the user, if they enter an invalid balance. */
   public readonly INVALID_BALANCE_MESSAGE: string;
-  
+
   /**This boolean property is used to decide whether or not to render the declare balance widget on the screen.*/
   public renderDeclareBalanceWidget: boolean;
-  /**This property holds the value of the account we're representing in the view. */
-  public accountNumber: number;
   /**This property holds the balance of the account we're representing in the view.*/
-  public accountNumberBalance: number;
+  public accountBalance: number | null;
   constructor(private injectedBalanceService: BalanceService) {
     //stub
   }
@@ -38,7 +36,7 @@ export class BalanceComponent implements OnInit {
   /**The updateAccountBalance is called when the user pushes the button to update the account balance. 
    * We can use this method to push values to the global service.
   */
-  public updateAccountBalance(form: NgForm): void {
+  public updateAccountBalance(): void {
     //  
   }
 
