@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Account } from 'src/app/models/account';
 import { account$ } from 'src/environments/environment';
 import { ProjectionService } from '../../service/projection-service/projection.service';
 
@@ -9,7 +10,7 @@ import { ProjectionService } from '../../service/projection-service/projection.s
 })
 export class ProjectionComponent implements OnInit {
 
-  account : any;
+  account : Account;
   balanceChart : any;
   incomeExpenseChart : any;
   payPeriods : number = 6;
@@ -29,8 +30,8 @@ export class ProjectionComponent implements OnInit {
    * This information is then used to graph the income and expenses in a doughnut chart and the balance across the number of pay periods in a line chart.
    */
   createChart(): void {
-    this.balanceChart = this.projectionService.calculateBalanceChart(this.account.balance, this.payPeriods);
-    this.incomeExpenseChart = this.projectionService.caluclateIncomeExpenseChart(this.account.income, this.account.expenses, this.payPeriods);
+    this.balanceChart = this.projectionService.calculateBalanceChart(this.account.income, this.account.expenses, this.account.balance, this.payPeriods);
+    //this.incomeExpenseChart = this.projectionService.caluclateIncomeExpenseChart(this.account.income, this.account.expenses, this.payPeriods);
   }
 
   getAccount() : void {
