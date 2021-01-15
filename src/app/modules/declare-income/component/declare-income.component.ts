@@ -1,3 +1,4 @@
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
 import { DeclareIncomeService } from '../service/declare-income.service';
 
@@ -19,7 +20,17 @@ export class DeclareIncomeComponent implements OnInit {
   public onSubmit(){
 
     //Validate for neg
+    if(neg){
+
+      return;
+    } else if(dec){
+      set error Message
+      set input to falsy
+      return;
+    }
+
     //validate for decimal
+    //if decimal exists, if so is there 0-2 values after it. 
 
     //create account$, sen
 

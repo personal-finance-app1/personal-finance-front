@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 //import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -6,17 +7,17 @@ import { Injectable } from '@angular/core';
 })
 export class DeclareIncomeService {
 
-  income: number = 15;
+  account: Account;
 
   constructor() { }
 
-  public sendIncome(income:any): String{
+  public sendIncome(account:Account): number{
    
 
-    //set 
     //send http put request with account$
 
 
-    return "cool";
+    return this.http.put("url", body) as Observable<int>;
+    
   }
 }
