@@ -13,31 +13,16 @@ describe('ProjectionService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('caluclateIncomeExpenseChart', () => {
-    describe('with valid data', () => {
-      xit('should create chart data', () => {
-        chart = service.caluclateIncomeExpenseChart(900, 300, 4);
-        expect(chart).toBeTruthy();
-      });
-    });
-    describe('with invalid data', () => {
-      xit('should not create chart data', () => {
-        chart = service.caluclateIncomeExpenseChart(900, 300, 0);
-        expect(chart).toBeFalsy();
-      });
-    });
-  });
-
   describe('calculateBalanceChart', () => {
     describe('with valid data', () => {
       xit('should create balance chart', () => {
-        chart = service.calculateBalanceChart(900, 10);
+        chart = service.calculateBalanceChart(1500,800,3000,6);
         expect(chart).toBeTruthy();
       });
     });
     describe('with invalid data', () => {
       xit('should not create balance chart', () => {
-        chart = service.calculateBalanceChart(900, 0);
+        chart = service.calculateBalanceChart(1500,800,3000,0);
         expect(chart).toBeFalsy();
       });
     });

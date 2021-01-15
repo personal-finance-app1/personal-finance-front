@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BalanceProjectionModule } from './modules/balance-projection/balance-projection.module';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { BalanceProjectionModule } from './modules/balance-projection/balance-pr
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    BalanceProjectionModule
+    BalanceProjectionModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

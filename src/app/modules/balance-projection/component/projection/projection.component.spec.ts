@@ -29,7 +29,7 @@ describe('ProjectionComponent', () => {
   
   xit('should create chart', () => {
     component.createChart();
-    expect(component.chart).toBeTruthy();
+    expect(component.balanceChart).toBeTruthy();
   });
 
  describe('get the account', () => {
