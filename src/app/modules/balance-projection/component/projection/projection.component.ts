@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Label, MultiDataSet } from 'ng2-charts';
 import { Account } from 'src/app/models/account';
 import { account$ } from 'src/environments/environment';
 import { ProjectionService } from '../../service/projection-service/projection.service';
@@ -10,28 +11,38 @@ import { ProjectionService } from '../../service/projection-service/projection.s
 })
 export class ProjectionComponent implements OnInit {
 
-  account : Account;
-  balanceChart : any;
-  incomeExpenseChart : any;
-  payPeriods : number = 6;
+  private account : Account;
+  private balanceChart : any;
+  //private incomeExpenseChart : any;
+  private doughnutChartLabels : Label[] = ['Income', 'Expenses'];
+  private doughnutChartData : MultiDataSet;
+  private payPeriods : number = 6;
+
 
   constructor(public projectionService : ProjectionService) { }
 
   ngOnInit(): void {
+    //get the account from the environment variable
     account$.subscribe(
       (account) => {
         this.account = account;
+        this.doughnutChartData = [
+          [this.account.income, this.account.expenses]
+        ];
       }
     );
   }
 
   /**
-   * Takes the expected balance, number of pay periods, income, and expenses provided by the user. 
-   * This information is then used to graph the income and expenses in a doughnut chart and the balance across the number of pay periods in a line chart.
+   * Graphs the balance over a number of pay periods for an account, as well as the income and expenses.
+   * The balance is graphed in a line chart.
+   * The income and expenses are graphed in a doughnut chart.
+   * @return void
    */
   createChart(): void {
     this.balanceChart = this.projectionService.calculateBalanceChart(this.account.income, this.account.expenses, this.account.balance, this.payPeriods);
     //this.incomeExpenseChart = this.projectionService.caluclateIncomeExpenseChart(this.account.income, this.account.expenses, this.payPeriods);
+
   }
 
   getAccount() : void {
