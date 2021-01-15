@@ -10,22 +10,13 @@ export class DeclareIncomeService {
 
   constructor() { }
 
-  public sendIncome(income:number){
-    //this.income= income;
-    console.log("Welcome to sendIncome")
+  public sendIncome(income:any): String{
+   
+
+    //set 
+    //send http put request with account$
 
 
-
-    // Retrieve the value from inside the input text
-    // Send a Put request to the backend with the body
-
-
-
-    //call put request method
+    return "cool";
   }
-
-  // public sendPutRequest(body:number): Observable<Object>{
-  //   return this.http.put("url", body) as Observable<Object>
-  // }
-
 }

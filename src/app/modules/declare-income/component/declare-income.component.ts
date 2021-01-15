@@ -18,7 +18,13 @@ export class DeclareIncomeComponent implements OnInit {
 
   public onSubmit(){
 
-    this.ds.sendIncome(this.userInput);
+    //Validate for neg
+    //validate for decimal
+
+    //create account$, sen
+
+    this.error = this.ds.sendIncome(this.account$);
+
 
   }
 }
