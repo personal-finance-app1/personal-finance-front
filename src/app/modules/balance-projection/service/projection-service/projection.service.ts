@@ -19,7 +19,8 @@ export class ProjectionService {
    * @returns {Object} Returns an Object that holds the dataSets and Labels for the chart.
    */
   calculateBalanceChart(income: number, expenses: number, balance: number, payPeriods: number): Object {
-    //let dataSets: ChartDataSets;
+    if(payPeriods <= 0) return null;
+    
     let points:number[] = [];
     let labels:Label[] = [];
     let currentBalance: number = balance;
