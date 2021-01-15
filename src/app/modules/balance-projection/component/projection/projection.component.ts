@@ -3,6 +3,7 @@ import { Label, MultiDataSet } from 'ng2-charts';
 import { Account } from 'src/app/models/account';
 import { account$ } from 'src/environments/environment';
 import { ProjectionService } from '../../service/projection-service/projection.service';
+import { ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-projection',
