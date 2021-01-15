@@ -29,7 +29,7 @@ export class ProjectionService {
       points.push(currentBalance);
       labels.push(i.toString());
     }
-    let dataSets: ChartDataSets = {data: points, label: "balance"};
+    let dataSets: ChartDataSets = {data: points, label: "Balance"};
 
     return {dataSets: dataSets, labels: labels};
   }
