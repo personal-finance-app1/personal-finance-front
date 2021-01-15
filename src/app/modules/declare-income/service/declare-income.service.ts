@@ -1,23 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-//import { HttpClient } from '@angular/common/http';
+import { Account } from 'src/app/models/account';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeclareIncomeService {
 
-  account: Account;
-
   constructor() { }
 
   public sendIncome(account:Account): number{
-   
 
+    //let jwt:any = AuthService.getToken()
     //send http put request with account$
 
+    // Response Body Observable
+    //return this.http.put("url", account$, jwt) as Observable<number>;
 
-    return this.http.put("url", account) as Observable<number>;
-    
+    return 1;
   }
 }

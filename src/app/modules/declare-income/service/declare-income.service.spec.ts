@@ -1,18 +1,16 @@
 import { TestBed } from '@angular/core/testing';
-
+import { Account } from 'src/app/models/account';
 import { DeclareIncomeService } from './declare-income.service';
 
 describe('DeclareIncomeService', () => {
-  let service: DeclareIncomeService;
 
-  let returnValue: number;
+  let service: DeclareIncomeService;
+  let spy: any;
   let account: Account;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(DeclareIncomeService);
-
-     //httpSpy
 
   });
 
@@ -22,57 +20,25 @@ describe('DeclareIncomeService', () => {
 
   describe('sendIncome method', () => {
 
-    it('should have userInput', () => { // Successful
-      expect(service.account).toBeTruthy();
-    });
-
     it('should return positive status code', () => { // Successful
-      account = new Account(500, 300, 500);
-      returnValue = service.sendIncome(account); // leverage httpSpy
-      expect(returnValue).toBeLessThan(300);
+      account = new Account(300, 400, 500);
+      expect(service.sendIncome(account)).toBeLessThan(300);
     });
 
-    xit('should return a negative status code', () => { // Negative
-      account = new Account(-500, -300, -500);
-      returnValue = service.sendIncome(account); // leverage httpSpy
-      expect(returnValue).toBeGreaterThanOrEqual(400);
-    });
-
-    xit('should be given the correct parameters', () => { // Negative
-
-      returnValue = service.sendIncome(account); // leverage httpSpy
-      expect(returnValue).toBeFalsy();
-    });
+    // xit('should return a negative status code', () => { // Negative
+    //   account = new Account(-300, 400, 500);
+    //   expect(service.sendIncome(account)).toBeGreaterThan(400);  // Positive status code
+    // });
 
     //accomodate for an account that is passed with no validation,
     //such as sendIncome being called from a different method
 
+    //spy = spyOn(http, 'put');
+    // leverage httpSpy
 
   });
 });
 
-// describe('onSubmit method', () => {
-//   it('should call the sendIncome method in the declare-incomeService', () => { // Successful
-//     spy = spyOn(service, 'sendIncome');
-//     component.onSubmit();
-//     expect(spy).toHaveBeenCalled();
-//   });
-  
-//   xit('should have userInput', () => { // Successful
-//     //component.userInput = 15;
-//     expect(component.userInput).toBeTruthy();
-//   });
-
-//   xit('if userInput is null', () => { // Negative
-//     //component.userInput = null;
-//     expect(component.userInput).toBeFalsy();
-//   });
-
-//   xit('if userInput is negative', () => { // Negative
-//     expect(component.userInput).toBeLessThan(0);
-//   });
-
-//   xit('if userInput is incorrectly using the decimal', () => { // Negative
-//     expect(component.userInput).toBeFalsy();
-//   });
+// service.sendIncome(account).subscribe((response) => {
+//   expect(response.status).toEqual(200);
 // });

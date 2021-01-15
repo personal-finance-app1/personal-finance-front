@@ -7,9 +7,6 @@ import { Account } from "src/app/models/account";
 
 export const environment = {
   production: false
-
-  
-
 };
 
 export let account$: Subject<Account> = new Subject<Account>();

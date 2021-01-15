@@ -1,5 +1,6 @@
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
+import { Account } from 'src/app/models/account';
+import { account$ } from 'src/environments/environment';
 import { DeclareIncomeService } from '../service/declare-income.service';
 
 @Component({
@@ -9,33 +10,33 @@ import { DeclareIncomeService } from '../service/declare-income.service';
 })
 export class DeclareIncomeComponent implements OnInit {
 
-  userInput: number; //Binded from the html
-  error:String;
+  userInput: number;
+  error: String;
+  account: Account;
 
-  constructor(private ds: DeclareIncomeService) { }
+  constructor(private ds: DeclareIncomeService) {
+
+    account$.subscribe((response) => {
+      this.account = response;
+    });
+
+  }
 
   ngOnInit(): void {
   }
 
   public onSubmit(){
 
-    //Validate for neg
-    if(neg){
-
-      return;
-    } else if(dec){
-      set error Message
-      set input to falsy
-      return;
+    /*
+    if(negative){
+      //set error 
+      //reset input to 0
+    } else if(decimal){
+      //set error 
+      //reset input to 0
+    } else {
+      //this.error = this.ds.sendIncome(this.account$);
     }
-
-    //validate for decimal
-    //if decimal exists, if so is there 0-2 values after it. 
-
-    //create account$, sen
-
-    this.error = this.ds.sendIncome(this.account$);
-
-
+    */
   }
 }
