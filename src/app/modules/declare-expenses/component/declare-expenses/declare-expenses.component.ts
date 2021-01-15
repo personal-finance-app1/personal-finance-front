@@ -25,18 +25,7 @@ export class DeclareExpensesComponent implements OnInit {
    * field on the Accounts table in the database.
    */
   public updateExpenses(): void {
-    if (this.account.expenses < 0) {
-      // set input field to 0
-      this.error = "Error: Input must be positive.";
-    }
-    else if (this.account.expenses % 1 != 0) { 
-      // set input field to 0
-      this.error = "Error: Input must be an integer.";
-    }
-    else {
-      account$.next(this.account);
-      this.error = this.declareExpensesService.updateAccountsTable(this.account);
-    }
+   
   }
 
   ngOnInit(): void {
