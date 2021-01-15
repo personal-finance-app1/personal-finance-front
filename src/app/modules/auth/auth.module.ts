@@ -18,7 +18,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
-import {  ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../../../environments/environment';
 
 
 
@@ -44,7 +49,10 @@ import {  ReactiveFormsModule } from '@angular/forms'
     MatDialogModule,
     MatMenuModule,
     MatGridListModule,
-     ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,    
   ],
   exports: [
     MatButtonModule,
@@ -63,8 +71,11 @@ import {  ReactiveFormsModule } from '@angular/forms'
     MatProgressSpinnerModule,
     MatDialogModule,
     MatMenuModule,
-    MatGridListModule, 
-    ReactiveFormsModule
+    MatGridListModule,
+    ReactiveFormsModule,
+    AngularFireModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
 })
 export class AuthModule { }
