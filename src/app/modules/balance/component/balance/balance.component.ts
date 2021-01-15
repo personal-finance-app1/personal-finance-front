@@ -18,10 +18,10 @@ import { BalanceService } from '../../service/balance.service';
 
 export class BalanceComponent implements OnInit {
   currentBalance = 0;
-
+  invalidMessage = "";
   /**This read only variable will hold the message we'll send to the user, if they enter an invalid balance. */
   public readonly INVALID_BALANCE_MESSAGE: string;
-  invalid_balance = "";
+  
   /**This boolean property is used to decide whether or not to render the declare balance widget on the screen.*/
   public renderDeclareBalanceWidget: boolean;
   /**This property holds the value of the account we're representing in the view. */
@@ -42,7 +42,7 @@ export class BalanceComponent implements OnInit {
      if(typeof(this.currentBalance) === 'number') {
       this.currentBalance = +form.value.balance.toFixed(2);
      } else {
-       this.invalid_balance = "Please enter a valid number";
+       this.invalidMessage = "Please enter a valid number";
      }
      
      console.log(this.currentBalance);

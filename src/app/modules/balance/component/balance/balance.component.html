@@ -13,7 +13,7 @@
           <mat-form-field >             
             <input  type="number" matInput appearance="fill" ngModel name="balance" required #balanceInput="ngModel">
             <mat-error *ngIf="balanceInput.hasError('required')">Field must not be empty.</mat-error>
-            <mat-error *ngIf="invalid_balance">{{ invalid_balance }}</mat-error>
+            <mat-error *ngIf="invalid_balance">{{ invalidMessage }}</mat-error>
           </mat-form-field>
           <button mat-raised-button color="warn" type="submit" [disabled]="f.invalid">Update</button>        
           <span class="current-balance-span">Current Balance: $ {{ currentBalance }} </span>       

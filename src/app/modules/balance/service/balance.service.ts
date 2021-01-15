@@ -7,11 +7,13 @@ export class BalanceService {
 
   constructor() { }
 
+  //eventually going to take out for global service field
+  accountBalance:number;
+  
   /**The validate account balance is used to ensure the user has entered a valid declaring or update balance.
   * returns boolean which indicates if the balance is valid or invalid.
   */
-  public validateAccountBalance(): boolean {
-    //stub method
+  public validateAccountBalance(accountBalance:number): boolean {
     return false;
   }
 
