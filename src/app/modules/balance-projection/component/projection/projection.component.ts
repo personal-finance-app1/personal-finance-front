@@ -23,7 +23,7 @@ export class ProjectionComponent implements OnInit {
   constructor(public projectionService : ProjectionService) { }
 
   ngOnInit(): void {
-    //get the account from the environment variable
+    //get the account from the environment variable and the corresponding information
     account$.subscribe(
       (account) => {
         this.account = account;
