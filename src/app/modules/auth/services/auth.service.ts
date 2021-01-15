@@ -33,6 +33,7 @@ export class AuthService {
    * @returns none
    */
   public logout() {
+    return;
   }
 
   /**
