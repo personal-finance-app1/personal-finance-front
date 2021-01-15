@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BalanceProjectionModule } from '../../balance-projection.module';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts';
 
 @Injectable({
-  providedIn: BalanceProjectionModule
+  providedIn: 'root'
 })
 export class ProjectionService {
 
