@@ -14,29 +14,71 @@ describe('BalanceService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('validate account balance should return true for positive balances', () => {
-    expect(service.validateAccountBalance(100)).toBeTruthy();
+  describe('BalanceService', () => {
+    describe('validateAccountBalance', () => {
+      xit('validate account balance should return true for positive balances', () => {
+        expect(service.validateAccountBalance(100)).toBeTruthy();
+      });
+    });
   });
 
-  it('validate account balance should return false for negative balances', () => {
-    expect(service.validateAccountBalance(-100)).toBeFalsy();
+  describe('BalanceService', () => {
+    describe('validateAccountBalance', () => {
+      xit('validate account balance should return false for a balance of 0', () => {
+        expect(service.validateAccountBalance(0)).toBeFalsy();
+      });
+    });
   });
 
-  it('set balance should return true', () => {
-    expect(service.setBalance(100)).toBeTruthy();
+  describe('BalanceService', () => {
+    describe('validateAccountBalance', () => {
+      xit('validate account balance should return false for negative balances', () => {
+        expect(service.validateAccountBalance(-100)).toBeFalsy();
+       });
+    });
   });
 
-  it('set balance should return false', () => {
-    expect(service.setBalance(-100)).toBeFalsy();
+  describe('BalanceService', () => {
+    describe('setBalance', () => {
+      xit('set balance should return true for positive balances', () => {
+        expect(service.setBalance(100)).toBeTruthy();
+      });
+    });
   });
 
-  it('get balance should return null', () => {
-    expect(service.getBalance()).toBeNull();
+  describe('BalanceService', () => {
+    describe('setBalance', () => {
+      xit('set balance should return false for negative balances', () => {
+        expect(service.setBalance(-100)).toBeFalsy();
+      });
+    });
   });
 
-  it('get balance should return number', () => {
-    service.setBalance(10);
-    expect(service.getBalance()).toBeTruthy();
+  describe('BalanceService', () => {
+    describe('setBalance', () => {
+      xit('set balance should return false for a balance of zero', () => {
+        expect(service.setBalance(0)).toBeFalsy();
+      });
+    });
   });
+
+  describe('BalanceService', () => {
+    describe('getBalance', () => {
+      xit('get balance should return null with no set balance', () => {
+        expect(service.getBalance()).toBeNull();
+      });
+    });
+  });
+
+
+  describe('BalanceService', () => {
+    describe('getBalance', () => {
+      xit('get balance should return number with a set balance', () => {
+        service.setBalance(10);
+        expect(service.getBalance()).toBeTruthy();
+      });
+    });
+  });
+
 
 });
