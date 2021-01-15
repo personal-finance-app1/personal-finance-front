@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BalanceProjectionModule } from './modules/balance-projection/balance-projection.module';
+import { DeclareBalanceComponent } from './declareBalance/declare-balance/declare-balance.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DeclareBalanceComponent
   ],
   imports: [
     BrowserModule,
