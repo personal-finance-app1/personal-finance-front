@@ -8,24 +8,30 @@ import { HeaderComponent } from './modules/navigation/header/header.component';
 import { LoginComponent } from './modules/auth/components/login/login.component';
 import { AuthModule } from './modules/auth/auth.module';
 
-
-
+import { BalanceComponent } from './modules/balance/component/balance/balance.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialBuildModule } from './material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    BalanceComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     BalanceProjectionModule,
-    AuthModule
-
+    AuthModule,
+    FormsModule,
+    MaterialBuildModule,
+    FlexLayoutModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
