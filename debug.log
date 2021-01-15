@@ -1,1 +1,2 @@
 [0115/114136.931:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[0115/120813.936:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\tophe\AppData\Local\Temp\karma-61792284\Crashpad\attachments\898b9453-73a0-4b2a-b104-64d5e9c05279: The system cannot find the path specified. (0x3)

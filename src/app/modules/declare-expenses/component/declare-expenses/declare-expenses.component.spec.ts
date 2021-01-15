@@ -1,6 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Account } from 'src/app/models/account';
-import { callbackify } from 'util';
 import { DeclareExpensesService } from '../../service/declare-expenses.service';
 
 import { DeclareExpensesComponent } from './declare-expenses.component';
@@ -41,7 +39,13 @@ describe('DeclareExpensesComponent', () => {
       component.account.expenses = -1;
       component.updateExpenses();
       expect(component.error).toBe("Error: Input must be positive.");
-      // expect(spy).toHaveBeenCalled();
+    });
+
+    xit('user input has a decimal', () => {
+      spy = spyOn(service, 'updateAccountsTable');
+      component.account.expenses = 1.01;
+      component.updateExpenses();
+      expect(component.error).toBe("Error: Input must be an integer.");
     });
   });
 

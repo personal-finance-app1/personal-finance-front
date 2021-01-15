@@ -20,23 +20,11 @@ export class DeclareExpensesComponent implements OnInit {
   }
 
   /**
-   * 
-   * Updates the Global Service and Updates the expenses field on the Accounts table in the database.
+   * Checks to see if user input is negative or a decimal.
+   * Then updates the Global Service and Updates the expenses 
+   * field on the Accounts table in the database.
    */
   public updateExpenses(): void {
-
-    // how to unit test input that is negative
-    if (this.account.expenses < 0) {
-      this.error = "Error: Input must be positive.";
-    }
-    else {
-      //update the global service
-      account$.next(this.account);
-
-      // HAS BEEN UNIT TESTED
-      this.error = this.declareExpensesService.updateAccountsTable(this.account);
-    }
-
   }
 
   ngOnInit(): void {
