@@ -6,19 +6,20 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BalanceProjectionModule } from './modules/balance-projection/balance-projection.module';
 import { DeclareBalanceComponent } from './declareBalance/declare-balance/declare-balance.component';
-import { DeclareIncomeComponent } from './modules/declare-income/declare-income.component';
+import { DeclareIncomeComponent } from './modules/declare-income/component/declare-income.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DeclareBalanceComponent,
     DeclareIncomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    BalanceProjectionModule
+    BalanceProjectionModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
