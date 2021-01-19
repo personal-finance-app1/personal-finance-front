@@ -51,8 +51,8 @@ export class ProjectionComponent implements OnInit {
   createChart(): void {
     this.balanceChart = this.projectionService.calculateBalanceChart(this.account.income, this.account.expenses, this.account.balance, this.payPeriods);
     //this.incomeExpenseChart = this.projectionService.caluclateIncomeExpenseChart(this.account.income, this.account.expenses, this.payPeriods);
-    this.lineChartData = [this.balanceChart.dataSets]; 
-    this.lineChartLabels = [this.balanceChart.labels];
+    this.lineChartData = [ { data : this.balanceChart.dataSets.data, label : this.balanceChart.dataSets.label } ]; 
+    this.lineChartLabels = this.balanceChart.labels;
 
   }
 
