@@ -1,29 +1,43 @@
 import { TestBed } from '@angular/core/testing';
 import { Account } from 'src/app/models/account';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { DeclareIncomeService } from './declare-income.service';
 
 describe('DeclareIncomeService', () => {
 
   let service: DeclareIncomeService;
-  let spy: any;
-  let account: Account;
+  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [DeclareIncomeService]
+    });
+
     service = TestBed.inject(DeclareIncomeService);
+    httpTestingController = TestBed.inject(HttpTestingController);
 
   });
+
+  afterEach(()=>{
+    httpTestingController.verify();
+  })
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
   describe('sendIncome method', () => {
+    xit('should return Observable that matches the mocked data', () => { // Successful
+      const mockedAccount = new Account(0,0,0);
 
-    it('should return positive status code', () => { // Successful
-      account = new Account(300, 400, 500);
-      expect(service.sendIncome(account)).toBeLessThan(300);
+      service.sendIncome(mockedAccount).subscribe((accountData: Account) => {
+        expect(accountData).toEqual(mockedAccount);
+      });
+
+      const request = httpTestingController.expectOne(`${service.url}/income`);
+      expect(request.request.method).toEqual('PUT');
+      request.flush(mockedAccount);
     });
   });
 });
-

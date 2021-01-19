@@ -7,10 +7,12 @@ import { Account } from 'src/app/models/account';
 })
 export class DeclareIncomeService {
 
+  url: string = "http://localhost:4200";
+
   constructor() { }
 
-  public sendIncome(account:Account): number{
+  public sendIncome(account:Account): Observable<Account>{
 
-    return 1;
+    return null;
   }
 }
