@@ -1,13 +1,11 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DeclareExpensesService } from '../../service/declare-expenses.service';
-
 import { DeclareExpensesComponent } from './declare-expenses.component';
 
 describe('DeclareExpensesComponent', () => {
   let component: DeclareExpensesComponent;
   let fixture: ComponentFixture<DeclareExpensesComponent>;
-  let spy: any;
   let service: DeclareExpensesService;
 
   beforeEach(async () => {
@@ -31,25 +29,25 @@ describe('DeclareExpensesComponent', () => {
 
   describe('updateExpenses()', () => {
     xit('should call updateAccountsTable', () => {
-      spy = spyOn(service, 'updateAccountsTable');
+      let spy = spyOn(service, 'updateAccountsTable');
       component.updateExpenses();
       expect(spy).toHaveBeenCalled();
     });
 
     xit('user input is negative', () => {
-      spy = spyOn(service, 'updateAccountsTable');
+      spyOn(service, 'updateAccountsTable');
       component.account.expenses = -1;
       component.updateExpenses();
       expect(component.error).toBe("Error: Input must be positive.");
-      // expect input reset
+      expect(component.account.expenses).toEqual(0);
     });
 
-    xit('user input has a decimal', () => {
-      spy = spyOn(service, 'updateAccountsTable');
+    xit('user input has a over two decimal places', () => {
+      spyOn(service, 'updateAccountsTable');
       component.account.expenses = 1.001;
       component.updateExpenses();
-      expect(component.error).toBe("Error: Input must be an integer.");
-      // expect input reset
+      expect(component.error).toBe("Error: Input cannot exceed two decimal places.");
+      expect(component.account.expenses).toEqual(0);
     });
   });
 

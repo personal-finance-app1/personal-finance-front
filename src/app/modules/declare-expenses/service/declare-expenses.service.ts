@@ -11,10 +11,12 @@ export class DeclareExpensesService {
   url:string = "localhost:4200/personalfinance";
 
   constructor(private httpClient:HttpClient) { }
-  /**
-   *  Updates the expenses column in the Accounts table.
-   */
+
+ /**
+ * Updates the expenses column in the Accounts table.
+ * @param account Returns the updated account from the database.
+ */
   public updateAccountsTable(account:Account): Observable<Account> {
-    return this.httpClient.put(`${this.url}/expenses`, account) as Observable<Account>;
+    return null;
   }
 }

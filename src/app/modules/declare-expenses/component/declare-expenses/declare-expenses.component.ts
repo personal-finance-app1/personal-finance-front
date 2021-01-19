@@ -20,12 +20,12 @@ export class DeclareExpensesComponent implements OnInit {
   }
 
   /**
-   * Checks to see if user input is negative or a decimal.
-   * Then updates the Global Service and Updates the expenses 
-   * field on the Accounts table in the database.
+   * Checks to see if user input is negative or over two decimal places.
+   * Then updates the expenses field on the Accounts table in the database.
+   * Then updates the global account with the response from the database.
    */
-  public updateExpenses(): void {
-   
+  public async updateExpenses() {
+    
   }
 
   ngOnInit(): void {
