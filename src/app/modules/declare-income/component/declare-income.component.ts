@@ -27,16 +27,5 @@ export class DeclareIncomeComponent implements OnInit {
 
   public onSubmit(){
 
-    /*
-    if(negative){
-      //set error 
-      //reset input to 0
-    } else if(decimal){
-      //set error 
-      //reset input to 0
-    } else {
-      //this.error = this.ds.sendIncome(this.account$);
-    }
-    */
   }
 }

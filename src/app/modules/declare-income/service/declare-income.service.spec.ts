@@ -24,21 +24,6 @@ describe('DeclareIncomeService', () => {
       account = new Account(300, 400, 500);
       expect(service.sendIncome(account)).toBeLessThan(300);
     });
-
-    // xit('should return a negative status code', () => { // Negative
-    //   account = new Account(-300, 400, 500);
-    //   expect(service.sendIncome(account)).toBeGreaterThan(400);  // Positive status code
-    // });
-
-    //accomodate for an account that is passed with no validation,
-    //such as sendIncome being called from a different method
-
-    //spy = spyOn(http, 'put');
-    // leverage httpSpy
-
   });
 });
 
-// service.sendIncome(account).subscribe((response) => {
-//   expect(response.status).toEqual(200);
-// });
