@@ -4,6 +4,7 @@ import { Account } from 'src/app/models/account';
 import { account$ } from 'src/environments/environment';
 import { ProjectionService } from '../../service/projection-service/projection.service';
 import { Color } from 'ng2-charts';
+import { ChartDataSets } from 'chart.js';
 
 @Component({
   selector: 'app-projection',
@@ -17,6 +18,8 @@ export class ProjectionComponent implements OnInit {
   //private incomeExpenseChart : any;
   doughnutChartLabels : Label[] = ['Expenses', 'Income'];
   doughnutChartData : MultiDataSet;
+  lineChartData : ChartDataSets [];
+  lineChartLabels : Label[];
   payPeriods : number = 6;
   doughnutColors:Color[] = [{backgroundColor:['rgba(231, 10, 91,1)', 'rgba(106,245,106,1)'], borderWidth: 2,  borderColor:'#DDD'}];
 
@@ -48,6 +51,8 @@ export class ProjectionComponent implements OnInit {
   createChart(): void {
     this.balanceChart = this.projectionService.calculateBalanceChart(this.account.income, this.account.expenses, this.account.balance, this.payPeriods);
     //this.incomeExpenseChart = this.projectionService.caluclateIncomeExpenseChart(this.account.income, this.account.expenses, this.payPeriods);
+    this.lineChartData = [this.balanceChart.dataSets]; 
+    this.lineChartLabels = [this.balanceChart.labels];
 
   }
 
