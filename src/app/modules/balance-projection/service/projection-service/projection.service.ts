@@ -23,8 +23,8 @@ export class ProjectionService {
     let points:number[] = [];
     let labels:Label[] = [];
     let currentBalance: number = balance;
-    for (let i: number = 0; i < payPeriods; i++) {
-      currentBalance += (income - expenses);
+    for (let i: number = 0; i <= payPeriods; i++) {
+      if(i > 0) currentBalance += (income - expenses);
       points.push(currentBalance);
       labels.push(i.toString());
     }

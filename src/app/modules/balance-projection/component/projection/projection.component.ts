@@ -5,7 +5,8 @@ import { account$ } from 'src/environments/environment';
 import { ProjectionService } from '../../service/projection-service/projection.service';
 import { Color } from 'ng2-charts';
 import { ChartDataSets, ChartOptions } from 'chart.js';
-import * as pluginAnnotations from 'chartjs-plugin-annotation';
+import { MatSliderChange } from '@angular/material/slider';
+//import * as pluginAnnotations from 'chartjs-plugin-annotation';
 
 @Component({
   selector: 'app-projection',
@@ -15,7 +16,6 @@ import * as pluginAnnotations from 'chartjs-plugin-annotation';
 export class ProjectionComponent implements OnInit {
 
   account : Account;
-  balanceChart : any;
   //private incomeExpenseChart : any;
   doughnutChartLabels : Label[] = ['Expenses', 'Income'];
   doughnutChartData : MultiDataSet;
@@ -43,10 +43,12 @@ export class ProjectionComponent implements OnInit {
       this.createChart();
 
       //account$.next(new Account(1500, 600, 2000));
-      this.account = new Account(1500, 600, 2000);
+      this.account = new Account(500, 1000, 5000);
       this.doughnutChartData = [
         [this.account.expenses, this.account.income]
       ];
+
+      this.createChart();
   }
 
   /**
@@ -56,45 +58,25 @@ export class ProjectionComponent implements OnInit {
    * @returns void
    */
   createChart(): void {
-    this.balanceChart = this.projectionService.calculateBalanceChart(this.account.income, this.account.expenses, this.account.balance, this.payPeriods);
+    let chartData:any = this.projectionService.calculateBalanceChart(this.account.income, this.account.expenses, this.account.balance, this.payPeriods);
     //this.incomeExpenseChart = this.projectionService.caluclateIncomeExpenseChart(this.account.income, this.account.expenses, this.payPeriods);
-    this.lineChartData = [ { data : this.balanceChart.dataSets.data, label : this.balanceChart.dataSets.label } ]; 
-    this.lineChartLabels = this.balanceChart.labels;
-    this.lineChartOptions = {
-      responsive : true,
-      scales : {
-        xAxes : [{}],
-        yAxes : [
-          {
-            id : 'y-axis-0',
-            position : 'left',
-          },
-          {
-            id : 'y-axis-1',
-            position : 'right',
-            gridLines : {
-              color: 'rgba(255,0,0,0.3)',
-            },
-            ticks : {
-              fontColor : 'red',
-            }
-          }
-        ]
-      }
-    };
+    this.lineChartData = [ { data : chartData.dataSets.data, label : chartData.dataSets.label } ]; 
+    this.lineChartLabels = chartData.labels;
     this.lineChartColors =  [
       { // red
-      backgroundColor: 'rgba(255,0,0,0.3)',
-      borderColor: 'red',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
+      backgroundColor: 'rgba(115, 165, 194,0.3)',
+      borderColor: 'rgba( 115, 165, 194)',
+      pointBackgroundColor: 'rgba( 115, 165, 194,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+      pointHoverBorderColor: 'rgba( 115, 165, 194,0.8)'
     }
   ];
-  this.lineChartPlugins = [pluginAnnotations];
-  
-  
+  }
+
+  onInputChange(e:MatSliderChange) {
+    this.payPeriods = e.value;
+    this.createChart();
   }
 
   getAccount() : void {
