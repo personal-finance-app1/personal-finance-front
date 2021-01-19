@@ -1,20 +1,47 @@
 import { TestBed } from '@angular/core/testing';
 
 import { DeclareExpensesService } from './declare-expenses.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { Account } from 'src/app/models/account';
 
 describe('DeclareExpensesService', () => {
   let service: DeclareExpensesService;
+  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule],
+      providers: [DeclareExpensesService]
     });
     service = TestBed.inject(DeclareExpensesService);
+    httpTestingController = TestBed.inject(HttpTestingController);
+  });
+
+  afterEach(()=>{
+    httpTestingController.verify();
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
+  describe('#updateAccountsTable()', () => {
+    it('returned Observable should match the right data', () => {
+      const mockAccount: Account = {
+        income: 1500,
+        expenses: 900,
+        balance: 2000
+      };
+
+      service.updateAccountsTable(mockAccount).subscribe((accountData: Account) => {
+        expect(accountData).toEqual(mockAccount);
+      });
+
+      const request = httpTestingController.expectOne(`${service.url}/expenses`);
+
+      expect(request.request.method).toEqual('PUT');
+      request.flush(mockAccount);
+      
+    });
+  });
 });

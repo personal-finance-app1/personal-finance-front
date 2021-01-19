@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Account } from 'src/app/models/account';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,7 @@ export class DeclareExpensesService {
   /**
    *  Updates the expenses column in the Accounts table.
    */
-  public async updateAccountsTable(account:Account) {
-
-    let response =  await this.httpClient.put
-    (this.url + "/expenses", account, {observe: 'response'})
-    .toPromise();
-
-    console.log(response);
-
+  public updateAccountsTable(account:Account): Observable<Account> {
+    return this.httpClient.put(`${this.url}/expenses`, account) as Observable<Account>;
   }
 }
