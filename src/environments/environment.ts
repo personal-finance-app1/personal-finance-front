@@ -3,12 +3,23 @@
 // The list of file replacements can be found in `angular.json`.
 
 import { Subject } from "rxjs";
+import { Account } from "src/app/models/account";
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: 
+  { 
+    apiKey: String, 
+    authDomain: String, 
+    projectId: String, 
+    storageBucket: String, 
+    messagingSenderId: String, 
+    appId: String, 
+    measurementId: String
+  }
 };
 
-export let account: Subject<any>;
+export let account$: Subject<Account> = new Subject<Account>();
 
 /*
  * For easier debugging in development mode, you can import the following file
