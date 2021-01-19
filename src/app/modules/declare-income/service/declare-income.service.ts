@@ -10,7 +10,7 @@ export class DeclareIncomeService {
   constructor() { }
 
   public sendIncome(account:Account): number{
-    
+
     return 1;
   }
 }
