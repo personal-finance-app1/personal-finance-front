@@ -38,7 +38,7 @@ export class ProjectionComponent implements OnInit {
         this.doughnutChartData = [
           [this.account.expenses, this.account.income]
         ];
-        this.createChart();
+        //this.createChart();
       });
 
       //account$.next(new Account(1500, 600, 2000));
