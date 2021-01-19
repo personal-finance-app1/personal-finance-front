@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Account } from 'src/app/models/account';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -13,16 +13,13 @@ export class DeclareExpensesService {
   /**
    *  Updates the expenses column in the Accounts table.
    */
-  public updateAccountsTable(account:Account): string {
+  public async updateAccountsTable(account:Account) {
 
-    this.httpClient.put(this.url + "/expenses", account, {observe: 'response'})
-    .subscribe((response) => {
-      console.log(response.status);
-      if (response.status == 200) {
-        return "Success";
-      }
-    });
+    let response =  await this.httpClient.put
+    (this.url + "/expenses", account, {observe: 'response'})
+    .toPromise();
 
-    return "Failure";
+    console.log(response);
+
   }
 }

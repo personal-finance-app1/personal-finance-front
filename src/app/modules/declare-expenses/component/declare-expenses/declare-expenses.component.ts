@@ -29,6 +29,7 @@ export class DeclareExpensesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.error = "test error"
   }
 
 }

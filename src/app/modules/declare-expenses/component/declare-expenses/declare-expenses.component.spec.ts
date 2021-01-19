@@ -31,7 +31,7 @@ describe('DeclareExpensesComponent', () => {
 
   describe('updateExpenses()', () => {
     xit('should call updateAccountsTable', () => {
-      spy = spyOn(service, 'updateAccountsTable')
+      spy = spyOn(service, 'updateAccountsTable');
       component.updateExpenses();
       expect(spy).toHaveBeenCalled();
     });
@@ -46,7 +46,7 @@ describe('DeclareExpensesComponent', () => {
 
     xit('user input has a decimal', () => {
       spy = spyOn(service, 'updateAccountsTable');
-      component.account.expenses = 1.01;
+      component.account.expenses = 1.001;
       component.updateExpenses();
       expect(component.error).toBe("Error: Input must be an integer.");
       // expect input reset
