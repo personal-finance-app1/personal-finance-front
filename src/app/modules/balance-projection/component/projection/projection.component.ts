@@ -32,7 +32,9 @@ export class ProjectionComponent implements OnInit {
     },
     tooltips: {
       callbacks: {
-        
+        label: function(toolTipItem, data) {
+          return data.datasets[toolTipItem.datasetIndex].label;
+        }
       }
     }
   };
@@ -49,11 +51,11 @@ export class ProjectionComponent implements OnInit {
     tooltips: {
       //formatting how the data is displayed when you hover over it in the graph
       callbacks:{
-        title: function(payPeriod) {
-          return "Pay Period " + payPeriod[0].label.toString();//displays "Pay Period" and the pay period number (i.e. Pay Period 2)
+        title: function(tooltipItem) {
+          return "Pay Period " + tooltipItem[0].label.toString();//displays "Pay Period" and the pay period number (i.e. Pay Period 2)
         },
-        label: function(balance) {
-          return "$"+ Number(balance.value).toFixed(2);//displays the balance with two decimal places
+        label: function(tooltipItem) {
+          return "$"+ Number(tooltipItem.value).toFixed(2);//displays the balance with two decimal places
         }
       }
     },
@@ -69,8 +71,8 @@ export class ProjectionComponent implements OnInit {
         },
         ticks: {
           // Include a dollar sign in the ticks
-          callback: function(balance) {
-              return '$' + balance;
+          callback: function(tooltipItem) {
+              return '$' + tooltipItem;
           },
           fontSize: 16
       }
