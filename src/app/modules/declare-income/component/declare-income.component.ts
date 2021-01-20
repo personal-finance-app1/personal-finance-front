@@ -11,8 +11,9 @@ import { DeclareIncomeService } from '../service/declare-income.service';
 export class DeclareIncomeComponent implements OnInit {
 
   userInput: number;
-  error: String;
+  error: string;
   account: Account;
+  goodInput: boolean;
 
   constructor(private ds: DeclareIncomeService) {
 

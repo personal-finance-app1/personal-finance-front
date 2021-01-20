@@ -8,6 +8,7 @@ import { DeclareIncomeComponent } from './modules/declare-income/component/decla
 import { HeaderComponent } from './modules/navigation/header/header.component';
 import { LoginComponent } from './modules/auth/components/login/login.component';
 import { AuthModule } from './modules/auth/auth.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AuthModule } from './modules/auth/auth.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     BalanceProjectionModule,
+    FormsModule,
     AuthModule
   ],
   providers: [],
