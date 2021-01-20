@@ -25,6 +25,7 @@ export class ProjectionService {
     let currentBalance: number = balance;
     for (let i: number = 0; i <= payPeriods; i++) {
       if(i > 0) currentBalance += (income - expenses);
+      currentBalance = Number(Math.round(parseFloat(currentBalance + 'e2')) + 'e-2');
       points.push(currentBalance);
       labels.push(i.toString());
     }

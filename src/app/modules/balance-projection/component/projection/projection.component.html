@@ -1,16 +1,16 @@
-<mat-grid-list cols="3" rowHeight="49.925%">
+<mat-grid-list cols="3" row="5" rowHeight="20%">
     <mat-grid-tile *ngFor="let tile of tiles; let i = index" [colspan]="tile.cols" [rowspan]="tile.rows"
         [style.background]="tile.color">
-        <div *ngIf="i == 0">
-            <div style="display: block;">
+        <div *ngIf="i == 2">
+            <div>
                 <canvas *ngIf="doughnutChartLabels && doughnutChartData" style="width: 35vw;" baseChart
-                    [data]="doughnutChartData" [labels]="doughnutChartLabels" [colors]="doughnutColors"
+                    [data]="doughnutChartData" [labels]="doughnutChartLabels" [options]="doughnutChartOptions" [colors]="doughnutColors"
                     chartType="doughnut">
                 </canvas>
             </div>
         </div>
-        <div *ngIf="i == 2" fxLayout="row">
-            <label for="periodSlider">Pay Periods:
+        <div *ngIf="i == 3" row="1" rowspan="">
+            <label style="font-size: large;" for="periodSlider">Pay Periods:
                 {{payPeriods}}<br></label>
 
             <mat-slider matTooltip="Info about the action" id="periodSlider" style="width: 20vw;" min="2" max="52"
