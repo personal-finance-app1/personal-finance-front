@@ -32,7 +32,7 @@ export class ProjectionComponent implements OnInit {
     title: {
       display: true, 
       text:'Projected Balance',
-      fontSize: 20
+      fontSize: 25
     },
     legend: {
       display: false
@@ -42,7 +42,7 @@ export class ProjectionComponent implements OnInit {
         scaleLabel: {
           display: true,
           labelString: 'Account Balance',
-          fontSize: 16
+          fontSize: 20
         },
         ticks: {
           // Include a dollar sign in the ticks
@@ -55,7 +55,7 @@ export class ProjectionComponent implements OnInit {
         scaleLabel: {
           display: true,
           labelString: 'Pay Periods',
-          fontSize: 16
+          fontSize: 20
         }
       }]
     }
