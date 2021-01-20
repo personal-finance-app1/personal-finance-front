@@ -28,15 +28,44 @@ export class ProjectionComponent implements OnInit {
 
   lineChartData : ChartDataSets [];
   lineChartLabels : Label[];
-  lineChartOptions : (ChartOptions);
+  lineChartOptions : ChartOptions = {
+    title: {
+      display: true, 
+      text:'Balance vs Pay Periods'
+    },
+    legend: {
+      display: false
+    },
+    scales:{
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Balance (Dollars)'
+        },
+        ticks: {
+          // Include a dollar sign in the ticks
+          callback: function(value, index, values) {
+              return '$' + value;
+          }
+      }
+      }],
+      xAxes:[{
+        scaleLabel: {
+          display: true,
+          labelString: 'Pay Periods'
+        }
+      }]
+    }
+  };
+
   lineChartColors : Color[];
   lineChartPlugins : any;
   payPeriods : number = 6;
 
   tiles: Tile[] = [
-    {text: 'Doughnut', cols: 1, rows: 1, color: 'lightblue'},
-    {text: 'Chart', cols: 2, rows: 2, color: 'lightpink'},
-    {text: 'Slider', cols: 1, rows: 1, color: 'lightgreen'},
+    {text: 'Doughnut', cols: 1, rows: 1, color: 'rgba(0,0,0,0)'},
+    {text: 'Chart', cols: 2, rows: 2, color: 'rgba(0,0,0,0)'},
+    {text: 'Slider', cols: 1, rows: 1, color: 'rgba(0,0,0,0)'},
   ];
 
   constructor(public projectionService : ProjectionService) { }
@@ -83,8 +112,8 @@ export class ProjectionComponent implements OnInit {
   ];
   }
 
-  onInputChange(e:MatSliderChange) {
-    this.payPeriods = e.value;
+  onInputChange(event:MatSliderChange) {
+    this.payPeriods = event.value;
     this.createChart();
   }
 

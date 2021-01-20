@@ -1,21 +1,25 @@
-<mat-grid-list cols="3" rowHeight="50%">
+<mat-grid-list cols="3" rowHeight="49.925%">
     <mat-grid-tile *ngFor="let tile of tiles; let i = index" [colspan]="tile.cols" [rowspan]="tile.rows"
         [style.background]="tile.color">
         <div *ngIf="i == 0">
             <div style="display: block;">
-                <canvas *ngIf="doughnutChartLabels && doughnutChartData" style="width: 35vw;" baseChart [data]="doughnutChartData"
-                    [labels]="doughnutChartLabels" [colors]="doughnutColors" chartType="doughnut">
+                <canvas *ngIf="doughnutChartLabels && doughnutChartData" style="width: 35vw;" baseChart
+                    [data]="doughnutChartData" [labels]="doughnutChartLabels" [colors]="doughnutColors"
+                    chartType="doughnut">
                 </canvas>
             </div>
         </div>
-        <div *ngIf="i == 2">
-            <mat-slider matTooltip="Info about the action" id="periodSlider" style="width: 20vw;" min="2" max="52" value="{{payPeriods}}" step="1"
-                (input)="onInputChange($event)"></mat-slider>
-            <label for="periodSlider">Pay Periods: {{payPeriods}}</label>
+        <div *ngIf="i == 2" fxLayout="row">
+            <label for="periodSlider">Pay Periods:
+                {{payPeriods}}<br></label>
+
+            <mat-slider matTooltip="Info about the action" id="periodSlider" style="width: 20vw;" min="2" max="52"
+                value="{{payPeriods}}" step="1" (input)="onInputChange($event)"></mat-slider>
+
         </div>
         <div *ngIf="i == 1">
             <canvas *ngIf="lineChartData" baseChart style="width: 65vw;" [datasets]="lineChartData"
-                [labels]="lineChartLabels" [colors]="lineChartColors" chartType="line"></canvas>
+                [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" chartType="line"></canvas>
         </div>
     </mat-grid-tile>
 </mat-grid-list>
