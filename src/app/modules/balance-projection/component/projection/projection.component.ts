@@ -44,15 +44,16 @@ export class ProjectionComponent implements OnInit {
     title: {
       display: true, 
       text:'Projected Balance',
-      fontSize: 20
+      fontSize: 25
     },
     tooltips: {
+      //formatting how the data is displayed when you hover over it in the graph
       callbacks:{
-        title: function(t, d) {
-          return "Pay Period " + t[0].label.toString();
+        title: function(payPeriod) {
+          return "Pay Period " + payPeriod[0].label.toString();//displays "Pay Period" and the pay period number (i.e. Pay Period 2)
         },
-        label: function(t,d) {
-          return "$"+ Number(t.value).toFixed(2);
+        label: function(balance) {
+          return "$"+ Number(balance.value).toFixed(2);//displays the balance with two decimal places
         }
       }
     },
@@ -64,19 +65,23 @@ export class ProjectionComponent implements OnInit {
         scaleLabel: {
           display: true,
           labelString: 'Account Balance',
-          fontSize: 16
+          fontSize: 20
         },
         ticks: {
           // Include a dollar sign in the ticks
-          callback: function(value, index, values) {
-              return '$' + value;
-          }
+          callback: function(balance) {
+              return '$' + balance;
+          },
+          fontSize: 16
       }
       }],
       xAxes:[{
         scaleLabel: {
           display: true,
           labelString: 'Pay Periods',
+          fontSize: 20
+        },
+        ticks: {
           fontSize: 16
         }
       }]
