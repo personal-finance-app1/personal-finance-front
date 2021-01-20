@@ -24,6 +24,13 @@ export class ProjectionComponent implements OnInit {
   
   doughnutChartLabels : Label[] = ['Expenses', 'Income'];
   doughnutChartData : MultiDataSet;
+  doughnutChartOptions: ChartOptions = {
+    legend: {
+      labels:{
+        fontSize: 16
+      }
+    }
+  };
   doughnutColors:Color[] = [{backgroundColor:['rgba(231, 10, 91,1)', 'rgba(106,245,106,1)'], borderWidth: 2,  borderColor:'#DDD'}];
 
   lineChartData : ChartDataSets [];
@@ -33,6 +40,16 @@ export class ProjectionComponent implements OnInit {
       display: true, 
       text:'Projected Balance',
       fontSize: 20
+    },
+    tooltips: {
+      callbacks:{
+        title: function(t, d) {
+          return "Pay Period " + t[0].label.toString();
+        },
+        label: function(t,d) {
+          return "$"+ Number(t.value).toFixed(2);
+        }
+      }
     },
     legend: {
       display: false
@@ -68,9 +85,11 @@ export class ProjectionComponent implements OnInit {
   payPeriods : number = 6;
 
   tiles: Tile[] = [
-    {text: 'Doughnut', cols: 1, rows: 1, color: 'rgba(0,0,0,0)'},
-    {text: 'Chart', cols: 2, rows: 2, color: 'rgba(0,0,0,0)'},
-    {text: 'Slider', cols: 1, rows: 1, color: 'rgba(0,0,0,0)'},
+    {text: '',         cols: 1, rows: 1, color: 'rgba(0,0,0,0)'},
+    {text: 'Chart',    cols: 2, rows: 5, color: 'rgba(0,0,0,0)'},
+    {text: 'Doughnut', cols: 1, rows: 2, color: 'rgba(0,0,0,0)'},
+    {text: 'Slider',   cols: 1, rows: 1, color: 'rgba(0,0,0,0)'},
+    {text: '',         cols: 1, rows: 1, color: 'rgba(0,0,0,0)'},
   ];
 
   constructor(public projectionService : ProjectionService) { }
@@ -86,7 +105,7 @@ export class ProjectionComponent implements OnInit {
          this.createChart();
       });
 
-      this.account = new Account(1500, 1300, 300);
+      this.account = new Account(1500.12, 1300.47, 300);
       this.doughnutChartData = [
         [this.account.expenses, this.account.income]
       ];
