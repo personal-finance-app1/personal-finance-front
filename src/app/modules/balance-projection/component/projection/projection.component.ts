@@ -28,7 +28,7 @@ export class ProjectionComponent implements OnInit {
     legend: {
       labels:{
         fontSize: 16
-      }
+      },
     }
   };
   doughnutColors:Color[] = [{backgroundColor:['rgba(231, 10, 91,1)', 'rgba(106,245,106,1)'], borderWidth: 2,  borderColor:'#DDD'}];
@@ -42,12 +42,13 @@ export class ProjectionComponent implements OnInit {
       fontSize: 25
     },
     tooltips: {
+      //formatting how the data is displayed when you hover over it in the graph
       callbacks:{
-        title: function(t, d) {
-          return "Pay Period " + t[0].label.toString();
+        title: function(payPeriod) {
+          return "Pay Period " + payPeriod[0].label.toString();//displays "Pay Period" and the pay period number (i.e. Pay Period 2)
         },
-        label: function(t,d) {
-          return "$"+ Number(t.value).toFixed(2);
+        label: function(balance) {
+          return "$"+ Number(balance.value).toFixed(2);//displays the balance with two decimal places
         }
       }
     },
@@ -63,9 +64,10 @@ export class ProjectionComponent implements OnInit {
         },
         ticks: {
           // Include a dollar sign in the ticks
-          callback: function(value, index, values) {
-              return '$' + value;
-          }
+          callback: function(balance) {
+              return '$' + balance;
+          },
+          fontSize: 16
       }
       }],
       xAxes:[{
@@ -73,6 +75,9 @@ export class ProjectionComponent implements OnInit {
           display: true,
           labelString: 'Pay Periods',
           fontSize: 20
+        },
+        ticks: {
+          fontSize: 16
         }
       }]
     }
