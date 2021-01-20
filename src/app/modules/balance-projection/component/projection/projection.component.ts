@@ -40,7 +40,6 @@ export class ProjectionComponent implements OnInit {
         ];
          this.createChart();
       });
-      this.createChart();
 
       //account$.next(new Account(1500, 600, 2000));
       this.account = new Account(500, 1000, 5000);
