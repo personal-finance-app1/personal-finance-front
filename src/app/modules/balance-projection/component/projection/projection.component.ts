@@ -27,12 +27,17 @@ export class ProjectionComponent implements OnInit {
   doughnutChartOptions: ChartOptions = {
     legend: {
       labels:{
-        fontSize: 16
+        fontSize: 20
       }
     },
     tooltips: {
       callbacks: {
-        
+        // title : function (accountType){
+        //   return accountType +": ";
+        // },
+        // label : function (t,d){
+        //   return "$"+ Number(t.value).toFixed(2);
+        // }
       }
     }
   };
