@@ -60,6 +60,8 @@ export class ProjectionComponent implements OnInit {
 
   lineChartColors : Color[];
   lineChartPlugins : any;
+
+  title : string;
   payPeriods : number = 6;
 
   tiles: Tile[] = [
@@ -96,6 +98,7 @@ export class ProjectionComponent implements OnInit {
    * @returns void
    */
   createChart(): void {
+    this.title = "Projected Balance";
     let chartData:any = this.projectionService.calculateBalanceChart(this.account.income, this.account.expenses, this.account.balance, this.payPeriods);
     //this.incomeExpenseChart = this.projectionService.caluclateIncomeExpenseChart(this.account.income, this.account.expenses, this.payPeriods);
     this.lineChartData = [ { data : chartData.dataSets.data, label : chartData.dataSets.label } ]; 
