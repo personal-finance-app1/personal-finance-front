@@ -31,7 +31,8 @@ export class ProjectionComponent implements OnInit {
   lineChartOptions : ChartOptions = {
     title: {
       display: true, 
-      text:'Balance vs Pay Periods'
+      text:'Projected Balance',
+      fontSize: 20
     },
     legend: {
       display: false
@@ -40,7 +41,8 @@ export class ProjectionComponent implements OnInit {
       yAxes: [{
         scaleLabel: {
           display: true,
-          labelString: 'Balance (Dollars)'
+          labelString: 'Account Balance',
+          fontSize: 16
         },
         ticks: {
           // Include a dollar sign in the ticks
@@ -52,7 +54,8 @@ export class ProjectionComponent implements OnInit {
       xAxes:[{
         scaleLabel: {
           display: true,
-          labelString: 'Pay Periods'
+          labelString: 'Pay Periods',
+          fontSize: 16
         }
       }]
     }
