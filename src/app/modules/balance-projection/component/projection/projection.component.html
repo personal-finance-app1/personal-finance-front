@@ -2,8 +2,8 @@
     <mat-grid-tile *ngFor="let tile of tiles; let i = index" [colspan]="tile.cols" [rowspan]="tile.rows"
         [style.background]="tile.color">
         <div *ngIf="i == 2">
-            <div>
-                <canvas *ngIf="doughnutChartLabels && doughnutChartData" style="width: 35vw;" baseChart
+            <div style="width: 35vw; height: 35vh;">
+                <canvas *ngIf="doughnutChartLabels && doughnutChartData" baseChart
                     [data]="doughnutChartData" [labels]="doughnutChartLabels" [options]="doughnutChartOptions" [colors]="doughnutColors"
                     chartType="doughnut">
                 </canvas>
@@ -18,8 +18,10 @@
 
         </div>
         <div *ngIf="i == 1">
-            <canvas *ngIf="lineChartData" baseChart style="width: 65vw;" [datasets]="lineChartData"
+            <div style="width: 65vw;">
+                <canvas *ngIf="lineChartData" baseChart  [datasets]="lineChartData"
                 [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" chartType="line"></canvas>
+            </div>
         </div>
     </mat-grid-tile>
 </mat-grid-list>

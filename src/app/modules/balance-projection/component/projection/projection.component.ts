@@ -29,6 +29,11 @@ export class ProjectionComponent implements OnInit {
       labels:{
         fontSize: 16
       }
+    },
+    tooltips: {
+      callbacks: {
+        
+      }
     }
   };
   doughnutColors:Color[] = [{backgroundColor:['rgba(231, 10, 91,1)', 'rgba(106,245,106,1)'], borderWidth: 2,  borderColor:'#DDD'}];
