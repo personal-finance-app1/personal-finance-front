@@ -6,7 +6,17 @@ import { Subject } from "rxjs";
 import { Account } from "src/app/models/account";
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: 
+  { 
+    apiKey: String, 
+    authDomain: String, 
+    projectId: String, 
+    storageBucket: String, 
+    messagingSenderId: String, 
+    appId: String, 
+    measurementId: String
+  }
 };
 
 export let account$: Subject<Account> = new Subject<Account>();
