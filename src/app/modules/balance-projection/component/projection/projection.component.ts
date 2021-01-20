@@ -1,13 +1,18 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { BaseChartDirective, Label, MultiDataSet } from 'ng2-charts';
+import { Component, OnInit } from '@angular/core';
+import {  Label, MultiDataSet } from 'ng2-charts';
 import { Account } from 'src/app/models/account';
 import { account$ } from 'src/environments/environment';
 import { ProjectionService } from '../../service/projection-service/projection.service';
 import { Color } from 'ng2-charts';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { MatSliderChange } from '@angular/material/slider';
-//import * as pluginAnnotations from 'chartjs-plugin-annotation';
 
+export interface Tile {
+  color: string;
+  cols: number;
+  rows: number;
+  text: string;
+}
 @Component({
   selector: 'app-projection',
   templateUrl: './projection.component.html',
@@ -16,17 +21,23 @@ import { MatSliderChange } from '@angular/material/slider';
 export class ProjectionComponent implements OnInit {
 
   account : Account;
-  //private incomeExpenseChart : any;
+  
   doughnutChartLabels : Label[] = ['Expenses', 'Income'];
   doughnutChartData : MultiDataSet;
+  doughnutColors:Color[] = [{backgroundColor:['rgba(231, 10, 91,1)', 'rgba(106,245,106,1)'], borderWidth: 2,  borderColor:'#DDD'}];
+
   lineChartData : ChartDataSets [];
   lineChartLabels : Label[];
   lineChartOptions : (ChartOptions);
   lineChartColors : Color[];
   lineChartPlugins : any;
   payPeriods : number = 6;
-  doughnutColors:Color[] = [{backgroundColor:['rgba(231, 10, 91,1)', 'rgba(106,245,106,1)'], borderWidth: 2,  borderColor:'#DDD'}];
-  @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
+
+  tiles: Tile[] = [
+    {text: 'Doughnut', cols: 1, rows: 1, color: 'lightblue'},
+    {text: 'Chart', cols: 2, rows: 2, color: 'lightpink'},
+    {text: 'Slider', cols: 1, rows: 1, color: 'lightgreen'},
+  ];
 
   constructor(public projectionService : ProjectionService) { }
 
@@ -41,8 +52,7 @@ export class ProjectionComponent implements OnInit {
          this.createChart();
       });
 
-      //account$.next(new Account(1500, 600, 2000));
-      this.account = new Account(500, 1000, 5000);
+      this.account = new Account(1500, 1300, 300);
       this.doughnutChartData = [
         [this.account.expenses, this.account.income]
       ];
