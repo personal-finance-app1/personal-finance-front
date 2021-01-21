@@ -14,6 +14,8 @@ export class DeclareIncomeComponent implements OnInit {
   error: String;
   account: Account;
 
+  goodInput:boolean;
+
   constructor(private ds: DeclareIncomeService) {
     account$.subscribe((response) => {
       this.account = response;
