@@ -28,7 +28,7 @@ describe('ProjectionComponent', () => {
   });
   
   it('should create chart', () => {
-    let chart = component.createChart();
+    component.createChart();
     console.log(component.lineChartData[0].data);
     expect(component.lineChartData[0].data.length > 0);
   });
