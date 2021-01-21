@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { account$ } from 'src/environments/environment';
+=======
+>>>>>>> 2b24eb0fbbbe458c8f120f84fc9c4e93e2929254
 
 @Component({
   selector: 'app-projection',

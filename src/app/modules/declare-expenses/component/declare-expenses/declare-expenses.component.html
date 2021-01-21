@@ -1,0 +1,5 @@
+<label for= "expensesInput"> <span>Please enter your bi-weekly expenses</span> </label>
+<input name ="expensesInput" type = "number" placeholder= "0.00" [(ngModel)]="account.expenses">
+<button (click) = "updateExpenses()">Submit</button> 
+<br>
+<div *ngIf="error">{{error}}</div>
