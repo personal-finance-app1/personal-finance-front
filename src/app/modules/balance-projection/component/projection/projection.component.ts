@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { account$ } from 'src/environments/environment';
 
 @Component({
   selector: 'app-projection',
@@ -8,8 +7,8 @@ import { account$ } from 'src/environments/environment';
 })
 export class ProjectionComponent implements OnInit {
 
-  account:any;
-  chart:any;
+  account: any;
+  chart: any;
 
   constructor() { }
 
@@ -17,10 +16,10 @@ export class ProjectionComponent implements OnInit {
   }
 
   createChart(): void {
-    
+
   }
 
-  getAccount() : void {
-   
+  getAccount(): void {
+
   }
 }
