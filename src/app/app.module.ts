@@ -6,10 +6,6 @@ import { DeclareExpensesModule } from './modules/declare-expenses/declare-expens
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-<<<<<<< HEAD
-
-=======
->>>>>>> ddb183f6e9218af708c32c9e1d5060d76e16c0df
 import { BalanceProjectionModule } from './modules/balance-projection/balance-projection.module';
 import { DeclareIncomeComponent } from './modules/declare-income/component/declare-income.component';
 import { HeaderComponent } from './modules/navigation/header/header.component';
@@ -19,11 +15,6 @@ import { AuthModule } from './modules/auth/auth.module';
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< HEAD
-    HeaderComponent,
-    LoginComponent
-=======
->>>>>>> ddb183f6e9218af708c32c9e1d5060d76e16c0df
   ],
   imports: [
     BrowserModule,
