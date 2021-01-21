@@ -37,7 +37,7 @@ export class AuthService {
       (result) => {
         this.userData = result.user;
       }).catch((error) => {
-        alert("Username and Password are invalide !!");
+        alert("Username and Password are invalid !!");
         console.log(error)
 
       });
