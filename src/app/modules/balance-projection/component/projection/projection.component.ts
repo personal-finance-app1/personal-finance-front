@@ -39,7 +39,8 @@ export class ProjectionComponent implements OnInit {
         label: function(toolTipItem, data) {
           console.log("$" + data.datasets[toolTipItem.datasetIndex].data[toolTipItem.index]);
           //console.log("data.datasets[1].label: "+ data.datasets[1].label);
-          return data.datasets[toolTipItem.datasetIndex].label;
+          //return data.datasets[toolTipItem.datasetIndex].label;
+            return data.labels[toolTipItem.index] as string;
         }
       }
     }
