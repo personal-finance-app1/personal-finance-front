@@ -17,6 +17,6 @@ export class DeclareExpensesService {
  * @param account Returns the updated account from the database.
  */
   public updateAccountsTable(account:Account): Observable<Account> {
-    return null;
+    return this.httpClient.put(`${this.url}/expenses`, account) as Observable<Account>;
   }
 }

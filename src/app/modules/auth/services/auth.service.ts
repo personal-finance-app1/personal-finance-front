@@ -1,6 +1,6 @@
 import { Injectable, SystemJsNgModuleLoader } from '@angular/core';
-import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth'; 
-import * as firebase from 'firebase/app';
+//import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth'; 
+//import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'

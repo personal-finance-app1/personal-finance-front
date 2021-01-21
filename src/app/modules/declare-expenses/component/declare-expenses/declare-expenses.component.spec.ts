@@ -28,13 +28,13 @@ describe('DeclareExpensesComponent', () => {
   });
 
   describe('updateExpenses()', () => {
-    xit('should call updateAccountsTable', () => {
+    it('should call updateAccountsTable', () => {
       let spy = spyOn(service, 'updateAccountsTable');
       component.updateExpenses();
       expect(spy).toHaveBeenCalled();
     });
 
-    xit('user input is negative', () => {
+    it('user input is negative', () => {
       spyOn(service, 'updateAccountsTable');
       component.account.expenses = -1;
       component.updateExpenses();
@@ -42,7 +42,7 @@ describe('DeclareExpensesComponent', () => {
       expect(component.account.expenses).toEqual(0);
     });
 
-    xit('user input has a over two decimal places', () => {
+    it('user input has a over two decimal places', () => {
       spyOn(service, 'updateAccountsTable');
       component.account.expenses = 1.001;
       component.updateExpenses();
