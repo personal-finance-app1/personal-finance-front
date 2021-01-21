@@ -1,5 +1,5 @@
 import { Injectable, SystemJsNgModuleLoader } from '@angular/core';
-import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth'; 
 import * as firebase from 'firebase/app';
 
 @Injectable({
@@ -7,8 +7,8 @@ import * as firebase from 'firebase/app';
 })
 export class AuthService {
 
-  private token: String;
-  private userName: String;
+  private token : String;
+  private userName : String;
 
   constructor() { }
 
@@ -21,7 +21,7 @@ export class AuthService {
    * @returns boolean indicating whether credentials are authenticated by
    *          firebase
    */
-  public login(username: string, password: string): boolean {
+  public login(username: string, password: string) : boolean {
     return false;
   }
 
@@ -42,7 +42,7 @@ export class AuthService {
    * @returns String - JWT retrieved from Firebase after successful
    *          authentication
    */
-  public getToken(): string {
+  public getToken() : string {
     return null;
   }
 
@@ -51,7 +51,7 @@ export class AuthService {
    * @param none
    * @returns String - Username stored in JWT returned from Firebase
    */
-  public getUsername(): String {
+  public getUsername() : String {
     return null;
-  }
+  }  
 }
