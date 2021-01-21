@@ -41,6 +41,6 @@ import { AuthModule } from './modules/auth/auth.module';
     AuthModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
