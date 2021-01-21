@@ -32,7 +32,13 @@ export class ProjectionComponent implements OnInit {
     },
     tooltips: {
       callbacks: {
+        title : function(tooltipItem){
+          console.log(tooltipItem[0].label.toString());
+          return tooltipItem[0].label.toString();
+        },
         label: function(toolTipItem, data) {
+          console.log("$" + data.datasets[toolTipItem.datasetIndex].data[toolTipItem.index]);
+          //console.log("data.datasets[1].label: "+ data.datasets[1].label);
           return data.datasets[toolTipItem.datasetIndex].label;
         }
       }
@@ -70,7 +76,7 @@ export class ProjectionComponent implements OnInit {
           fontSize: 20
         },
         ticks: {
-          // Include a dollar sign in the ticks
+          // Include a dollar sign in the tick marks
           callback: function(tooltipItem) {
               return '$' + tooltipItem;
           },
@@ -138,7 +144,7 @@ export class ProjectionComponent implements OnInit {
     this.lineChartData = [ { data : chartData.dataSets.data, label : chartData.dataSets.label } ]; 
     this.lineChartLabels = chartData.labels;
     this.lineChartColors =  [
-      { // red
+      { 
       backgroundColor: 'rgba(115, 165, 194,0.3)',
       borderColor: 'rgba( 115, 165, 194)',
       pointBackgroundColor: 'rgba( 115, 165, 194,1)',
