@@ -29,7 +29,7 @@ import { AuthModule } from './modules/auth/auth.module';
     BalanceProjectionModule,
     AuthModule
   ],
-  providers: [],
+  providers: [AuthModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

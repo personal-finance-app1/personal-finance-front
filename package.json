@@ -23,9 +23,9 @@
     "@angular/platform-browser-dynamic": "^11.0.9",
     "@angular/router": "^11.0.9",
     "angular-mock-backend": "^1.2.0",
+    "firebase": "^8.2.3",
     "jasmine-http-server-spy": "^0.5.0",
     "ng2-charts": "^2.4.2",
-    "firebase": "^8.2.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
