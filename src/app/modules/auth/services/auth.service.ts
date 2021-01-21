@@ -10,10 +10,9 @@ import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 })
 export class AuthService {
 
-  private userData:any;
+  private userData: any;
 
-  constructor(private fireStore:AngularFirestore, private auth:AngularFireAuth)
-  {
+  constructor(private fireStore: AngularFirestore, private auth: AngularFireAuth) {
     this.auth.authState.subscribe(user => {
       if (user) {
         this.userData = user;
@@ -33,10 +32,14 @@ export class AuthService {
    * @returns boolean indicating whether credentials are authenticated by
    *          firebase
    */
-  public login(username: string, password: string) : boolean {
+  public login(username: string, password: string): boolean {
     this.auth.signInWithEmailAndPassword(username, password).then(
       (result) => {
         this.userData = result.user;
+      }).catch((error) => {
+        alert("Username and Password are invalide !!");
+        console.log(error)
+
       });
 
     if (this.userData == null) {
@@ -68,7 +71,7 @@ export class AuthService {
    * @returns String - JWT retrieved from Firebase after successful
    *          authentication
    */
-  public getToken() : string {
+  public getToken(): string {
     if (this.userData == null) {
       return null;
     }
@@ -76,14 +79,14 @@ export class AuthService {
     else {
       return this.userData.getIdToken();
     }
-  }  
+  }
 
   /**
    * Method for retreiving username from JWT returned from Firebase
    * @param none
    * @returns String - Username stored in JWT returned from Firebase
    */
-  public getDisplayName() : String {
+  public getDisplayName(): String {
     if (this.userData == null) {
       return null;
     }
@@ -98,7 +101,7 @@ export class AuthService {
    * @param none
    * @returns String - Email stored in 
    */
-  public getEmail() : String {
+  public getEmail(): String {
     if (this.userData == null) {
       return null;
     }
