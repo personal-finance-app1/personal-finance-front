@@ -13,6 +13,7 @@ export class DeclareIncomeComponent implements OnInit {
   userInput: number;
   error: String;
   account: Account;
+  goodInput: boolean = false;
 
   constructor(private ds: DeclareIncomeService) {
 
@@ -25,7 +26,7 @@ export class DeclareIncomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public onSubmit(){
+  public onSubmit() {
 
   }
 }
