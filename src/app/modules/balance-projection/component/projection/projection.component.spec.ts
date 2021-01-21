@@ -27,10 +27,9 @@ describe('ProjectionComponent', () => {
     expect(component.account).toBeTruthy();
   });
   
-  it('should create chart', () => {
+  it('should have data', () => {
     component.createChart();
-    console.log(component.lineChartData[0].data);
-    expect(component.lineChartData[0].data.length > 0);
+    expect(component.lineChartData[0].data.length).toBeGreaterThan(0);
   });
 
  describe('get the account', () => {

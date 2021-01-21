@@ -15,13 +15,13 @@ describe('ProjectionService', () => {
 
   describe('calculateBalanceChart', () => {
     describe('with valid data', () => {
-      xit('should create balance chart', () => {
+      it('should create balance chart', () => {
         chart = service.calculateBalanceChart(1500,800,3000,6);
         expect(chart).toBeTruthy();
       });
     });
     describe('with invalid data', () => {
-      xit('should not create balance chart', () => {
+      it('should not create balance chart', () => {
         chart = service.calculateBalanceChart(1500,800,3000,0);
         expect(chart).toBeFalsy();
       });
