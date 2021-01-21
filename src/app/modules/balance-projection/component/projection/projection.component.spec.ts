@@ -23,20 +23,21 @@ describe('ProjectionComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('should have account', () => {
+  it('should have account', () => {
     expect(component.account).toBeTruthy();
   });
   
-  xit('should create chart', () => {
-    component.createChart();
-    expect(component.balanceChart).toBeTruthy();
+  it('should create chart', () => {
+    let chart = component.createChart();
+    console.log(component.lineChartData[0].data);
+    expect(component.lineChartData[0].data.length > 0);
   });
 
  describe('get the account', () => {
-   xit('get income', ()=> {
+   it('get income', ()=> {
      expect(component.account.income).toBeGreaterThan(0);
    });
-   xit('get expenses', ()=> {
+   it('get expenses', ()=> {
     expect(component.account.expenses).toBeGreaterThan(0);
   });
  });
