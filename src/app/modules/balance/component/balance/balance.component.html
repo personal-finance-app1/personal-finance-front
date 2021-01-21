@@ -1,0 +1,47 @@
+<section class="balance_section">
+  <form
+    #f="ngForm"
+    fxLayout="column"
+    (ngSubmit)="updateAccountBalance()"
+    fxLayoutAlign="start stretch"
+  >
+    <div class="balance_title">Update Balance</div>
+    <div fxLayout="row" class="mat_input">
+      <mat-label>
+        <mat-icon class="material-icons-outlined">attach_money</mat-icon>
+        <span fxLayoutGap="10px">
+          <mat-form-field>
+            <input
+              type="number"
+              matInput
+              appearance="fill"
+              ngModel
+              name="balance"
+              required
+              #balanceInput="ngModel"
+            />
+            <!-- Error display commented out until we implement component
+                 <mat-error *ngIf="balanceInput.hasError('required')"
+              >Field must not be empty.</mat-error>
+            -->
+            <!--
+              Commenting out until we work out implementation.             
+              <mat-error *ngIf="invalid_balance">{{ invalidMessage }}</mat-error>
+              -->
+          </mat-form-field>
+          <button
+            mat-raised-button
+            color="warn"
+            type="submit"
+            [disabled]="f.invalid"
+          >
+            Update
+          </button>
+          <span class="current-balance-span"
+            >Current Balance: $ {{ accountBalance }}
+          </span>
+        </span>
+      </mat-label>
+    </div>
+  </form>
+</section>
