@@ -21,6 +21,10 @@ export const environment = {
 
 export let account$: Subject<Account> = new Subject<Account>();
 
+
+
+export let url$: String = "http://localhost:8080";
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
