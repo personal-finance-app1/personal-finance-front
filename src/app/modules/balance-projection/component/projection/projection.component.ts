@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectionComponent implements OnInit {
 
-  account: any;
-  chart: any;
+  account:any;
+  chart:any;
 
   constructor() { }
 
@@ -16,10 +16,8 @@ export class ProjectionComponent implements OnInit {
   }
 
   createChart(): void {
-
   }
 
-  getAccount(): void {
-
+  getAccount() : void {
   }
 }
