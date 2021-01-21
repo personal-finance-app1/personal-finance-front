@@ -50,7 +50,7 @@ import { environment } from '../../../environments/environment';
     ReactiveFormsModule,
     AngularFireModule,
     AngularFirestoreModule,
-    AngularFireAuthModule,
+    AngularFireAuthModule,    
   ],
   exports: [
     MatButtonModule,
