@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
+import { Account } from 'src/app/models/account';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BalanceService {
-  constructor() {}
+  constructor() {
+    this.account = new Account(0, 0, 0);
+  }
 
   //eventually going to take out for global service field
-  accountBalance: number;
+  private account:Account;
 
   /**The validate account balance is used to ensure the user has entered a valid declaring or update balance.
    * returns boolean which indicates if the balance is valid or invalid.
    */
   public validateAccountBalance(accountBalance: number): boolean {
-    return false;
+    return accountBalance>0;
   }
 
   /**
@@ -22,7 +25,11 @@ export class BalanceService {
    * @return a boolean indicating if the set was succesful.
    */
   public setBalance(balance: number): boolean {
-    return false;
+    let isValidBalance:boolean = this.validateAccountBalance(balance);
+    if (isValidBalance) {
+      this.account.balance = balance;
+    }
+    return isValidBalance;
   }
 
   /**getBalance() returns the balance value stored in this service.
@@ -30,6 +37,7 @@ export class BalanceService {
    * return null returns null if no balance has been set
    */
   public getBalance(): number | null {
-    return null;
+    let returnBalance:number | null = this.validateAccountBalance(this.account.balance) ? this.account.balance : null;
+    return returnBalance;
   }
 }
