@@ -16,8 +16,10 @@ export class ProjectionComponent implements OnInit {
   }
 
   createChart(): void {
+    
   }
 
   getAccount() : void {
+    
   }
 }
