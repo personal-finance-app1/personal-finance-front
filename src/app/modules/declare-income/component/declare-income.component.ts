@@ -41,7 +41,7 @@ export class DeclareIncomeComponent implements OnInit {
       this.error = "Error: Input cannot exceed two decimal places.";
 
     } else {
-      this.account.income = this.userInput; //Set income of localAccount
+      this.account.income = this.userInput*100; //Set income of localAccount
       this.ds.sendIncome(this.account).subscribe((response: Account)  => { //More Questions Here
         this.account = response;
       });
