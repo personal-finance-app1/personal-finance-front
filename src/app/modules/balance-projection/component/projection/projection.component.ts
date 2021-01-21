@@ -20,6 +20,6 @@ export class ProjectionComponent implements OnInit {
   }
 
   getAccount() : void {
-   
+    
   }
 }
