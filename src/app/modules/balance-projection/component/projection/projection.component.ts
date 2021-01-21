@@ -33,7 +33,7 @@ export class ProjectionComponent implements OnInit {
     tooltips: {
       callbacks: {
         label: function (toolTipItem, data) {
-          console.log("$" + data.datasets[toolTipItem.datasetIndex].data[toolTipItem.index]);
+          //console.log("$" + data.datasets[toolTipItem.datasetIndex].data[toolTipItem.index]);
           let amount = data.datasets[toolTipItem.datasetIndex].data[toolTipItem.index];
           return data.labels[toolTipItem.index] as string + ": $" + amount;
         }
