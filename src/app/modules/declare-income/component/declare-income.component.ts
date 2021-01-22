@@ -13,8 +13,8 @@ export class DeclareIncomeComponent implements OnInit {
   userInput: number;
   error: String;
   account: Account;
-
-  goodInput:boolean;
+  currentIncome: number;
+  
 
   constructor(private ds: DeclareIncomeService) {
     account$.subscribe((response) => {
@@ -26,29 +26,24 @@ export class DeclareIncomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  //We want to display the environment account.income as the current income in the widget
-
   public onSubmit(){
 
     console.log("User Input is: " + this.userInput)
 
     if(this.userInput < 0){
-      
-      this.account.income = 0; //reset input to 0
       this.error = "Error: Input must be positive.";
 
     } else if(Math.floor(this.userInput * 100) != (this.userInput * 100)){
-      
-      this.account.income = 0; //reset input to 0
       this.error = "Error: Input cannot exceed two decimal places.";
 
     } else {
       this.account.income = this.userInput*100; //Set income of localAccount
-      this.ds.sendIncome(this.account).subscribe((response: Account)  => { //More Questions Here
+      
+      this.ds.sendIncome(this.account).subscribe((response: Account)  => {
         account$.next(response); //Update global account
-        //logic for display income
+        this.currentIncome = this.userInput;
+        this.error = "";
       });
     }
-    
   }
 }
