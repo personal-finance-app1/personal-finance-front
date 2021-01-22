@@ -2,9 +2,8 @@
   <form
     #f="ngForm"
     fxLayout="column"
-    (ngSubmit)="updateAccountBalance(balanceInput.value)"
+    (ngSubmit)="updateAccountBalance()"
     fxLayoutAlign="start stretch"
-    *ngIf="!this.renderDeclareBalanceWidget"
   >
     <div class="balance_title">Update Balance</div>
     <div fxLayout="row" class="mat_input">
@@ -14,18 +13,17 @@
           <mat-form-field>
             <input
               type="number"
-              pattern=""
               matInput
               appearance="fill"
               ngModel
               name="balance"
               required
-              #balanceInput
+              #balanceInput="ngModel"
             />
-            <mat-error *ngIf="balanceInput.hasError('required')">
-              Field must not be empty.
-            </mat-error>
-           
+            <!-- Error display commented out until we implement component
+                 <mat-error *ngIf="balanceInput.hasError('required')"
+              >Field must not be empty.</mat-error>
+            -->
             <!--
               Commenting out until we work out implementation.             
               <mat-error *ngIf="invalid_balance">{{ invalidMessage }}</mat-error>
@@ -40,7 +38,7 @@
             Update
           </button>
           <span class="current-balance-span"
-            >Current Balance: $ {{ this.balanceService.getBalance() }}
+            >Current Balance: $ {{ accountBalance }}
           </span>
         </span>
       </mat-label>
