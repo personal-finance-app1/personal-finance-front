@@ -1,10 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-<<<<<<< Updated upstream:src/app/modules/balance-projection/component/projection/projection.component.spec.ts
-import { ProjectionComponent } from './projection.component';
-=======
 
 import { DeclareBalanceComponent } from './declare-balance.component';
->>>>>>> Stashed changes:src/app/modules/balance/component/declare-balance/declare-balance.component.spec.ts
 
 describe('DeclareBalanceComponent', () => {
   let component: DeclareBalanceComponent;

@@ -16,6 +16,7 @@ import { BalanceService } from '../../service/balance.service';
 })
 export class BalanceComponent implements OnInit {
   public invalidMessage: string;
+  public accountBalance: number;
   /**This read only variable will hold the message we'll send to the user, if they enter an invalid balance. */
   public readonly INVALID_BALANCE_MESSAGE: string = "Only account balances greater than zero are accepted. Please enter an account balance greater than zero.";
   /**This property holds a reference to the Balance Service we use to perform operations on our component.*/
@@ -28,6 +29,7 @@ export class BalanceComponent implements OnInit {
     this.balanceService = injectedBalanceService;
     this.renderDeclareBalanceWidget = !this.balanceService.validateAccountBalance(this.balanceService.getBalance()); // decide to render widget based on the invalid value of accountBalance
     this.invalidMessage = '';
+    this.accountBalance = this.injectedBalanceService.getBalance();
   }
 
   ngOnInit(): void {}
@@ -36,8 +38,10 @@ export class BalanceComponent implements OnInit {
    * We can use this method to push values to the global service.
    */
   public updateAccountBalance(balanceInput:any): void {
+    console.log("balance get" + balanceInput);
     //here, we make sure the account balance is valid
     if(this.balanceService.validateAccountBalance(balanceInput)){
+      this.accountBalance = balanceInput;
       this.balanceService.setBalance(balanceInput); //if valid balance, update the balance service
       this.invalidMessage=''; //set message to empty string, in case it has been set to an invalid string before
     } else {
