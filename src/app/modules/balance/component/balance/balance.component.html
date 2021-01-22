@@ -22,10 +22,10 @@
               required
               #balanceInput
             />
-            <!-- Error display commented out until we implement component
-                 <mat-error *ngIf="balanceInput.hasError('required')"
-              >Field must not be empty.</mat-error>
-            -->
+            <mat-error *ngIf="balanceInput.hasError('required')">
+              Field must not be empty.
+            </mat-error>
+           
             <!--
               Commenting out until we work out implementation.             
               <mat-error *ngIf="invalid_balance">{{ invalidMessage }}</mat-error>
