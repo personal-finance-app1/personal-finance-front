@@ -21,4 +21,10 @@ mat-form-field {
 
 .current-balance-span {
   margin: 30px;
+  font-size: 200%;
+  margin: 10px;
+  padding: 20px;
+  border-bottom: 1px solid black;
+  background-color: #f26925;
+  color: white;
 }
