@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit, OnChanges {
 
   onLogin() {
 
-    this.authSerice.login(this.loginForm.value.username, this.loginForm.value.password);
+    //this.authSerice.login(this.loginForm.value.username, this.loginForm.value.password);
 
     // this is for only testing method
     // if (this.loginForm.value.username == "username" && this.loginForm.value.password == "password") {
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit, OnChanges {
     //   window.location.reload();
     // }
 
-
+    this.authService
 
 
   }

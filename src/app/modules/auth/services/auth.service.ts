@@ -110,4 +110,19 @@ export class AuthService {
       return this.userData.email;
     }
   }
+
+  public createUser(email:string, password:string, dName:string) {
+    this.auth.createUserWithEmailAndPassword(email, password).then(
+      (result) => {
+        result.user.updateProfile({
+          displayName: dName
+        })
+
+        console.log(result.user.email);
+        console.log(result.user.uid)
+        console.log(result.user.displayName);
+      });
+
+      //First and last name
+  }
 }
