@@ -19,15 +19,14 @@ export class BalanceComponent implements OnInit {
   /**This read only variable will hold the message we'll send to the user, if they enter an invalid balance. */
   public readonly INVALID_BALANCE_MESSAGE: string = "Only account balances greater than zero are accepted. Please enter an account balance greater than zero.";
   /**This property holds a reference to the Balance Service we use to perform operations on our component.*/
-  private balanceService:BalanceService;
+  public balanceService:BalanceService;
   /**This boolean property is used to decide whether or not to render the declare balance widget on the screen.*/
   public renderDeclareBalanceWidget: boolean;
-  /**This property holds the balance of the account we're representing in the view.*/
-  public accountBalance: number | null;
+
+
   constructor(private injectedBalanceService: BalanceService) {
     this.balanceService = injectedBalanceService;
-    this.accountBalance = this.balanceService.getBalance(); //set account balance to value persisted in service.
-    this.renderDeclareBalanceWidget = this.balanceService.validateAccountBalance(this.balanceService.getBalance()); // decide to render widget based on the value of accountBalance
+    this.renderDeclareBalanceWidget = !this.balanceService.validateAccountBalance(this.balanceService.getBalance()); // decide to render widget based on the invalid value of accountBalance
     this.invalidMessage = '';
   }
 
@@ -36,10 +35,10 @@ export class BalanceComponent implements OnInit {
   /**The updateAccountBalance is called when the user pushes the button to update the account balance.
    * We can use this method to push values to the global service.
    */
-  public updateAccountBalance(): void {
+  public updateAccountBalance(balanceInput:any): void {
     //here, we make sure the account balance is valid
-    if(this.balanceService.validateAccountBalance(this.accountBalance)){
-      this.balanceService.setBalance(this.accountBalance); //if valid balance, update the balance service
+    if(this.balanceService.validateAccountBalance(balanceInput)){
+      this.balanceService.setBalance(balanceInput); //if valid balance, update the balance service
       this.invalidMessage=''; //set message to empty string, in case it has been set to an invalid string before
     } else {
       this.invalidMessage = this.INVALID_BALANCE_MESSAGE;
@@ -50,8 +49,8 @@ export class BalanceComponent implements OnInit {
   /**The declare account balance method is used to declare the account balance. We can use this
    * method to push values to the global service.
    */
-  public declareAccountBalance(): void {
-    this.updateAccountBalance (); //Here, we attempt to set the balance.
-    this.renderDeclareBalanceWidget = this.balanceService.validateAccountBalance(this.accountBalance);//Finally, render the declare widget, if the users updated balance is valid.
+  public declareAccountBalance(balanceInput:any): void {
+    this.updateAccountBalance (balanceInput); //Here, we attempt to set the balance.
+    this.renderDeclareBalanceWidget = this.balanceService.validateAccountBalance(this.balanceService.getBalance());//Finally, render the declare widget, if the users updated balance is valid.
   }
 }
