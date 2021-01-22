@@ -10,7 +10,7 @@ import { BalanceProjectionModule } from './modules/balance-projection/balance-pr
 import { BalanceComponent } from './modules/balance/component/balance/balance.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialBuildModule } from './material.module';
-//import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { DeclareIncomeComponent } from './modules/declare-income/component/declare-income.component';
 import { HeaderComponent } from './modules/navigation/header/header.component';
 import { LoginComponent } from './modules/auth/components/login/login.component';
@@ -34,7 +34,7 @@ import { AuthModule } from './modules/auth/auth.module';
     AuthModule,
     FormsModule,
     MaterialBuildModule,
-//    FlexLayoutModule,
+    FlexLayoutModule,
     ReactiveFormsModule,
     DeclareExpensesModule,
     BalanceProjectionModule,

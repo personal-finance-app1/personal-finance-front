@@ -1,4 +1,5 @@
 <div>
+    <!--Label to show current income-->
     <input type="number" id="income" [(ngModel)]="userInput"/>
     <button class="" (click)="onSubmit()">Submit</button>
     <label [hidden]="!goodInput">{{userInput}}</label> <!-- Pipe the Currency Value here -->

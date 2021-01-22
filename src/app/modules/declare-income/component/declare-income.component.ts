@@ -45,7 +45,8 @@ export class DeclareIncomeComponent implements OnInit {
     } else {
       this.account.income = this.userInput*100; //Set income of localAccount
       this.ds.sendIncome(this.account).subscribe((response: Account)  => { //More Questions Here
-        this.account = response;
+        account$.next(response); //Update global account
+        //logic for display income
       });
     }
     
