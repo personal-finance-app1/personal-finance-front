@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit, OnChanges {
   mesg: any;
   color = "red";
 
-  constructor(private authSerice: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit, OnChanges {
 
   onLogin() {
 
-    this.authSerice.login(this.loginForm.value.username, this.loginForm.value.password);
+    this.authService.login(this.loginForm.value.username, this.loginForm.value.password);
 
     // this is for only testing method
     // if (this.loginForm.value.username == "username" && this.loginForm.value.password == "password") {
