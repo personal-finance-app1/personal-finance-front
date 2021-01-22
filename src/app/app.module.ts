@@ -37,8 +37,6 @@ import { AuthModule } from './modules/auth/auth.module';
     FlexLayoutModule,
     ReactiveFormsModule,
     DeclareExpensesModule,
-    BalanceProjectionModule,
-    AuthModule
   ],
   providers: [AuthModule],
   bootstrap: [AppComponent]
