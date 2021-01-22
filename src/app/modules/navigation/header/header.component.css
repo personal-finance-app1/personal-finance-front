@@ -18,11 +18,14 @@ a:active {
   padding-left: 5px;
 }
 
+.nav-text {
+  color: #FCB414;
+}
+
 #logo {
   width: auto;
   height: auto;
-  max-width: 50px;
-  max-height: 50px;
+
 }
 
 mat-select {
@@ -31,4 +34,9 @@ mat-select {
   max-width: 100px;
   max-height: 100px;
   float: right;
+}
+
+.mat-toolbar {
+  background: #474C55;
+  height: 20%;
 }

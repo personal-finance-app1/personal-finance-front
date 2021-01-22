@@ -15,6 +15,8 @@ import { DeclareIncomeComponent } from './modules/declare-income/component/decla
 import { HeaderComponent } from './modules/navigation/header/header.component';
 import { LoginComponent } from './modules/auth/components/login/login.component';
 import { AuthModule } from './modules/auth/auth.module';
+import { HomepageComponent } from './modules/homepage/component/homepage.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { AuthModule } from './modules/auth/auth.module';
     HeaderComponent,
     LoginComponent,
     BalanceComponent,
-    DeclareIncomeComponent
+    DeclareIncomeComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,7 @@ import { AuthModule } from './modules/auth/auth.module';
     ReactiveFormsModule,
     DeclareExpensesModule,
     BalanceProjectionModule,
-    AuthModule
+    AuthModule,
   ],
   providers: [AuthModule],
   bootstrap: [AppComponent]
