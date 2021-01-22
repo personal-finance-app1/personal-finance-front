@@ -48,9 +48,7 @@ export class LoginComponent implements OnInit, OnChanges {
     // }
 
     this.authService.createUser(this.loginForm.value.username, 
-      this.loginForm.value.password, "Linus Torvalds");
-
-
+      this.loginForm.value.password, "Demo User");
   }
 
 } 
