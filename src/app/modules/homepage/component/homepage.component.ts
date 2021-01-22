@@ -21,10 +21,10 @@ export class HomepageComponent implements OnInit {
   }
 
   tiles: Tile[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
+    {text: 'Income', cols: 5, rows: 3, color: '#FFFFFF'},
+    {text: 'Balance Projection', cols: 7, rows: 4, color: '#FFFFFF'},
+    {text: 'Expenses', cols: 5, rows: 3, color: '#FFFFFF'},
+    {text: 'Update Balance', cols: 7, rows: 2, color: '#FFFFFF'},
   ];
 
 }
