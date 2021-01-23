@@ -29,10 +29,8 @@ export class BalanceComponent implements OnInit {
 
 
   constructor(private injectedBalanceService: BalanceService, private dialog: MatDialog) {
-    const dialogRef = this.dialog.open(DeclareBalanceComponent, {
+    dialog.open(DeclareBalanceComponent, {
       panelClass: 'custom-dialog-container',
-      
-  
     });
     this.balanceService = injectedBalanceService;
     this.renderDeclareBalanceWidget = !this.balanceService.validateAccountBalance(this.balanceService.getBalance()); // decide to render widget based on the invalid value of accountBalance
@@ -46,7 +44,6 @@ export class BalanceComponent implements OnInit {
    * We can use this method to push values to the global service.
    */
   public updateAccountBalance(balanceInput:any): void {
-    console.log("balance get" + balanceInput);
     //here, we make sure the account balance is valid
     if(this.balanceService.validateAccountBalance(balanceInput)){
       this.accountBalance = balanceInput;
@@ -56,13 +53,5 @@ export class BalanceComponent implements OnInit {
       this.invalidMessage = this.INVALID_BALANCE_MESSAGE;
     }
 
-  }
-
-  /**The declare account balance method is used to declare the account balance. We can use this
-   * method to push values to the global service.
-   */
-  public declareAccountBalance(balanceInput:any): void {
-    this.updateAccountBalance (balanceInput); //Here, we attempt to set the balance.
-    this.renderDeclareBalanceWidget = this.balanceService.validateAccountBalance(this.balanceService.getBalance());//Finally, render the declare widget, if the users updated balance is valid.
   }
 }
