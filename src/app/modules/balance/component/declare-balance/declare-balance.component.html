@@ -8,8 +8,11 @@
                 <input matInput
                 ngModel
                 #declareBalance="ngModel" 
-                required type="number">
+                required 
+                type="number">
             </mat-form-field>
+            <mat-error *ngIf="declareBalance.hasError('required')">Field must not be empty.</mat-error>             
+            <mat-error *ngIf="declareBalance.value <=0">{{ invalidMessage }}</mat-error>
         </span>
     </div>
     <div mat-dialog-actions>

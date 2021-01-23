@@ -2,11 +2,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BalanceComponent } from './balance.component';
 import { BalanceService } from '../../service/balance.service';
+import { MatDialog } from '@angular/material/dialog';
 
 describe('BalanceComponent', () => {
   let component: BalanceComponent;
   let service: BalanceService;
   let fixture: ComponentFixture<BalanceComponent>;
+  let dialogMock: MatDialog;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -17,10 +19,9 @@ describe('BalanceComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BalanceComponent);
-    component = fixture.componentInstance;
     service = TestBed.inject(BalanceService);
-    fixture.detectChanges();
+    dialogMock = jasmine.createSpyObj('MatDialog', ['open']);
+    component = new BalanceComponent(service,dialogMock);
   });
 
   describe("Component init", () => {

@@ -68,12 +68,4 @@ export class BalanceComponent implements OnInit {
     }
 
   }
-
-  /**The declare account balance method is used to declare the account balance. We can use this
-   * method to push values to the global service.
-   */
-  public declareAccountBalance(balanceInput:any): void {
-    this.updateAccountBalance (balanceInput); //Here, we attempt to set the balance.
-    this.renderDeclareBalanceWidget = this.balanceService.validateAccountBalance(this.balanceService.getBalance());//Finally, render the declare widget, if the users updated balance is valid.
-  }
 }
