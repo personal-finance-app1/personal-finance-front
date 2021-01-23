@@ -19,23 +19,25 @@ import { DeclareBalanceComponent } from '../declare-balance/declare-balance.comp
 })
 export class BalanceComponent implements OnInit {
   public invalidMessage: string;
-  public accountBalance: number;
+  public accountBalance: number|null;
   /**This read only variable will hold the message we'll send to the user, if they enter an invalid balance. */
-  public readonly INVALID_BALANCE_MESSAGE: string = "Only account balances greater than zero are accepted. Please enter an account balance greater than zero.";
+  public readonly INVALID_BALANCE_MESSAGE: string = "Please enter a valid currency value.";
   /**This property holds a reference to the Balance Service we use to perform operations on our component.*/
   public balanceService:BalanceService;
-  /**This boolean property is used to decide whether or not to render the declare balance widget on the screen.*/
-  public renderDeclareBalanceWidget: boolean;
-
 
   constructor(private injectedBalanceService: BalanceService, private dialog: MatDialog) {
     dialog.open(DeclareBalanceComponent, {
       panelClass: 'custom-dialog-container',
+      disableClose: true  //This ensures dialog closes only if the user clicks the corresponding close button.
     });
     this.balanceService = injectedBalanceService;
-    this.renderDeclareBalanceWidget = !this.balanceService.validateAccountBalance(this.balanceService.getBalance()); // decide to render widget based on the invalid value of accountBalance
     this.invalidMessage = '';
-    this.accountBalance = this.injectedBalanceService.getBalance();
+    this.accountBalance = null; //set account balance to null to indicate it has not been set yet,
+        
+    //whenever an external component changes the balance state, then accept the pushed balance value.
+    this.balanceService.notificationObservableSubject.subscribe((pushedBalanceValue)=> {
+      this.accountBalance = pushedBalanceValue;
+    })
   }
 
   ngOnInit(): void {}
@@ -45,8 +47,8 @@ export class BalanceComponent implements OnInit {
    */
   public updateAccountBalance(balanceInput:any): void {
     //here, we make sure the account balance is valid
+    // we do not do any manual setting as we are subscribed to the service observable in the cstr.
     if(this.balanceService.validateAccountBalance(balanceInput)){
-      this.accountBalance = balanceInput;
       this.balanceService.setBalance(balanceInput); //if valid balance, update the balance service
       this.invalidMessage=''; //set message to empty string, in case it has been set to an invalid string before
     } else {

@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Account } from 'src/app/models/account';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BalanceService {
+
+  public readonly notificationObservableSubject: Subject<number>;
   constructor() {
     this.account = new Account(0, 0, 0);
+    this.notificationObservableSubject = new Subject<number>();
   }
 
   //eventually going to take out for global service field
@@ -28,6 +32,7 @@ export class BalanceService {
     let isValidBalance:boolean = this.validateAccountBalance(balance);
     if (isValidBalance) {
       this.account.balance = balance;
+      this.notificationObservableSubject.next(balance); //notify listeners (separate components who use this value) that value has changed so they can update
     }
     return isValidBalance;
   }

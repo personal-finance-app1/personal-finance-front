@@ -7,7 +7,7 @@
 }
 
 mat-form-field {
-  width: 200px;
+  width: 350px;
 }
 
 .mat_input {
@@ -23,5 +23,7 @@ mat-form-field {
 }
 
 .current-balance-span {
+  color:#403932;
+  font-size: 0.75em;
   margin: 30px;
 }

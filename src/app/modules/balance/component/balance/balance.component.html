@@ -20,10 +20,7 @@
               required
               #balanceInput="ngModel"
             />
-           
-            <mat-error *ngIf="balanceInput.hasError('required')">Field must not be empty.</mat-error>             
-            <mat-error *ngIf="invalidMessage">{{ invalidMessage }}</mat-error>
-             
+            <mat-error *ngIf="balanceInput.hasError('required')">{{this.INVALID_BALANCE_MESSAGE}}</mat-error>     
           </mat-form-field>
           <button
             mat-raised-button
@@ -33,8 +30,11 @@
           >
             Update
           </button>
-          <span class="current-balance-span" *ngIf="accountBalance"
-            >Current Balance: $ {{ accountBalance }}
+          <span class="current-balance-span"
+            >  {{  this.balanceService.validateAccountBalance(this.accountBalance) ? 
+                        'Current Balance: $' + accountBalance               :
+                         'Undeclared' 
+               }}
           </span>
         </span>
       </mat-label>
