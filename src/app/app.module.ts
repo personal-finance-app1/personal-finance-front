@@ -15,14 +15,15 @@ import { DeclareIncomeComponent } from './modules/declare-income/component/decla
 import { HeaderComponent } from './modules/navigation/header/header.component';
 import { LoginComponent } from './modules/auth/components/login/login.component';
 import { AuthModule } from './modules/auth/auth.module';
+import { BalanceModule } from './modules/balance/balance.module';
+import { DeclareBalanceComponent } from './modules/balance/component/declare-balance/declare-balance.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    BalanceComponent,
-    DeclareIncomeComponent
+    DeclareIncomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +39,8 @@ import { AuthModule } from './modules/auth/auth.module';
     ReactiveFormsModule,
     DeclareExpensesModule,
     BalanceProjectionModule,
-    AuthModule
+    AuthModule,
+    BalanceModule
   ],
   providers: [],
   bootstrap: [AppComponent]

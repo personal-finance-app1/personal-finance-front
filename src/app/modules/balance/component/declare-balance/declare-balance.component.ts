@@ -9,7 +9,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DeclareBalanceComponent implements OnInit {
   declareBalance : number;
  
-  constructor(@Inject(MAT_DIALOG_DATA) public passData: any) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
   }

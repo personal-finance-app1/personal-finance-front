@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { BalanceService } from '../../service/balance.service';
+import { DeclareBalanceComponent } from '../declare-balance/declare-balance.component';
+
 
 /**
  * The balance component is responsible for tracking user balance.
@@ -25,7 +28,12 @@ export class BalanceComponent implements OnInit {
   public renderDeclareBalanceWidget: boolean;
 
 
-  constructor(private injectedBalanceService: BalanceService) {
+  constructor(private injectedBalanceService: BalanceService, private dialog: MatDialog) {
+    const dialogRef = this.dialog.open(DeclareBalanceComponent, {
+      panelClass: 'custom-dialog-container',
+      
+  
+    });
     this.balanceService = injectedBalanceService;
     this.renderDeclareBalanceWidget = !this.balanceService.validateAccountBalance(this.balanceService.getBalance()); // decide to render widget based on the invalid value of accountBalance
     this.invalidMessage = '';

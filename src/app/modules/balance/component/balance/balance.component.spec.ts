@@ -37,21 +37,6 @@ describe('BalanceComponent', () => {
   })
 
 
-  describe("declareAccountBalance()", () => {
-    it('should not have an account balance of null and a renderDeclareBalanceWidget of true, as the balance has been declared', () => {
-      component.declareAccountBalance();
-      //ensure test method modified state accordingly
-      expect(component.renderDeclareBalanceWidget == false).toBeTrue()
-    })
-  })
-
-  describe("updateAccountBalance()", () => {
-    it('should not have a null balance value after calling update balance.', () => {
-      component.accountBalance = 10; //Imitate user giving input.
-      component.updateAccountBalance();
-      expect(component.accountBalance).toBeGreaterThan(0);
-    })
-  })
 
 
 
