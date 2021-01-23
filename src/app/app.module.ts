@@ -23,7 +23,6 @@ import { DeclareBalanceComponent } from './modules/balance/component/declare-bal
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    BalanceComponent,
     DeclareIncomeComponent
   ],
   imports: [
