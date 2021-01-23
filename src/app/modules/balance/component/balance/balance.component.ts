@@ -29,15 +29,27 @@ export class BalanceComponent implements OnInit {
 
 
   constructor(private injectedBalanceService: BalanceService, private dialog: MatDialog) {
+    this.balanceService = injectedBalanceService;
+    /** The dialog for declare balance will be open when the balance component load and won't be close untill
+      until it get a number (can be positive or negative), then if it's validated, it will update for account balance
+    **/
     const dialogRef = this.dialog.open(DeclareBalanceComponent, {
       panelClass: 'custom-dialog-container',
-      
-  
+      disableClose: true
     });
-    this.balanceService = injectedBalanceService;
-    this.renderDeclareBalanceWidget = !this.balanceService.validateAccountBalance(this.balanceService.getBalance()); // decide to render widget based on the invalid value of accountBalance
-    this.invalidMessage = '';
-    this.accountBalance = this.injectedBalanceService.getBalance();
+    dialogRef.afterClosed().subscribe(result => {
+      if(this.balanceService.validateAccountBalance(result)){
+        this.accountBalance = result;
+        this.balanceService.setBalance(result); //if valid balance, update the balance service
+        this.invalidMessage=''; //set message to empty string, in case it has been set to an invalid string before
+      } else {
+        this.invalidMessage = this.INVALID_BALANCE_MESSAGE;
+      }
+    });
+    
+    // this.renderDeclareBalanceWidget = !this.balanceService.validateAccountBalance(this.balanceService.getBalance()); // decide to render widget based on the invalid value of accountBalance
+    // this.invalidMessage = '';
+    // this.accountBalance = this.injectedBalanceService.getBalance();
   }
 
   ngOnInit(): void {}
@@ -46,7 +58,6 @@ export class BalanceComponent implements OnInit {
    * We can use this method to push values to the global service.
    */
   public updateAccountBalance(balanceInput:any): void {
-    console.log("balance get" + balanceInput);
     //here, we make sure the account balance is valid
     if(this.balanceService.validateAccountBalance(balanceInput)){
       this.accountBalance = balanceInput;

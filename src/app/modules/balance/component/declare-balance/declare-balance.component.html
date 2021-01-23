@@ -5,11 +5,19 @@
         <span fxLayoutGap="10px">
             <mat-form-field class="mat-input">
                 <mat-label>Enter a balance</mat-label>
-                <input matInput [(ngModel)]="declareBalance">
+                <input matInput
+                ngModel
+                #declareBalance="ngModel" 
+                required type="number">
             </mat-form-field>
         </span>
     </div>
     <div mat-dialog-actions>
-        <button mat-raised-button [mat-dialog-close]="true">Ok</button>
+        <button mat-button
+        color="warn"
+        mat-raised-button
+        [disabled]="declareBalance.hasError('required')" 
+        [mat-dialog-close]="declareBalance.value" 
+        cdkFocusInitial>Ok</button>
     </div>
 </div>
