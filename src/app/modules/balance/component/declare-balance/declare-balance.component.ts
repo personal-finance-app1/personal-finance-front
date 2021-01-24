@@ -8,9 +8,8 @@ import {BalanceService} from "../../service/balance.service"
   styleUrls: ['./declare-balance.component.css']
 })
 export class DeclareBalanceComponent implements OnInit {
-  invalidMessage = "The account balance has to greater than 0";
+  public readonly INVALID_BALANCE_MESSAGE: string = "Please enter an account balance greater than zero!";
   constructor(private injectedBalanceService: BalanceService, @Inject(MAT_DIALOG_DATA) public declareBalance: any) {
-      
    }
 
   ngOnInit(): void {

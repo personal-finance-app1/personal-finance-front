@@ -9,17 +9,19 @@
                 ngModel
                 #declareBalance="ngModel" 
                 required 
-                type="number">
+                type="number"
+                >
+                <mat-error *ngIf="declareBalance.hasError('required')">Field must not be empty.</mat-error>             
+                
             </mat-form-field>
-            <mat-error *ngIf="declareBalance.hasError('required')">Field must not be empty.</mat-error>             
-            <mat-error *ngIf="declareBalance.value <=0">{{ invalidMessage }}</mat-error>
+            <mat-error *ngIf="(!declareBalance.hasError('required') && declareBalance.value<=0)">{{ INVALID_BALANCE_MESSAGE }}</mat-error>
         </span>
     </div>
     <div mat-dialog-actions>
         <button mat-button
         color="warn"
         mat-raised-button
-        [disabled]="declareBalance.hasError('required')" 
+        [disabled]="declareBalance.hasError('required') || declareBalance.value<=0" 
         [mat-dialog-close]="declareBalance.value" 
         cdkFocusInitial>Ok</button>
     </div>

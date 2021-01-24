@@ -19,12 +19,10 @@
               name="balance"
               required
               #balanceInput="ngModel"
-            />
-           
-            <mat-error *ngIf="balanceInput.hasError('required')">Field must not be empty.</mat-error>             
-            <mat-error *ngIf="invalidMessage">{{ invalidMessage }}</mat-error>
-             
+            />   
+            <mat-error *ngIf="balanceInput.hasError('required')">Field must not be empty.</mat-error>                   
           </mat-form-field>
+          
           <button
             mat-raised-button
             color="warn"
@@ -39,5 +37,6 @@
         </span>
       </mat-label>
     </div>
+    <mat-error *ngIf="!balanceInput.hasError('required') && balanceInput.value<=0">{{ INVALID_BALANCE_MESSAGE }}</mat-error>
   </form>
 </section>
