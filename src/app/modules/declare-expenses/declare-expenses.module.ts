@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MaterialBuildModule } from 'src/app/material.module';
 
 
 
@@ -16,8 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
     BrowserModule,
     CommonModule,
     HttpClientModule,
-    MatFormFieldModule,
-    MatIconModule
+    MaterialBuildModule
   ],
   exports: [
     DeclareExpensesComponent,
