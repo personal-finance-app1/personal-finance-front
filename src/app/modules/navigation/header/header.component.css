@@ -1,12 +1,17 @@
+.mat-toolbar {
+  background: #474C55;
+}
 
 #title {
   font-family: Futura-Std-Bold;
   font-size: 40px;
+  color: #B9B9BA;
 }
 
 #logout {
   font-family: Futura-Std-Book;
   font-size: 20px;
+  color: #B9B9BA;
 }
 
 #logo {
