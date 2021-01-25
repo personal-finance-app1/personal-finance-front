@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit, OnChanges {
   mesg: any;
   loginStatus = new Subject<boolean>();
   color = "red";
+  isLogin: boolean = false;
 
   constructor(private authSerice: AuthService, private router: Router) { }
 
@@ -41,13 +42,16 @@ export class LoginComponent implements OnInit, OnChanges {
 
   onLogin(): void {
 
-    if (this.authSerice.login(this.loginForm.value.username, this.loginForm.value.password)) {
-      console.log("this is logined In");
+    this.isLogin = this.authSerice.login(this.loginForm.value.username, this.loginForm.value.password);
+
+    console.log(this.isLogin);
+
+    if (this.isLogin) {
       this.navigate();
     }
     else {
       this.refreshLoginPage();
-      this.navigate();
+      //this.navigate();
     }
 
     /**
@@ -73,7 +77,7 @@ export class LoginComponent implements OnInit, OnChanges {
     this.loginForm.setValue = null;
     // this.loginStatus.next(false);
     //this.headerComponent.isAuth = false;
-    window.location.reload();
+    // window.location.reload();
 
   }
 
