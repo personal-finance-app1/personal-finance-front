@@ -47,8 +47,10 @@ export class LoginComponent implements OnInit, OnChanges {
     //   window.location.reload();
     // }
 
-    this.authService.createUser(this.loginForm.value.username, 
-      this.loginForm.value.password, "Demo User");
+    // this.authService.createUser(this.loginForm.value.username, 
+    //   this.loginForm.value.password, "Linus Torvalds");
+
+    this.authService.showUserData(this.loginForm.value.username, this.loginForm.value.password);
   }
 
 } 

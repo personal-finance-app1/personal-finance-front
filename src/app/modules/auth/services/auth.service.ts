@@ -125,4 +125,24 @@ export class AuthService {
 
       //First and last name
   }
+
+  public showUserData(email:string, password:string) {
+    let user1:any;
+
+    this.auth.signInWithEmailAndPassword(email, password).then(
+      (result) => {
+        
+        // result.user.updateProfile({
+        //   displayName: "Linus Torvalds"
+        // })
+
+        user1 = result.user;
+        alert(
+          user1.email + '\n' + user1.uid + '\n' + user1.displayName
+        );
+        this.auth.signOut();
+      });
+
+    
+  }
 }
