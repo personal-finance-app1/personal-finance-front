@@ -23,3 +23,20 @@ body {
   font-family: Futura-Std-Medium;
   src: url(assets/fonts/Futura-Std-Medium.otf) format('truetype');
 }
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* This is custom style for material-dialog to override its default style. It need on global style.css to make it override*/
+.custom-dialog-container .mat-dialog-container {
+  padding: 0px;
+  width: 400px;
+  height: 250px;
+}

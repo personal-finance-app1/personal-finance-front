@@ -16,14 +16,13 @@ import { HeaderComponent } from './modules/navigation/header/header.component';
 import { LoginComponent } from './modules/auth/components/login/login.component';
 import { AuthModule } from './modules/auth/auth.module';
 import { HomepageComponent } from './modules/homepage/component/homepage.component';
-
+import { BalanceModule } from './modules/balance/balance.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    BalanceComponent,
     DeclareIncomeComponent,
     HomepageComponent
   ],
@@ -40,6 +39,9 @@ import { HomepageComponent } from './modules/homepage/component/homepage.compone
     FlexLayoutModule,
     ReactiveFormsModule,
     DeclareExpensesModule,
+    BalanceProjectionModule,
+    AuthModule,
+    BalanceModule
   ],
   providers: [AuthModule],
   bootstrap: [AppComponent]
