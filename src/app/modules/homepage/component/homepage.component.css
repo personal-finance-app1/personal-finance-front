@@ -8,13 +8,26 @@
 /* .body {
     margin: 25px;
 } */
+
+.mat-grid-list {
+  position: relative;
+  top: 5%;
+  width: 80%;
+  height: 100%;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+
+.mat-grid-tile {
+  border: 2px solid black;
+}
+
 ::ng-deep .mat-tab-list .mat-tab-labels {
   font-family: Futura-Std-Book;
 }
 
 ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
-  font-family: Futura-Std-Medium;
-  background: green;
+  font-family: Futura-Std-Book;
 }
 
 ::ng-deep.mat-tab-group { height: 90%; } 

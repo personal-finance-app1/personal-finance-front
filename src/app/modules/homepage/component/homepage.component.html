@@ -2,7 +2,20 @@
 
   <mat-tab label="Update Account">
     <ng-template matTabContent>
-      <p>this is where update widgets go</p>
+      
+      <mat-grid-list cols="3" rowHeight="50vh" gutterSize="25px">
+        
+        <mat-grid-tile>
+          <app-declare-income></app-declare-income>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <app-declare-expenses></app-declare-expenses>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <app-balance></app-balance>
+        </mat-grid-tile>
+      </mat-grid-list>
+
     </ng-template>
   </mat-tab>
 
