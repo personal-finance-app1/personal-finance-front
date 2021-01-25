@@ -1,0 +1,43 @@
+<section class="balance_section">
+  <form
+    #f="ngForm"
+    fxLayout="column"
+    (ngSubmit)="updateAccountBalance(balanceInput.value)"
+    fxLayoutAlign="start stretch"
+  >
+    <div class="balance_title">Update Balance</div>
+    <div fxLayout="row" class="mat_input">
+      <mat-label>
+        <mat-icon class="material-icons-outlined">attach_money</mat-icon>
+        <span fxLayoutGap="10px">
+          <mat-form-field>
+            <input
+              type="number"
+              matInput
+              appearance="fill"
+              ngModel
+              name="balance"
+              required
+              #balanceInput="ngModel"
+            />
+            <mat-error *ngIf="balanceInput.hasError('required')">{{this.INVALID_BALANCE_MESSAGE}}</mat-error>     
+          </mat-form-field>
+          <button
+            mat-raised-button
+            color="warn"
+            type="submit"
+            [disabled]="f.invalid"
+          >
+            Update
+          </button>
+          <span class="current-balance-span"
+            >  {{  this.balanceService.validateAccountBalance(this.accountBalance) ? 
+                        'Current Balance: $' + accountBalance               :
+                         'Undeclared' 
+               }}
+          </span>
+        </span>
+      </mat-label>
+    </div>
+  </form>
+</section>

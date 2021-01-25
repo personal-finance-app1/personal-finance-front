@@ -7,14 +7,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BalanceProjectionModule } from './modules/balance-projection/balance-projection.module';
+import { BalanceComponent } from './modules/balance/component/balance/balance.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialBuildModule } from './material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { DeclareIncomeComponent } from './modules/declare-income/component/declare-income.component';
 import { HeaderComponent } from './modules/navigation/header/header.component';
 import { LoginComponent } from './modules/auth/components/login/login.component';
 import { AuthModule } from './modules/auth/auth.module';
+import { BalanceModule } from './modules/balance/balance.module';
+import { DeclareBalanceComponent } from './modules/balance/component/declare-balance/declare-balance.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
+    LoginComponent,
+    DeclareIncomeComponent
   ],
   imports: [
     BrowserModule,
@@ -22,12 +31,16 @@ import { AuthModule } from './modules/auth/auth.module';
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    DeclareExpensesModule,
-    DeclareIncomeComponent,
-    HeaderComponent,
-    LoginComponent,
     BalanceProjectionModule,
-    AuthModule
+    AuthModule,
+    FormsModule,
+    MaterialBuildModule,
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    DeclareExpensesModule,
+    BalanceProjectionModule,
+    AuthModule,
+    BalanceModule
   ],
   providers: [],
   bootstrap: [AppComponent]
