@@ -18,7 +18,7 @@ export class DeclareIncomeComponent implements OnInit {
     // account$.subscribe((response) => {
     //   this.account = response;
     // });
-    this.account = new Account(0,"",0,0,0);
+    this.account = new Account(1, 1,"JohnProjection",51,52,53); //accountId, userId, name, income, expenses, balance
   }
 
   ngOnInit(): void {
@@ -45,18 +45,14 @@ export class DeclareIncomeComponent implements OnInit {
       //Reset input value
 
     } else {
-      console.log("Income= " + income);
       this.error = "";
-      //Set local account variable
       this.account.income = income*100;
       this.currentIncome = income;
 
       //Reset input value
       
-
       this.ds.sendIncome(this.account).subscribe((response: Account)  => {
-        account$.next(response); //Update global account
-
+        account$.next(response);
       });
     }
   }

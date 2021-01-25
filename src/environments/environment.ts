@@ -18,7 +18,8 @@ export const environment = {
     measurementId: String
   },
 
-  apiUrl: 'http://ec2-3-229-123-153.compute-1.amazonaws.com:8082/personal-finance'
+  //apiUrl: 'http://ec2-3-229-123-153.compute-1.amazonaws.com:8082/personal-finance'
+  apiUrl: 'http://localhost:8082/personal-finance'
 };
 
 export let account$: Subject<Account> = new Subject<Account>();
