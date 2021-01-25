@@ -1,10 +1,10 @@
 <h2>Income Widget</h2>
 
-<div>
-    <!--Label to show current income-->
-    <input type="number" [(ngModel)]="userInput"/>
+<div style="padding-left: 300px;">
+    <input type="number" id="income" [(ngModel)]="userInput"/>
     <button class="" (click)="onSubmit()">Submit</button>
     <label>Current Value: ${{currentIncome}}</label> <!-- Pipe the Currency Value here -->
     <br/>
     <label style="color: red;" [hidden]="!error">{{error}}</label><!-- When an error occurs, display here -->
+    <br/><br/><br/><br/><br/><br/>
 </div>
