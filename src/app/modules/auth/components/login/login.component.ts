@@ -35,7 +35,11 @@ export class LoginComponent implements OnInit, OnChanges {
 
   onLogin() {
 
+<<<<<<< HEAD
     //this.authService.login(this.loginForm.value.username, this.loginForm.value.password);
+=======
+    this.authService.login(this.loginForm.value.username, this.loginForm.value.password);
+>>>>>>> auth
 
     // this is for only testing method
     // if (this.loginForm.value.username == "username" && this.loginForm.value.password == "password") {
