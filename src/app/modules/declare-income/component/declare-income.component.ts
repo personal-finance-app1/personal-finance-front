@@ -10,16 +10,15 @@ import { DeclareIncomeService } from '../service/declare-income.service';
 })
 export class DeclareIncomeComponent implements OnInit {
 
-  userInput: number;
   error: String;
   account: Account;
   currentIncome: number;
   
   constructor(private ds: DeclareIncomeService) {
-    account$.subscribe((response) => {
-      this.account = response;
-    });
-
+    // account$.subscribe((response) => {
+    //   this.account = response;
+    // });
+    this.account = new Account(0,0,0, 0);
   }
 
   ngOnInit(): void {
@@ -29,27 +28,28 @@ export class DeclareIncomeComponent implements OnInit {
    * Validates user input, checking if it is positive and has a proper decimal, 
    * and calls the DeclareIncomeService sendIncome method
    * 
-   * @param none
-   * @returns none
+   * @ param none
+   * @ returns none
    */
-  public onSubmit(){
-
-    if(this.userInput < 0){
+  public onSubmit(income:any){
+    let v = income;
+    console.log("value= " + v);
+    if(income < 0){
       this.error = "Error: Input must be positive.";
       
       //Reset input value
 
-    } else if(Math.floor(this.userInput * 100) != (this.userInput * 100)){
+    } else if(Math.floor(income * 100) != (income * 100)){
       this.error = "Error: Input cannot exceed two decimal places.";
 
       //Reset input value
 
     } else {
+      console.log("Income= " + income);
       this.error = "";
-
       //Set local account variable
-      this.account.income = this.userInput*100;
-      this.currentIncome = this.userInput;
+      this.account.income = income*100;
+      this.currentIncome = income;
 
       //Reset input value
       

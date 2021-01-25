@@ -1,10 +1,44 @@
-<h2>Income Widget</h2>
-
-<div style="padding-left: 300px;">
-    <input type="number" id="income" [(ngModel)]="userInput"/>
-    <button class="" (click)="onSubmit()">Submit</button>
-    <label>Current Value: ${{currentIncome}}</label> <!-- Pipe the Currency Value here -->
-    <br/>
-    <label style="color: red;" [hidden]="!error">{{error}}</label><!-- When an error occurs, display here -->
-    <br/><br/><br/><br/><br/><br/>
-</div>
+<section class="income_section">
+    <form
+      #f="ngForm"
+      fxLayout="column"
+      (ngSubmit)="onSubmit(incomeInput.value)"
+      fxLayoutAlign="start stretch"
+    >
+      <div class="income_title">Income</div>
+      <div fxLayout="row" class="mat_input">
+        <mat-label>
+          <mat-icon class="material-icons-outlined">attach_money</mat-icon>
+          <span fxLayoutGap="10px">
+            <mat-form-field>
+              <input
+                type="number"
+                matInput
+                appearance="fill"
+                ngModel
+                name="income"
+                required
+                #incomeInput="ngModel"
+              />   
+              <mat-error *ngIf="incomeInput.hasError('required')">Field must not be empty.</mat-error>
+              <mat-error *ngIf="incomeInput.hasError('required')">{{ error }}</mat-error>                   
+            </mat-form-field>
+            
+            <button
+              mat-raised-button
+              color="warn"
+              type="submit"
+              [disabled]="f.invalid"
+            >
+              Update
+            </button>
+            <span class="current-income-span" *ngIf="currentIncome"
+              >Current Income: $ {{currentIncome }}
+            </span>
+          </span>
+        </mat-label>
+      </div>
+      <mat-error *ngIf="error">{{ error }}</mat-error>
+    </form>
+  </section>
+  
