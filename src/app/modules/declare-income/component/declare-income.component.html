@@ -1,6 +1,53 @@
-<div>
+<section class="income_section">
+    <form
+    #f="ngForm"
+    fxLayout="column"
+    (ngSubmit)="onSubmit()"
+    fxLayoutAlign="start stretch"
+  >
+  <div fxLayout="row" class="mat_input">
+    <mat-label>
+        <mat-icon class="material-icons-outlined">attach_money</mat-icon>
+        <span fxLayoutGap="10px">
+            <mat-form-field>
+                <input
+              type="number"
+              matInput
+              appearance="fill"
+              ngModel
+              name="balance"
+              required
+              #balanceInput="ngModel"
+            />
+            <!-- Error display commented out until we implement component
+                 <mat-error *ngIf="balanceInput.hasError('required')"
+              >Field must not be empty.</mat-error>
+            -->
+            <!--
+              Commenting out until we work out implementation.             
+              <mat-error *ngIf="invalid_balance">{{ invalidMessage }}</mat-error>
+              -->
+            </mat-form-field>
+            <button
+            mat-raised-button
+            color="warn"
+            type="submit"
+            [disabled]="f.invalid"
+          >
+            Update
+          </button>
+          <span class="current-income-span">
+              <br>
+              Current Income: $ {{currentIncome}}
+          </span>
+        </span>
+    </mat-label>
+  </div>
+  </form>
+</section>
+<!-- <div>
     <input type="number" id="income" [(ngModel)]="userInput"/>
     <button class="" (click)="onSubmit()">Submit</button>
-    <label [hidden]="!goodInput">{{userInput}}</label> <!-- Pipe the Currency Value here -->
-    <label [hidden]="goodInput">{{error}}</label><!-- When an error occurs, display here -->
-</div>
+    <label [hidden]="!goodInput">{{userInput}}</label> Pipe the Currency Value here 
+    <label [hidden]="goodInput">{{error}}</label> When an error occurs, display here 
+</div> -->

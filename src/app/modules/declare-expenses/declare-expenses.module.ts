@@ -4,6 +4,8 @@ import { DeclareExpensesComponent } from './component/declare-expenses/declare-e
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -14,6 +16,8 @@ import { BrowserModule } from '@angular/platform-browser';
     BrowserModule,
     CommonModule,
     HttpClientModule,
+    MatFormFieldModule,
+    MatIconModule
   ],
   exports: [
     DeclareExpensesComponent,
