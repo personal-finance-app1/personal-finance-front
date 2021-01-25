@@ -1,0 +1,13 @@
+.balance_title {
+  font-size: 200%;
+  padding: 20px;
+  margin: 0px;
+  background-color: #f26925;
+  color: white;
+  width: 90%;
+}
+
+.mat-input {
+  font-size: 150%;
+  width: 300px;
+}

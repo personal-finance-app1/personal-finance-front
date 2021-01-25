@@ -108,6 +108,17 @@ export class AuthService {
       return this.userData.email;
     }
   }
-  
+
+
+  /**   
+   * Method to determine if there is a user logged in    
+   * @param none    
+   * @returns Boolean - result of evaluating userData == null    
+   */
+  public isLoggedIn() : boolean {  
+    return this.userData != null; 
+  }
+
+
 
 }

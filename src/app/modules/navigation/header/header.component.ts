@@ -13,18 +13,16 @@ export class HeaderComponent {
 
 
   isAuth: boolean = false;
-  //private authService: AuthService, private router: Router
+
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void { }
 
 
-  // ngOnChanges(): void {
-  //   if (true) {
-
-  //   }
-  // }
+  ngOnChanges(): void {
+    this.isAuth = this.authService.isLoggedIn();
+  }
 
 
 

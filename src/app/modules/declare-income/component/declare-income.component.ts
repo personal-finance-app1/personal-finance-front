@@ -13,8 +13,7 @@ export class DeclareIncomeComponent implements OnInit {
   userInput: number;
   error: String;
   account: Account;
-  goodInput: boolean = false;
-
+  goodInput:boolean;
   constructor(private ds: DeclareIncomeService) {
 
     account$.subscribe((response) => {
