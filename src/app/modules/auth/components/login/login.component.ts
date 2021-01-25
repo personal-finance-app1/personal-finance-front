@@ -39,17 +39,16 @@ export class LoginComponent implements OnInit, OnChanges {
 
 
 
-  onLogin() {
+  onLogin(): void {
 
     if (this.authSerice.login(this.loginForm.value.username, this.loginForm.value.password)) {
-      //this.loginStatus.next(true);
-      //this.headerComponent.isAuth = true;
+      console.log("this is logined In");
       this.navigate();
-
     }
-    else
-      //this.headerComponent.isAuth = true;
+    else {
       this.refreshLoginPage();
+      this.navigate();
+    }
 
     /**
      *   this code  is for only testing method
@@ -62,7 +61,6 @@ export class LoginComponent implements OnInit, OnChanges {
     //   alert(" Sorry log in failed ... UnderConstruction ....!!!!")
     //   window.location.reload();
     // }
-
 
   }
 
