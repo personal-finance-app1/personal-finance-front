@@ -20,7 +20,6 @@ export class DeclareIncomeComponent implements OnInit {
     account$.subscribe((response) => {
       this.account = response;
     });
-
   }
 
   ngOnInit(): void {
