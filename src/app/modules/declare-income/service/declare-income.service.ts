@@ -11,8 +11,11 @@ export class DeclareIncomeService {
 
   constructor(private http:HttpClient) { }
 
+  /**
+   * Method to send an http request for 
+   * @param account 
+   */
   public sendIncome(account:Account): Observable<Account>{
-
-    return this.http.put(`${environment.apiUrl}/income`, account) as Observable<Account>;
+    return this.http.put(`${environment.apiUrl}/account`, account) as Observable<Account>;
   }
 }

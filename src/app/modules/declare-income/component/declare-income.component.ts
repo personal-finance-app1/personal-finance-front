@@ -18,7 +18,7 @@ export class DeclareIncomeComponent implements OnInit {
     // account$.subscribe((response) => {
     //   this.account = response;
     // });
-    this.account = new Account(0,0,0, 0);
+    this.account = new Account(0,"",0,0,0);
   }
 
   ngOnInit(): void {

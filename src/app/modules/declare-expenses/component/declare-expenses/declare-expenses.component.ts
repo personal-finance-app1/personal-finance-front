@@ -11,7 +11,7 @@ import { DeclareExpensesService } from '../../service/declare-expenses.service';
 export class DeclareExpensesComponent implements OnInit {
 
   error: string;
-  account: Account = new Account(0, 0, 0, 0);
+  account: Account = new Account(0, "", 0, 0, 0);
 
   constructor(private declareExpensesService: DeclareExpensesService) {
     account$.subscribe((value) => {
