@@ -4,14 +4,18 @@ import { DeclareExpensesComponent } from './modules/declare-expenses/component/d
 import { LoginComponent } from './modules/auth/components/login/login.component';
 import { HomepageComponent } from './modules/homepage/component/homepage.component';
 import { DeclareIncomeComponent } from './modules/declare-income/component/declare-income.component';
+import { BalanceComponent } from './modules/balance/component/balance/balance.component';
+import { ProjectionComponent } from './modules/balance-projection/component/projection/projection.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'expenses', component: DeclareExpensesComponent },
+  { path: 'declareincome', component: DeclareIncomeComponent },
+  { path: 'balance', component: BalanceComponent },
   { path: 'homepage', component: HomepageComponent },
-  { path: '', component: HomepageComponent },
-  { path: 'declareincome', component: DeclareIncomeComponent }
+  { path: 'proj', component: ProjectionComponent },
+  { path: '', redirectTo: 'homepage', pathMatch: 'full' },
 ];
 
 @NgModule({

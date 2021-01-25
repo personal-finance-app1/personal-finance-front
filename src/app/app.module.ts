@@ -39,7 +39,7 @@ import { HomepageComponent } from './modules/homepage/component/homepage.compone
     MaterialBuildModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    DeclareExpensesModule
+    DeclareExpensesModule,
   ],
   providers: [AuthModule],
   bootstrap: [AppComponent]

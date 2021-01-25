@@ -1,6 +1,32 @@
-a {
+
+#title {
+  font-family: Futura-Std-Bold;
+  font-size: 40px;
+}
+
+#logout {
+  font-family: Futura-Std-Book;
+  font-size: 20px;
+}
+
+#logo {
+  position: relative;
+  height: 60%;
+  width: auto;
+}
+
+img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+mat-toolbar {
+  height: 10vh;
+}
+
+/* a {
   text-decoration: none;
-  /* color: white; */
 }
 
 a:hover,
@@ -39,4 +65,4 @@ mat-select {
 .mat-toolbar {
   background: #474C55;
   height: 20%;
-}
+} */

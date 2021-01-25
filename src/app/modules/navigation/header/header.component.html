@@ -1,9 +1,22 @@
-<mat-toolbar class="mat-toolbar">
+<mat-toolbar color="primary">
+  <div id="logo" fxFlex>
+    <img src="assets/images/rev-logo.png">
+  </div>
+
+  <div fxFlex fxLayoutAlign="center center">
+    <span id="title">Personal Finance Application</span>
+  </div>
+
+  <div fxFlex fxLayoutAlign="flex-end center">
+    <button mat-button routerLink="/login" id="logout">Logout</button>
+  </div>
+
+</mat-toolbar>
+
+<!-- <mat-toolbar class="mat-toolbar">
   <div>
     <img src="../../../../assets/rev-logo.png" alt="logo" id="logo">
   </div>
-
-
 
   <div fxFlex fxLayout fxLayoutAlign='start' class="nav-text">
     <div class="navigation-items">
@@ -24,5 +37,4 @@
     </div>
   </div>
 
-
-</mat-toolbar>
+</mat-toolbar> -->

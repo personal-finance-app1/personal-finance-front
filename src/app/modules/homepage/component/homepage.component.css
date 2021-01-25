@@ -1,8 +1,22 @@
-.proj {
-    height: 80%;
-    width: 80%;
+/* .proj {
+    position: relative;
+    min-height: 80%;
+    min-width: 80%;
+    background: red;
+} */
+
+/* .body {
+    margin: 25px;
+} */
+::ng-deep .mat-tab-list .mat-tab-labels {
+  font-family: Futura-Std-Book;
 }
 
-.body {
-    margin: 25px;
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+  font-family: Futura-Std-Medium;
+  background: green;
 }
+
+::ng-deep.mat-tab-group { height: 90%; } 
+::ng-deep.mat-tab-body-wrapper { flex-grow: 1; }
+::ng-deep.mat-tab-body { display: flex !important; flex-direction: column; }

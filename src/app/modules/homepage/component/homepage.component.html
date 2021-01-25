@@ -1,4 +1,20 @@
-<div class="body">
+<mat-tab-group [dynamicHeight]="true">
+
+  <mat-tab label="Update Account">
+    <ng-template matTabContent>
+      <p>this is where update widgets go</p>
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab label="Projected Balance">
+    <ng-template matTabContent>
+      <app-projection></app-projection>
+    </ng-template>
+  </mat-tab>
+
+</mat-tab-group>
+
+<!-- <div class="body">
  <mat-grid-list cols="12" rowHeight="100px"[gutterSize]="'25px'">
     <mat-grid-tile
         *ngFor="let tile of tiles; let i = index"
@@ -15,4 +31,4 @@
       <app-balance *ngIf="i == 3"></app-balance>
     </mat-grid-tile>
   </mat-grid-list> 
-</div>
+</div> -->
