@@ -23,7 +23,7 @@ export class BalanceComponent implements OnInit {
   /**This boolean property is used to decide whether or not to render the declare balance widget on the screen.*/
   public renderDeclareBalanceWidget: boolean;
   /**This property holds the balance of the account we're representing in the view.*/
-  public accountBalance: number | null;
+  public accountBalance: number | null=50;
   constructor(private injectedBalanceService: BalanceService) {
     //stub
   }
