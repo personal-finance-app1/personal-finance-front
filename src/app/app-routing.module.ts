@@ -8,9 +8,10 @@ import { DeclareIncomeComponent } from './modules/declare-income/component/decla
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
   { path: 'expenses', component: DeclareExpensesComponent },
   { path: 'homepage', component: HomepageComponent },
-  { path: '', component: HomepageComponent },
+  // { path: '', component: HomepageComponent },
   { path: 'declareincome', component: DeclareIncomeComponent }
 ];
 

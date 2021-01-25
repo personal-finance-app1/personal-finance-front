@@ -104,10 +104,10 @@ export class AuthService {
   public getEmail(): String {
     if (this.userData == null) {
       return null;
-    }
-
-    else {
+    } else {
       return this.userData.email;
     }
   }
+  
+
 }

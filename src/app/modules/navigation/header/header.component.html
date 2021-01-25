@@ -5,22 +5,24 @@
 
 
 
-  <div fxFlex fxLayout fxLayoutAlign='start' class="nav-text">
+  <!-- <div fxFlex fxLayout fxLayoutAlign='start' class="nav-text">
     <div class="navigation-items">
       <button mat-button routerLink="/declareincome"> Declare Income ;)</button>
 
     </div>
-  </div>
+  </div> -->
 
   <div fxFlex fxLayout fxLayoutAlign='center' class="nav-text">
     <div>
-      <p>Personal Finance Application</p> 
+      <p>Personal Finance Application</p>
     </div>
   </div>
 
   <div fxFlex fxLayout fxLayoutAlign='end' class="nav-text">
     <div class="navigation-items">
-      <button mat-button routerLink="/login">Login</button>
+      <div *ngIf="isAuth">
+        <button mat-button (click)="logout()">Log out</button>
+      </div>
     </div>
   </div>
 

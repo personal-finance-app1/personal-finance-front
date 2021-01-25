@@ -1,4 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
+import { AuthService } from '../../auth/services/auth.service';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -8,8 +11,30 @@ import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/cor
 })
 export class HeaderComponent {
 
-  constructor() { }
+
+  isAuth: boolean = false;
+  //private authService: AuthService, private router: Router
+
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void { }
+
+
+  // ngOnChanges(): void {
+  //   if (true) {
+
+  //   }
+  // }
+
+
+
+  /**
+   * this is for logout menu event function
+   */
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+
+  }
 
 }
