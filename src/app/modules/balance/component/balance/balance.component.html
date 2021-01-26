@@ -16,6 +16,7 @@
               matInput
               appearance="fill"
               ngModel
+              pattern = "\d+(\.\d{1,2})?$"
               name="balance"
               required
               #balanceInput="ngModel"
@@ -32,7 +33,7 @@
           </button>
           <span class="current-balance-span"
             >  {{  this.balanceService.validateAccountBalance(this.accountBalance) ? 
-                        'Current Balance: $' + accountBalance               :
+                        'Current Balance: $' + formattedBalance               :
                          'Undeclared' 
                }}
           </span>

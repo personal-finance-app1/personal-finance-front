@@ -20,7 +20,14 @@ export class BalanceService {
    * returns boolean which indicates if the balance is valid or invalid.
    */
   public validateAccountBalance(accountBalance: number): boolean {
-    return accountBalance>0;
+    let balanceRegex =  /^\d+(\.\d{1,2})?$/
+    if (balanceRegex.test(accountBalance+"")) {
+      console.log(accountBalance+"regex worked");
+      return accountBalance>0;
+    }
+    else {
+      return false;
+    }
   }
 
   /**

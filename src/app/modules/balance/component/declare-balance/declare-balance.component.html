@@ -5,12 +5,16 @@
         <span fxLayoutGap="10px">
             <mat-form-field class="mat-input">
                 <mat-label>Enter a balance</mat-label>
-                <input matInput [(ngModel)]="declareBalance">
+                <input matInput 
+                [(ngModel)]="declareBalance"
+                pattern = "\d+(\.\d{1,2})?$"
+                required>
                 <mat-error >Error msg</mat-error>
             </mat-form-field>
         </span>
     </div>
     <div mat-dialog-actions>
+        <!--Need form for inlvalid button?-->
         <button (click)="this.declareAccountBalance()" [disabled]="!this.balanceService.validateAccountBalance(this.declareBalance)" ised-button [mat-dialog-close]="true">Ok</button>
     </div>
 </div>

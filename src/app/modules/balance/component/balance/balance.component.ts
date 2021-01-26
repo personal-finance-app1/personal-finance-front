@@ -24,6 +24,7 @@ export class BalanceComponent implements OnInit {
   public readonly INVALID_BALANCE_MESSAGE: string = "Please enter a valid currency value.";
   /**This property holds a reference to the Balance Service we use to perform operations on our component.*/
   public balanceService:BalanceService;
+  public formattedBalance: string;
 
   constructor(private injectedBalanceService: BalanceService, private dialog: MatDialog) {
     dialog.open(DeclareBalanceComponent, {
@@ -37,6 +38,7 @@ export class BalanceComponent implements OnInit {
     //whenever an external component changes the balance state, then accept the pushed balance value.
     this.balanceService.notificationObservableSubject.subscribe((pushedBalanceValue)=> {
       this.accountBalance = pushedBalanceValue;
+      this.formattedBalance = Number(this.accountBalance).toFixed(2);
     })
   }
 
