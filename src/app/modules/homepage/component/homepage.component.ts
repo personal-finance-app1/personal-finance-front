@@ -22,12 +22,6 @@ export class HomepageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    //get the account from the environment variable account to get account info
-    account$.subscribe(
-      (account) => {
-        this.account = account;
-      }
-    );
   }
 
   // tiles: Tile[] = [

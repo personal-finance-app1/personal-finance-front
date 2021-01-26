@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { BalanceService } from '../../service/balance.service';
+import { DeclareBalanceComponent } from '../declare-balance/declare-balance.component';
+
 
 /**
  * The balance component is responsible for tracking user balance.
@@ -17,15 +19,25 @@ import { BalanceService } from '../../service/balance.service';
 })
 export class BalanceComponent implements OnInit {
   public invalidMessage: string;
+  public accountBalance: number|null;
   /**This read only variable will hold the message we'll send to the user, if they enter an invalid balance. */
-  public readonly INVALID_BALANCE_MESSAGE: string;
+  public readonly INVALID_BALANCE_MESSAGE: string = "Please enter a valid currency value.";
+  /**This property holds a reference to the Balance Service we use to perform operations on our component.*/
+  public balanceService:BalanceService;
 
-  /**This boolean property is used to decide whether or not to render the declare balance widget on the screen.*/
-  public renderDeclareBalanceWidget: boolean;
-  /**This property holds the balance of the account we're representing in the view.*/
-  public accountBalance: number | null=50;
-  constructor(private injectedBalanceService: BalanceService) {
-    //stub
+  constructor(private injectedBalanceService: BalanceService, private dialog: MatDialog) {
+    dialog.open(DeclareBalanceComponent, {
+      panelClass: 'custom-dialog-container',
+      disableClose: true  //This ensures dialog closes only if the user clicks the corresponding close button.
+    });
+    this.balanceService = injectedBalanceService;
+    this.invalidMessage = '';
+    this.accountBalance = null; //set account balance to null to indicate it has not been set yet,
+        
+    //whenever an external component changes the balance state, then accept the pushed balance value.
+    this.balanceService.notificationObservableSubject.subscribe((pushedBalanceValue)=> {
+      this.accountBalance = pushedBalanceValue;
+    })
   }
 
   ngOnInit(): void {}
@@ -33,14 +45,15 @@ export class BalanceComponent implements OnInit {
   /**The updateAccountBalance is called when the user pushes the button to update the account balance.
    * We can use this method to push values to the global service.
    */
-  public updateAccountBalance(): void {
-    //
-  }
+  public updateAccountBalance(balanceInput:any): void {
+    //here, we make sure the account balance is valid
+    // we do not do any manual setting as we are subscribed to the service observable in the cstr.
+    if(this.balanceService.validateAccountBalance(balanceInput)){
+      this.balanceService.setBalance(balanceInput); //if valid balance, update the balance service
+      this.invalidMessage=''; //set message to empty string, in case it has been set to an invalid string before
+    } else {
+      this.invalidMessage = this.INVALID_BALANCE_MESSAGE;
+    }
 
-  /**The declare account balance method is used to declare the account balance. We can use this
-   * method to push values to the global service.
-   */
-  public declareAccountBalance(): void {
-    //stub
   }
 }

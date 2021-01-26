@@ -2,11 +2,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BalanceComponent } from './balance.component';
 import { BalanceService } from '../../service/balance.service';
+import { MatDialog } from '@angular/material/dialog';
 
 describe('BalanceComponent', () => {
   let component: BalanceComponent;
   let service: BalanceService;
   let fixture: ComponentFixture<BalanceComponent>;
+  let dialogMock: MatDialog;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -17,45 +19,30 @@ describe('BalanceComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BalanceComponent);
-    component = fixture.componentInstance;
     service = TestBed.inject(BalanceService);
-    fixture.detectChanges();
+    dialogMock = jasmine.createSpyObj('MatDialog', ['open']);
+    component = new BalanceComponent(service,dialogMock);
   });
 
   describe("Component init", () => {
-    xit('should create', () => {
+    it('should create', () => {
       expect(component).toBeTruthy();
     });
   })
 
 
   describe("Account balance on component init.", () => {
-    xit('should have a an account balance value of null to indicate the account balance has not been declared', () => {
+    it('should have a an account balance value of null to indicate the account balance has not been declared', () => {
       expect(component.accountBalance).toBeNull();
     })
   })
 
 
-  describe("declareAccountBalance()", () => {
-    xit('should not have an account balance of null and a renderDeclareBalanceWidget of true, as the balance has been declared', () => {
-      component.declareAccountBalance();
-      //ensure test method modified state accordingly
-      expect(component.renderDeclareBalanceWidget == false).toBeTrue()
-    })
-  })
-
-  describe("updateAccountBalance()", () => {
-    xit('should not have a null balance value after calling update balance.', () => {
-      component.updateAccountBalance();
-      expect(component.accountBalance).toBeGreaterThan(0);
-    })
-  })
 
 
 
   describe("invalidMessage init value", () => {
-    xit('should be an empty string', () => {
+    it('should be an empty string', () => {
       //when we initialize our component, then there should be no error message, as the
       //user has not made an error.
       expect(component.invalidMessage).toBe('')
@@ -63,7 +50,7 @@ describe('BalanceComponent', () => {
   })
 
   describe("INVALID_BALANCE_MESSAGE init value", () => {
-    xit('should not be an empty string', () => {
+    it('should not be an empty string', () => {
       //Not sure what the invalid message is yey, but we're 100% it will be truthy.
       expect(component.INVALID_BALANCE_MESSAGE).toBeTruthy()
     });
