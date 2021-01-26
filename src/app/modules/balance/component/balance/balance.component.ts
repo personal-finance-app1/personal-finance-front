@@ -20,20 +20,24 @@ import { DeclareBalanceComponent } from '../declare-balance/declare-balance.comp
 export class BalanceComponent implements OnInit {
   public invalidMessage: string;
   public accountBalance: number|null;
+  public isDeclare: boolean = false;
   /**This read only variable will hold the message we'll send to the user, if they enter an invalid balance. */
   public readonly INVALID_BALANCE_MESSAGE: string = "Please enter a valid currency value.";
   /**This property holds a reference to the Balance Service we use to perform operations on our component.*/
   public balanceService:BalanceService;
 
   constructor(private injectedBalanceService: BalanceService, private dialog: MatDialog) {
-    dialog.open(DeclareBalanceComponent, {
-      panelClass: 'custom-dialog-container',
-      disableClose: true  //This ensures dialog closes only if the user clicks the corresponding close button.
-    });
+    if(!this.injectedBalanceService.isDeclareOpen) {
+      const dialogRef = dialog.open(DeclareBalanceComponent, {
+        panelClass: 'custom-dialog-container',
+        disableClose: true  //This ensures dialog closes only if the user clicks the corresponding close button.
+      });
+      this.injectedBalanceService.isDeclareOpen = true;
+    }
     this.balanceService = injectedBalanceService;
     this.invalidMessage = '';
     this.accountBalance = null; //set account balance to null to indicate it has not been set yet,
-        
+    
     //whenever an external component changes the balance state, then accept the pushed balance value.
     this.balanceService.notificationObservableSubject.subscribe((pushedBalanceValue)=> {
       this.accountBalance = pushedBalanceValue;
