@@ -24,6 +24,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MaterialBuildModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-  ]
+  ] ,
+  exports:[BalanceComponent,DeclareBalanceComponent]
 })
 export class BalanceModule { }

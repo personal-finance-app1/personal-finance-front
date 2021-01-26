@@ -17,6 +17,7 @@ import { LoginComponent } from './modules/auth/components/login/login.component'
 import { AuthModule } from './modules/auth/auth.module';
 import { HomepageComponent } from './modules/homepage/component/homepage.component';
 import { BalanceModule } from './modules/balance/balance.module';
+import { HomepageModule } from './modules/homepage/homepage.module';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { BalanceModule } from './modules/balance/balance.module';
     DeclareExpensesModule,
     BalanceProjectionModule,
     AuthModule,
-    BalanceModule
+    BalanceModule,
+    HomepageModule
   ],
   providers: [AuthModule],
   bootstrap: [AppComponent]
