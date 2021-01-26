@@ -28,14 +28,15 @@ describe('DeclareIncomeComponent', () => {
   describe('onSubmit method', () => {
     xit('should call the sendIncome method in the declare-incomeService', () => { // Successful
       let spy = spyOn(service, 'sendIncome');
-      component.onSubmit();
+      let income = 100;
+      component.onSubmit(100);
       expect(spy).toHaveBeenCalled();
     });
 
     xit('should be non-negative', () => {
       spyOn(service, 'sendIncome');
       component.account.income = -1;
-      component.onSubmit();
+      component.onSubmit(-1);
       expect(component.error).toBe("Error: Input must be positive.");
       expect(component.account.income).toEqual(0); //setting user input to 0
     });
@@ -43,7 +44,7 @@ describe('DeclareIncomeComponent', () => {
     xit('should have a correct decimal in place', () => {
       spyOn(service, 'sendIncome');
       component.account.income = 1.001;// 0-2 numbers after decimal are good inputs
-      component.onSubmit();
+      component.onSubmit(1.001);
       expect(component.error).toBe("Error: Input cannot exceed two decimal places.");
       expect(component.account.income).toEqual(0); //setting user input to 0
     });

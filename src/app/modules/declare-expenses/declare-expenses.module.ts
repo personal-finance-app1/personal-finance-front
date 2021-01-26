@@ -9,7 +9,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MaterialBuildModule } from 'src/app/material.module';
 
 
-
 @NgModule({
   declarations: [DeclareExpensesComponent],
   imports: [
