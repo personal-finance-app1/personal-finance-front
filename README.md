@@ -1,27 +1,74 @@
-# PersonalFinanceFront
+# Personal Finance Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+## Description
 
-## Development server
+The Personal Finance Application allows the user to view how their every day expenses and income affect budgeting. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+---
+## Features
 
-## Code scaffolding
+* Login
+* Logout
+* Track Balance
+* Update Income
+* Update Expenses
+* Update Balance
+* View Projected Balance
+---
+## Technologies Used
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* HTML 5
+* CSS 3
+* TypeScript 4
+* Angular 11
+* Angular Material 11.1
+* NodeJS 14
+* Firebase Authentication/Authorization 7
+---
+## Getting Started
 
-## Build
+1. Properly setup the backend provided in the following ReadMe at:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+    > https://github.com/personal-finance-app1/personal-finance-back
 
-## Running unit tests
+2. Copy the repository url from the HTTPS tab by pressing the green clone button, or copy the url and append `.git` to the end.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. Clone the repository by opening Git Bash at the desired location and running the clone command:
 
-## Running end-to-end tests
+    `git clone (name-of-url).git`
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+4. Open Git Bash in the cloned folder and run:
 
-## Further help
+    `ng serve -o`
+---
+## Usage
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+User can login to their account, and they can view their account details after inputting an initial balance. In the homepage screen, they can update their income, expenses, and balance. In the second tab, the user can view their projected balance for the following weeks. The user can end their session by pressing the logout button at the top right of the screen.
+
+---
+## Contributors
+
+Project Lead:
+* [Grant Wiswell](https://github.com/Grantimatter)
+
+Team Leads:
+* [Jason Schroeder](https://github.com/jasonSchroeder89)
+* [Lew Griffith](https://github.com/logriffith)
+* [Christopher Yun](https://github.com/topheryun)
+* [Berin Hadziabdic](https://github.com/Berin-Hadziabdic)
+* [John Magnuson](https://github.com/magnusjw)
+
+Contributors:
+
+* [John Rios](https://github.com/jlrjr98)
+* [Akhila Palaparthi](https://github.com/akhilapalaparthi)
+* [Christopher Svensson](https://github.com/cwsvensson)
+* [Skyler Tesar](https://github.com/skytsar)
+* [Hieu Le](https://github.com/htl43)
+* [Gabriel Fendt](https://github.com/fendtg4)
+* [Alexander Swain](https://github.com/AlexanderSwain1)
+* [Ben Petruzziello](https://github.com/benp3837)
+* [Brandon Tufte](https://github.com/bntufte)
+* [Kevin Hake](https://github.com/khake96)
+* [Alex Kulikov](https://github.com/S0ddy)
+* [Mukesh Chaudhary](https://github.com/Mukesh8688)
