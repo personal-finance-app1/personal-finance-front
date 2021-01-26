@@ -15,7 +15,7 @@ export const environment = {
     storageBucket: String, 
     messagingSenderId: String, 
     appId: String, 
-    measurementId: String
+    measurementId: String 
   },
 
   //apiUrl: 'http://ec2-3-229-123-153.compute-1.amazonaws.com:8082/personal-finance'

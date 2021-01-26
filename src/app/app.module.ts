@@ -19,7 +19,7 @@ import { DeclareAccountModule } from './modules/declare-account/declare-account.
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

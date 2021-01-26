@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { DeclareIncomeComponent } from './component/declare-income/declare-income.component';
+import { MaterialBuildModule } from 'src/app/material.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DeclareIncomeComponent } from './component/declare-income/declare-incom
     BrowserModule,
     CommonModule,
     HttpClientModule,
-  ],
+    MaterialBuildModule
+  ],  
   exports: [
     DeclareExpensesComponent,
     DeclareIncomeComponent

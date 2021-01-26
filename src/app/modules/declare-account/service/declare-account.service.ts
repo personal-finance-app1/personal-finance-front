@@ -24,6 +24,6 @@ export class DeclareAccountService {
   */
   public updateAccountsTable(account:Account): Observable<Account>{
     console.log(account)
-    return this.http.put(`${environment.apiUrl}/account`, account) as Observable<Account>;
+    return this.http.patch(`${environment.apiUrl}/accounts`, account) as Observable<Account>;
   }
 }

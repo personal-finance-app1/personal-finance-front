@@ -11,7 +11,7 @@ import { DeclareAccountService } from '../../service/declare-account.service';
 export class DeclareIncomeComponent implements OnInit {
 
   error: String;
-  account: Account = new Account(1, 1,"JohnProjection",51,52,53); //accountId, userId, name, income, expenses, balance;
+  account: Account = new Account(1, 1,"",51,52,53); //accountId, userId, name, income, expenses, balance;
   
   currentIncome: number;
   
@@ -37,9 +37,8 @@ export class DeclareIncomeComponent implements OnInit {
    * @ param none
    * @ returns none
    */
-  public updateAccount(income:any){
-    let v = income;
-    console.log("value= " + v);
+  public updateAccount(income:number){
+    
     if(income < 0){
       this.error = "Error: Input must be positive.";
       
@@ -63,7 +62,21 @@ export class DeclareIncomeComponent implements OnInit {
       });
     }
   }
+
+  public validateInput(value: string): Boolean {
+    let regex = /[1-9]0{2,}|[0-9]+(.[0-9][0-9])(?![\w\d])/
+    if(regex.test(value)){
+      return true
+      this.error 
+    }
+    else {
+      return false
+    }
+  }
+
 }
+
+
 
 // public async updateExpenses() 
 //   {

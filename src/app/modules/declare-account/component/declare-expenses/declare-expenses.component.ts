@@ -11,7 +11,7 @@ import { DeclareAccountService } from '../../service/declare-account.service';
 export class DeclareExpensesComponent implements OnInit {
 
   error: String;
-  account: Account = new Account(1, 1,"JohnProjection",51,52,53); //accountId, userId, name, income, expenses, balance;
+  account: Account = new Account(1, 1,"",51,52,53); //accountId, userId, name, income, expenses, balance;
   
   currentExpenses: number;
   
