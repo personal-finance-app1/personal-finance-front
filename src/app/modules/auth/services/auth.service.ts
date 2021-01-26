@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
+import { Observable, Subject } from 'rxjs';
 
 
 @Injectable({
@@ -11,6 +12,7 @@ import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 export class AuthService {
 
   private userData: any;
+  authChange = new Subject<boolean>();
 
 
   constructor(private fireStore: AngularFirestore, private auth: AngularFireAuth) {
@@ -54,7 +56,15 @@ export class AuthService {
   // }
 
 
-
+  /**
+  * Method for validating user credentials with Firebase, stores user
+  * credentials if authorized user is found.
+  * 
+  * @param username String
+  * @param password String
+  * @returns Promise<boolean>  indicating whether credentials are authenticated by
+  *          firebase
+  */
   async login(username: string, password: string): Promise<boolean> {
 
     let isLoginSuccess: boolean = false;
@@ -64,7 +74,9 @@ export class AuthService {
       isLoginSuccess = await this.auth.signInWithEmailAndPassword(username, password).then(
         (result) => {
           this.userData = result.user;
+          this.authChange.next(true);
           return true;
+
         }
       ).catch((error) => {
         alert("Username and Password are invalid !!");
@@ -94,6 +106,7 @@ export class AuthService {
   public logout() {
     this.auth.signOut().then(() => {
       this.userData = null;
+      this.authChange.next(false);
     })
 
     return;

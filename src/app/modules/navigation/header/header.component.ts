@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,19 +14,20 @@ export class HeaderComponent {
 
 
   isAuth: boolean = false;
+  isVisibility: string = "hidden"
 
 
-  constructor(private authService: AuthService, private router: Router) { }
-
-  ngOnInit(): void {
-    this.isAuth = this.authService.isLoggedIn();
+  constructor(private authService: AuthService, private router: Router) {
+    this.visibilityLogoutButton();
   }
 
-
-  // ngOnChanges(): void {
-  //   this.isAuth = this.authService.isLoggedIn();
-  // }
-
+  ngOnInit(): void {
+    this.authService.authChange.subscribe(authStatus => {
+      this.isAuth = authStatus;
+      // console.log(authStatus);
+      this.visibilityLogoutButton();
+    });
+  }
 
 
   /**
@@ -35,6 +37,13 @@ export class HeaderComponent {
     this.authService.logout();
     this.router.navigate(['/login']);
 
+  }
+
+  visibilityLogoutButton() {
+    if (this.isAuth) {
+      this.isVisibility = "visible";
+    } else
+      this.isVisibility = "hidden";
   }
 
 }
