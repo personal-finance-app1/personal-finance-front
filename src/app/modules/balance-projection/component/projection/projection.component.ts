@@ -19,9 +19,7 @@ export interface Tile {
   styleUrls: ['./projection.component.css']
 })
 export class ProjectionComponent implements OnInit {
-
   account: Account;
-
   doughnutChartLabels: Label[] = ['Expenses', 'Income'];
   doughnutChartData: MultiDataSet;
   doughnutChartOptions: ChartOptions = {
@@ -41,7 +39,6 @@ export class ProjectionComponent implements OnInit {
     }
   };
   doughnutColors: Color[] = [{ backgroundColor: ['rgba(231, 10, 91,1)', 'rgba(106,245,106,1)'], borderWidth: 2, borderColor: '#DDD' }];
-
   lineChartData: ChartDataSets[];
   lineChartLabels: Label[];
   lineChartOptions: ChartOptions = {
@@ -91,13 +88,10 @@ export class ProjectionComponent implements OnInit {
       }]
     }
   };
-
   lineChartColors: Color[];
   lineChartPlugins: any;
-
   //title: string;
   payPeriods: number = 6;
-
   tiles: Tile[] = [
     { text: '', cols: 1, rows: 1, color: 'rgba(0,0,0,0)' },
     { text: 'Chart', cols: 2, rows: 5, color: 'rgba(0,0,0,0)' },
@@ -105,9 +99,7 @@ export class ProjectionComponent implements OnInit {
     { text: 'Slider', cols: 1, rows: 1, color: 'rgba(0,0,0,0)' },
     { text: '', cols: 1, rows: 1, color: 'rgba(0,0,0,0)' },
   ];
-
   constructor(public projectionService: ProjectionService) { }
-
   ngOnInit(): void {
     //get the account from the environment variable and the corresponding information
     account$.subscribe(
@@ -118,6 +110,13 @@ export class ProjectionComponent implements OnInit {
         ];
         this.createChart();
       });
+
+    this.account = new Account(1500.12, 1300.47, 300);
+    this.doughnutChartData = [
+      [this.account.expenses, this.account.income]
+    ];
+
+    this.createChart();
   }
 
   /**
@@ -143,13 +142,10 @@ export class ProjectionComponent implements OnInit {
       }
     ];
   }
-
   onInputChange(event: MatSliderChange) {
     this.payPeriods = event.value;
     this.createChart();
   }
-
   getAccount(): void {
-
   }
 }

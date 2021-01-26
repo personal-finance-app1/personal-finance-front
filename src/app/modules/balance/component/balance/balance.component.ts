@@ -27,7 +27,6 @@ export class BalanceComponent implements OnInit {
   public balanceService:BalanceService;
 
   constructor(private injectedBalanceService: BalanceService, private dialog: MatDialog) {
-<<<<<<< HEAD
     this.balanceService = injectedBalanceService;
 
   if(injectedBalanceService.getBalance() == null){
@@ -41,19 +40,6 @@ export class BalanceComponent implements OnInit {
     this.accountBalance = injectedBalanceService.getBalance();
   }
         
-=======
-    if(!this.injectedBalanceService.isDeclareOpen) {
-      const dialogRef = dialog.open(DeclareBalanceComponent, {
-        panelClass: 'custom-dialog-container',
-        disableClose: true  //This ensures dialog closes only if the user clicks the corresponding close button.
-      });
-      this.injectedBalanceService.isDeclareOpen = true;
-    }
-    this.balanceService = injectedBalanceService;
-    this.invalidMessage = '';
-    this.accountBalance = null; //set account balance to null to indicate it has not been set yet,
-    
->>>>>>> 49f0769703018cc09d6a370cdc03ac5089764ee0
     //whenever an external component changes the balance state, then accept the pushed balance value.
     this.balanceService.notificationObservableSubject.subscribe((pushedBalanceValue)=> {
       this.accountBalance = pushedBalanceValue;
