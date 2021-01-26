@@ -28,7 +28,7 @@ describe('DeclareAccountService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('sendIncome method', () => {
+  describe('updateAccountsTable method', () => {
     xit('should return Observable that matches the mocked data', () => { // Successful
       const mockedAccount = new Account(0,0,"",0,0,0);
 
@@ -36,7 +36,7 @@ describe('DeclareAccountService', () => {
         expect(accountData).toEqual(mockedAccount);
       });
 
-      const request = httpTestingController.expectOne(`${environment.apiUrl}/income`);
+      const request = httpTestingController.expectOne(`${environment.apiUrl}/account`);
       expect(request.request.method).toEqual('PUT');
       request.flush(mockedAccount);
     });

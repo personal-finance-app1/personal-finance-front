@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { DeclareIncomeComponent } from './component/declare-income/declare-income.component';
 
-
 @NgModule({
   declarations: [
     DeclareExpensesComponent,
