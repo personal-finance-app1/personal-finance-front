@@ -2,7 +2,7 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-import { Subject } from "rxjs";
+import { BehaviorSubject, Subject } from "rxjs";
 import { Account } from "src/app/models/account";
 
 export const environment = {
@@ -22,7 +22,7 @@ export const environment = {
   apiUrl: 'http://localhost:8082/personal-finance'
 };
 
-export let account$: Subject<Account> = new Subject<Account>();
+export let account$: BehaviorSubject<Account> = new BehaviorSubject<Account>(new Account(-1,0, "",0,0,0));
 
 
 
