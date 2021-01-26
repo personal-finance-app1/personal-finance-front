@@ -17,12 +17,14 @@ export class HeaderComponent {
 
   constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit(): void { }
-
-
-  ngOnChanges(): void {
+  ngOnInit(): void {
     this.isAuth = this.authService.isLoggedIn();
   }
+
+
+  // ngOnChanges(): void {
+  //   this.isAuth = this.authService.isLoggedIn();
+  // }
 
 
 

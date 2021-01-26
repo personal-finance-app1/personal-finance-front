@@ -12,15 +12,16 @@ export class AuthService {
 
   private userData: any;
 
+
   constructor(private fireStore: AngularFirestore, private auth: AngularFireAuth) {
-    this.auth.authState.subscribe(user => {
-      if (user) {
-        this.userData = user;
-      }
-      else {
-        this.userData = null;
-      }
-    })
+    // this.auth.authState.subscribe(user => {
+    //   if (user) {
+    //     this.userData = user;
+    //   }
+    //   else {
+    //     this.userData = null;
+    //   }
+    // })
   }
 
   /**
@@ -32,23 +33,56 @@ export class AuthService {
    * @returns boolean indicating whether credentials are authenticated by
    *          firebase
    */
-  public login(username: string, password: string): boolean {
-    this.auth.signInWithEmailAndPassword(username, password).then(
-      (result) => {
-        this.userData = result.user;
-      }).catch((error) => {
-        alert("Username and Password are invalid !!");
-        console.log(error)
+  // public login(username: string, password: string): boolean {
 
+  //   this.auth.signInWithEmailAndPassword(username, password).then(
+  //     (result) => {
+  //       this.userData = result.user;
+  //     }).catch((error) => {
+  //       alert("Username and Password are invalid !!");
+  //       console.log(error);
+  //     });
+
+  //   console.log(this.userData);
+
+  //   if (this.userData == null) {
+  //     return false;
+  //   }
+  //   else {
+  //     return true;
+  //   }
+  // }
+
+
+
+  async login(username: string, password: string): Promise<boolean> {
+
+    let isLoginSuccess: boolean = false;
+
+    try {
+
+      isLoginSuccess = await this.auth.signInWithEmailAndPassword(username, password).then(
+        (result) => {
+          this.userData = result.user;
+          return true;
+        }
+      ).catch((error) => {
+        alert("Username and Password are invalid !!");
+        console.log(error);
+        return false;
       });
 
-    if (this.userData == null) {
-      return false;
+      return isLoginSuccess;
+
+    } catch (error) {
+
+      return isLoginSuccess;
     }
-    else {
-      return true;
-    }
+
+
   }
+
+
 
   /**
    * Method for logging user out of application. Invalidates token with

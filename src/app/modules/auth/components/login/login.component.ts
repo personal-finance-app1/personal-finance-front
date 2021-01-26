@@ -40,31 +40,20 @@ export class LoginComponent implements OnInit, OnChanges {
 
 
 
-  onLogin(): void {
+  async onLogin() {
 
-    this.isLogin = this.authSerice.login(this.loginForm.value.username, this.loginForm.value.password);
+    let isLogin = await this.authSerice.login(this.loginForm.value.username, this.loginForm.value.password);
 
-    console.log(this.isLogin);
+    console.log(isLogin);
 
-    if (this.isLogin) {
+    if (isLogin) {
       this.navigate();
+      //console.log(this.authSerice.getToken());
     }
     else {
+      window.location.reload();
       this.refreshLoginPage();
-      //this.navigate();
     }
-
-    /**
-     *   this code  is for only testing method
-     * */
-    // if (this.loginForm.value.username == "username" && this.loginForm.value.password == "password") {
-    //   alert("You are logged in Successfully !! Sorry ... UnderConstruction ....!!!!")
-    //   window.location.reload();
-    // } else {
-
-    //   alert(" Sorry log in failed ... UnderConstruction ....!!!!")
-    //   window.location.reload();
-    // }
 
   }
 
@@ -72,11 +61,12 @@ export class LoginComponent implements OnInit, OnChanges {
   /**
    * This is for refresh login page in case of login failed.
    */
-  refreshLoginPage(): void {
+  refreshLoginPage() {
 
-    this.loginForm.setValue = null;
-    // this.loginStatus.next(false);
-    //this.headerComponent.isAuth = false;
+    this.loginForm.value.username = " ";
+    this.loginForm.value.password = " ";
+    this.authSerice.logout();
+    this.router.navigate(['/login']);
     // window.location.reload();
 
   }
@@ -98,8 +88,6 @@ export class LoginComponent implements OnInit, OnChanges {
 
   onlogout(): void {
     this.authSerice.logout()
-    //this.loginStatus.next(false);
-    //this.headerComponent.isAuth = false;
     this.router.navigate(['/login']);
   }
 
