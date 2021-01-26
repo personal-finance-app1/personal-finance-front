@@ -1,13 +1,13 @@
 .balance_section {
-  /* width: 800px; */
-  /* position: fixed; */
+  /* width: 800px;
+  position: fixed; */
   bottom: 10px;
   right: 10px;
   /* border: 1px solid black; */
 }
 
 mat-form-field {
-  width: 350px;
+  width: 250px;
 }
 
 .mat_input {
@@ -25,7 +25,7 @@ mat-form-field {
 }
 
 .current-balance-span {
-  color:#403932;
-  font-size: 0.75em;
+  /* color: #403932;
+  font-size: 0.75em; */
   margin: 30px;
 }

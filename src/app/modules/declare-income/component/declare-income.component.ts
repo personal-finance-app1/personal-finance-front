@@ -18,10 +18,10 @@ export class DeclareIncomeComponent implements OnInit {
 
   constructor(private ds: DeclareIncomeService) {
 
-    account$.subscribe((response) => {
-      this.account = response;
-      this.currentIncome = this.account.income;
-    });
+    // account$.subscribe((response) => {
+    //   this.account = response;
+    //   this.currentIncome = this.account.income;
+    // });
   }
 
   ngOnInit(): void {
