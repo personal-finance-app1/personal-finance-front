@@ -19,11 +19,10 @@ export class DeclareIncomeService {
   };
 
   /**
-   * Method to send an http request for 
-   * @param account 
-   */
+   * Updates the Accounts table.
+  * @param account Returns the updated account from the database.
+  */
   public sendIncome(account:Account): Observable<Account>{
-    console.log(account)
     return this.http.patch(`${environment.apiUrl}/accounts`, account) as Observable<Account>;
   }
 }
