@@ -1,0 +1,30 @@
+.expenses_section {
+    width: 800px;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    border: 1px solid black;
+  }
+  
+  mat-form-field {
+    width: 350px;
+  }
+  
+  .mat_input {
+    font-size: 150%;
+  }
+  
+  .expenses_title {
+    font-size: 200%;
+    padding: 20px;
+    border-bottom: 1px solid black;
+    background-color: #f26925;
+    color: white;
+  }
+  
+  .current-expenses-span {
+    color: #403932;
+    font-size: 0.75em;
+    margin: 30px;
+  }
+  
