@@ -38,7 +38,7 @@ export class ProjectionComponent implements OnInit {
       }
     }
   };
-  doughnutColors: Color[] = [{ backgroundColor: ['rgba(231, 10, 91,1)', 'rgba(106,245,106,1)'], borderWidth: 2, borderColor: '#DDD' }];
+  doughnutColors: Color[] = [{ backgroundColor: ['rgba(242, 105, 38,1)', 'rgba(115, 165, 194,1)'], borderWidth: 2, borderColor: '#DDD' }];
   lineChartData: ChartDataSets[];
   lineChartLabels: Label[];
   lineChartOptions: ChartOptions = {
@@ -133,12 +133,12 @@ export class ProjectionComponent implements OnInit {
     this.lineChartLabels = chartData.labels;
     this.lineChartColors = [
       {
-        backgroundColor: 'rgba(115, 165, 194,0.3)',
-        borderColor: 'rgba( 115, 165, 194)',
-        pointBackgroundColor: 'rgba( 115, 165, 194,1)',
+        backgroundColor: 'rgba(253, 181, 21,0.3)',
+        borderColor: 'rgba( 253, 181, 21)',
+        pointBackgroundColor: 'rgba( 253, 181, 21,1)',
         pointBorderColor: '#fff',
         pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgba( 115, 165, 194,0.8)'
+        pointHoverBorderColor: 'rgba( 253, 181, 21,0.8)'
       }
     ];
   }
