@@ -106,25 +106,21 @@ export class ProjectionComponent implements OnInit {
     { text: '', cols: 1, rows: 1, color: 'rgba(0,0,0,0)' },
   ];
 
-  constructor(public projectionService: ProjectionService) { }
+  constructor(public projectionService: ProjectionService) { 
+    
+  }
 
   ngOnInit(): void {
     //get the account from the environment variable and the corresponding information
-    account$.subscribe(
-      (account) => {
-        this.account = account;
-        this.doughnutChartData = [
-          [this.account.expenses, this.account.income]
-        ];
-        this.createChart();
-      });
-
-    this.account = new Account(0, 0, "", 1500.12, 1300.47, 300);
-    this.doughnutChartData = [
-      [this.account.expenses, this.account.income]
-    ];
-
-    this.createChart();
+    //this.account = account$.value;
+    account$.subscribe((account)=>{
+      //console.log(x)
+      this.account = account;
+      this.createChart();
+      this.doughnutChartData = [
+        [this.account.expenses, this.account.income]
+      ];
+    });
   }
 
   /**
@@ -156,7 +152,8 @@ export class ProjectionComponent implements OnInit {
     this.createChart();
   }
 
-  getAccount(): void {
-
+  setAccount(account:Account) : void {
+    console.log("Account updated");
+    this.account = account;
   }
 }
