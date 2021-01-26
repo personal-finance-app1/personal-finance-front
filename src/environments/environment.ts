@@ -16,10 +16,15 @@ export const environment = {
     messagingSenderId: String, 
     appId: String, 
     measurementId: String
-  }
+  },
+
+  //apiUrl: 'http://ec2-3-229-123-153.compute-1.amazonaws.com:8082/personal-finance'
+  apiUrl: 'http://localhost:8082/personal-finance'
 };
 
 export let account$: Subject<Account> = new Subject<Account>();
+
+
 
 /*
  * For easier debugging in development mode, you can import the following file

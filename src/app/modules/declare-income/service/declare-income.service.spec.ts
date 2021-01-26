@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { Account } from 'src/app/models/account';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { DeclareIncomeService } from './declare-income.service';
+import { environment } from 'src/environments/environment';
 
 describe('DeclareIncomeService', () => {
 
@@ -35,7 +36,7 @@ describe('DeclareIncomeService', () => {
         expect(accountData).toEqual(mockedAccount);
       });
 
-      const request = httpTestingController.expectOne(`${service.url}/income`);
+      const request = httpTestingController.expectOne(`${environment.apiUrl}/income`);
       expect(request.request.method).toEqual('PUT');
       request.flush(mockedAccount);
     });
