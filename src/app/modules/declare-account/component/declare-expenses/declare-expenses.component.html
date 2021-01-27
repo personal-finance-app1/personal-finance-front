@@ -21,9 +21,9 @@
                 #expensesInput="ngModel"
               />   
               <mat-error *ngIf="expensesInput.hasError('required')">Field must not be empty.</mat-error>
-              <mat-error *ngIf="!expensesInput.hasError('required')">{{ error }}</mat-error>                   
+              <mat-error *!ngIf="expensesInput.hasError('required')">{{ error }}</mat-error>                   
             </mat-form-field>
-            
+
             <button
               mat-raised-button
               color="warn"

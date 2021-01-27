@@ -27,6 +27,14 @@ export class DeclareAccountService {
   * @param account Returns the updated account from the database.
   */
   public updateAccountsTable(account:Account): Observable<Account>{
+    console.log("Before Headers")
+    console.log(account)
+    
+    let options = {headers: new Headers()};
+    let token = this.as.getToken;
+    options.headers.set('Authorization', `Bearer ${token}`);
+
+    console.log("After Headers")
     console.log(account)
     return this.http.patch(`${environment.apiUrl}/accounts`, account) as Observable<Account>;
   }
