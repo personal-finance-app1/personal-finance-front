@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BalanceService } from '../../service/balance.service';
 import { DeclareBalanceComponent } from '../declare-balance/declare-balance.component';
-
+import{numberValidator} from "../../../../validators/numbervalidator";
 
 /**
  * The balance component is responsible for tracking user balance.
@@ -18,9 +18,10 @@ import { DeclareBalanceComponent } from '../declare-balance/declare-balance.comp
   styleUrls: ['./balance.component.css'],
 })
 export class BalanceComponent implements OnInit {
+  public inputValidator: any = numberValidator;
   public invalidMessage: string;
   public accountBalance: number|null;
-  public isDeclare: boolean = false;
+  public isDeclare: boolean = false; 
   /**This read only variable will hold the message we'll send to the user, if they enter an invalid balance. */
   public readonly INVALID_BALANCE_MESSAGE: string = "Please enter a valid currency value.";
   /**This property holds a reference to the Balance Service we use to perform operations on our component.*/

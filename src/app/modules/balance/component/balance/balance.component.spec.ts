@@ -19,6 +19,7 @@ describe('BalanceComponent', () => {
   });
 
   beforeEach(() => {
+    service = new BalanceService();
     service = TestBed.inject(BalanceService);
     dialogMock = jasmine.createSpyObj('MatDialog', ['open']);
     component = new BalanceComponent(service,dialogMock);
@@ -33,7 +34,7 @@ describe('BalanceComponent', () => {
 
   describe("Account balance on component init.", () => {
     it('should have a an account balance value of null to indicate the account balance has not been declared', () => {
-      expect(component.accountBalance).toBeNull();
+      expect(component.accountBalance).toBe(0);
     })
   })
 
