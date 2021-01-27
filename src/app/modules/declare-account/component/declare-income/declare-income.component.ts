@@ -36,7 +36,7 @@ export class DeclareIncomeComponent implements OnInit {
       this.error = "Error: Input must be positive.";
 
     } else if(income % 1 != 0){
-      this.error = "Error: Input cannot exceed two decimal places.";
+      this.error =   "Error: Input cannot exceed two decimal places.";
 
     } else {
       this.error = "";
