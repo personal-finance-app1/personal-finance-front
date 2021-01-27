@@ -9,16 +9,14 @@ export const environment = {
   production: false,
   firebaseConfig: 
   { 
-    apiKey: String, 
-    authDomain: String, 
-    projectId: String, 
-    storageBucket: String, 
-    messagingSenderId: String, 
-    appId: String, 
-    measurementId: String
+    apiKey: "AIzaSyC4sxZlT-McTildwtxa8LV1lj7ZQhzOrs0",
+    authDomain: "training-team-253916.firebaseapp.com",
+    projectId: "training-team-253916",
+    storageBucket: "training-team-253916.appspot.com",
+    messagingSenderId: "492701958610",
+    appId: "1:492701958610:web:4a30a1be93803701d3480b",
+    measurementId: "G-DP6XDH9DTW"
   },
-
-  //apiUrl: 'http://ec2-3-229-123-153.compute-1.amazonaws.com:8082/personal-finance'
   apiUrl: 'http://localhost:8082/personal-finance'
 };
 
