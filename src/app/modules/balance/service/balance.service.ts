@@ -9,7 +9,7 @@ export class BalanceService {
 
   public readonly notificationObservableSubject: Subject<number>;
   constructor() {
-    this.account = new Account(0, 0, 0);
+    this.account = new Account(0, 0, "", 0, 0, 0);
     this.notificationObservableSubject = new Subject<number>();
   }
 

@@ -16,10 +16,13 @@ export const environment = {
     messagingSenderId: "492701958610",
     appId: "1:492701958610:web:4a30a1be93803701d3480b",
     measurementId: "G-DP6XDH9DTW"
-  }
+  },
+  apiUrl: 'http://localhost:8082/personal-finance'
 };
 
 export let account$: Subject<Account> = new Subject<Account>();
+
+
 
 /*
  * For easier debugging in development mode, you can import the following file

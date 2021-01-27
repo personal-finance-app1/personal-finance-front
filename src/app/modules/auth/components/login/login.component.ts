@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit, OnChanges {
     });
   }
 
-
   ngOnChanges(): void {
     if (true) {
       this.mesg = "Account Logged in successfully";
@@ -38,28 +37,25 @@ export class LoginComponent implements OnInit, OnChanges {
     }
   }
 
-
-
+  /**
+   * Method that handles login when form is submitted
+   */
   async onLogin() {
 
     let isLogin = await this.authSerice.login(this.loginForm.value.username, this.loginForm.value.password);
 
-    console.log(isLogin);
-
     if (isLogin) {
-      this.navigate();
-      //console.log(this.authSerice.getToken());
+      this.router.navigate(['/homepage']);
     }
     else {
       window.location.reload();
       this.refreshLoginPage();
     }
-
   }
 
 
   /**
-   * This is for refresh login page in case of login failed.
+   * Method that clears page and returns to login screen when browser is refreshed
    */
   refreshLoginPage() {
 
@@ -67,28 +63,14 @@ export class LoginComponent implements OnInit, OnChanges {
     this.loginForm.value.password = " ";
     this.authSerice.logout();
     this.router.navigate(['/login']);
-    // window.location.reload();
-
   }
 
-
-
   /**
- * Method for rerouter to Home Page
- */
-  navigate(): void {
-    this.router.navigate(['/homepage']);
-  }
-
-
-  /**
-   * this is for logout event
-   * reload login page when user logout application.
+   * Method that returns user to login screen when logged out
    */
 
   onlogout(): void {
     this.authSerice.logout()
     this.router.navigate(['/login']);
   }
-
 } 

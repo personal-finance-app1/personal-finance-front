@@ -15,46 +15,7 @@ export class AuthService {
   authChange = new Subject<boolean>();
 
 
-  constructor(private fireStore: AngularFirestore, private auth: AngularFireAuth) {
-    // this.auth.authState.subscribe(user => {
-    //   if (user) {
-    //     this.userData = user;
-    //   }
-    //   else {
-    //     this.userData = null;
-    //   }
-    // })
-  }
-
-  /**
-   * Method for validating user credentials with Firebase, stores user
-   * credentials if authorized user is found.
-   * 
-   * @param username String
-   * @param password String
-   * @returns boolean indicating whether credentials are authenticated by
-   *          firebase
-   */
-  // public login(username: string, password: string): boolean {
-
-  //   this.auth.signInWithEmailAndPassword(username, password).then(
-  //     (result) => {
-  //       this.userData = result.user;
-  //     }).catch((error) => {
-  //       alert("Username and Password are invalid !!");
-  //       console.log(error);
-  //     });
-
-  //   console.log(this.userData);
-
-  //   if (this.userData == null) {
-  //     return false;
-  //   }
-  //   else {
-  //     return true;
-  //   }
-  // }
-
+  constructor(private fireStore: AngularFirestore, private auth: AngularFireAuth) {}
 
   /**
   * Method for validating user credentials with Firebase, stores user
@@ -62,7 +23,7 @@ export class AuthService {
   * 
   * @param username String
   * @param password String
-  * @returns Promise<boolean>  indicating whether credentials are authenticated by
+  * @returns Promise<boolean> indicating whether credentials are authenticated by
   *          firebase
   */
   async login(username: string, password: string): Promise<boolean> {
@@ -80,7 +41,6 @@ export class AuthService {
         }
       ).catch((error) => {
         alert("Username and Password are invalid !!");
-        console.log(error);
         return false;
       });
 
@@ -90,11 +50,7 @@ export class AuthService {
 
       return isLoginSuccess;
     }
-
-
   }
-
-
 
   /**
    * Method for logging user out of application. Invalidates token with
@@ -156,16 +112,12 @@ export class AuthService {
     }
   }
 
-
-  /**   
-   * Method to determine if there is a user logged in    
-   * @param none    
-   * @returns Boolean - result of evaluating userData == null    
+  /**  
+   * Method to determine if there is a user logged in   
+   * @param none   
+   * @returns Boolean - result of evaluating userData == null   
    */
   public isLoggedIn() : boolean {  
     return this.userData != null; 
   }
-
-
-
 }

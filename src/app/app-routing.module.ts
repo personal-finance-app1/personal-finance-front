@@ -13,8 +13,6 @@ const routes: Routes = [
   { path: 'expenses', component: DeclareExpensesComponent },
   { path: 'declareincome', component: DeclareIncomeComponent },
   { path: 'homepage', component: HomepageComponent, canActivate: [AuthGuard] }
-  // { path: '', component: HomepageComponent },
-
 ];
 
 @NgModule({

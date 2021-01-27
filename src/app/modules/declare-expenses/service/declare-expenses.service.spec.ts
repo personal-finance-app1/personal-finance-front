@@ -26,7 +26,7 @@ describe('DeclareExpensesService', () => {
 
   describe('#updateAccountsTable()', () => {
     xit('returned Observable should match the right data', () => {
-      const mockAccount = new Account(0,0,0);
+      const mockAccount = new Account(0,0, "",0,0,0);
 
       service.updateAccountsTable(mockAccount).subscribe((accountData: Account) => {
         expect(accountData).toEqual(mockAccount);
