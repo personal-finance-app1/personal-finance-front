@@ -21,7 +21,7 @@
                 #incomeInput="ngModel"
               />   
               <mat-error *ngIf="incomeInput.hasError('required')">Field must not be empty.</mat-error>
-              <mat-error *ngIf="incomeInput.hasError('required')">{{ error }}</mat-error>                   
+              <mat-error *!ngIf="incomeInput.hasError('required')">{{ error }}</mat-error>                   
             </mat-form-field>
             
             <button
@@ -33,7 +33,7 @@
               Update
             </button>
             <span class="current-income-span" *ngIf="currentIncome"
-              >Current Income: $ {{currentIncome }}
+              >Current Income: $ {{ account.income/100 }}
             </span>
           </span>
         </mat-label>
