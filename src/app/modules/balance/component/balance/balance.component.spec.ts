@@ -21,7 +21,7 @@ describe('BalanceComponent', () => {
   beforeEach(() => {
     service = TestBed.inject(BalanceService);
     dialogMock = jasmine.createSpyObj('MatDialog', ['open']);
-    component = new BalanceComponent(service,dialogMock);
+    component = new BalanceComponent(service);
   });
 
   describe("Component init", () => {

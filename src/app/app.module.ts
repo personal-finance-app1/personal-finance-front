@@ -13,32 +13,32 @@ import { HeaderComponent } from './modules/navigation/header/header.component';
 import { LoginComponent } from './modules/auth/components/login/login.component';
 import { AuthModule } from './modules/auth/auth.module';
 import { BalanceModule } from './modules/balance/balance.module';
+import { HomepageComponent } from './modules/homepage/component/homepage.component';
 import { DeclareAccountModule } from './modules/declare-account/declare-account.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     CommonModule,
     FormsModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
     BalanceProjectionModule,
     AuthModule,
-    FormsModule,
     MaterialBuildModule,
     FlexLayoutModule,
     ReactiveFormsModule,
     DeclareAccountModule,
-    BalanceProjectionModule,
-    AuthModule,
     BalanceModule
   ],
-  providers: [],
+  providers: [AuthModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
