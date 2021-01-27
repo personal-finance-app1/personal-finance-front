@@ -13,8 +13,6 @@ import { HeaderComponent } from './modules/navigation/header/header.component';
 import { LoginComponent } from './modules/auth/components/login/login.component';
 import { AuthModule } from './modules/auth/auth.module';
 import { HomepageComponent } from './modules/homepage/component/homepage.component';
-import { BalanceModule } from './modules/balance/balance.module';
-import { DeclareAccountModule } from './modules/declare-account/declare-account.module';
 
 @NgModule({
   declarations: [
@@ -34,12 +32,7 @@ import { DeclareAccountModule } from './modules/declare-account/declare-account.
     FormsModule,
     MaterialBuildModule,
     FlexLayoutModule,
-    ReactiveFormsModule,
-    DeclareAccountModule,
-    BalanceProjectionModule,
-    AuthModule,
-    BalanceModule,
-
+    ReactiveFormsModule
   ],
   providers: [AuthModule],
   bootstrap: [AppComponent]
