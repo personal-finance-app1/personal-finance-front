@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Account } from 'src/app/models/account';
+import { numberValidator } from 'src/app/validators/numbervalidator';
 import { account$ } from 'src/environments/environment';
 import { DeclareAccountService } from '../../service/declare-account.service';
 
@@ -9,7 +10,7 @@ import { DeclareAccountService } from '../../service/declare-account.service';
   styleUrls: ['./declare-expenses.component.css']
 })
 export class DeclareExpensesComponent implements OnInit {
-
+  public inputValidator: any = numberValidator;
   error: string;
   account: Account;
   

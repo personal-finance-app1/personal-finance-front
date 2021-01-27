@@ -26,7 +26,7 @@
               mat-raised-button
               color="warn"
               type="submit"
-              [disabled]="f.invalid"
+              [disabled]="f.invalid || !inputValidator(expensesInput.value)"
             >
               Update
             </button>
