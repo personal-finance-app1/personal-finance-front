@@ -3,13 +3,17 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Account } from 'src/app/models/account';
 import { environment } from 'src/environments/environment';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeclareAccountService {
 
-  constructor(private http:HttpClient) { }
+  constructor(
+    private http:HttpClient,
+    private as:AuthService
+    ) { }
 
   options = {
     headers : new HttpHeaders({
@@ -19,7 +23,7 @@ export class DeclareAccountService {
   };
 
   /**
-   * Updates the Accounts table.
+  * Updates the Accounts table.
   * @param account Returns the updated account from the database.
   */
   public updateAccountsTable(account:Account): Observable<Account>{

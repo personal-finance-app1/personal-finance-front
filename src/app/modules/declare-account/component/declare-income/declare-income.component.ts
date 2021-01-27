@@ -3,6 +3,9 @@ import { Account } from 'src/app/models/account';
 import { account$ } from 'src/environments/environment';
 import { DeclareAccountService } from '../../service/declare-account.service';
 
+/**
+ * This component represents the Declare Income widget on the homepage
+ */
 @Component({
   selector: 'app-declare-income',
   templateUrl: './declare-income.component.html',
@@ -11,7 +14,7 @@ import { DeclareAccountService } from '../../service/declare-account.service';
 export class DeclareIncomeComponent implements OnInit {
 
   error: string;
-  account: Account = new Account(1, 1,"",51,52,53); //accountId, userId, name, income, expenses, balance;
+  account: Account;
   
   currentIncome: number;
   
