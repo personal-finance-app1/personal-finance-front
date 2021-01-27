@@ -1,21 +1,21 @@
 import { TestBed } from '@angular/core/testing';
 import { Account } from 'src/app/models/account';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { DeclareIncomeService } from './declare-income.service';
+import { DeclareAccountService } from './declare-account.service';
 import { environment } from 'src/environments/environment';
 
-describe('DeclareIncomeService', () => {
+describe('DeclareAccountService', () => {
 
-  let service: DeclareIncomeService;
+  let service: DeclareAccountService;
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [DeclareIncomeService]
+      providers: [DeclareAccountService]
     });
 
-    service = TestBed.inject(DeclareIncomeService);
+    service = TestBed.inject(DeclareAccountService);
     httpTestingController = TestBed.inject(HttpTestingController);
 
   });
@@ -28,15 +28,15 @@ describe('DeclareIncomeService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('sendIncome method', () => {
+  describe('updateAccountsTable method', () => {
     xit('should return Observable that matches the mocked data', () => { // Successful
-      const mockedAccount = new Account(0,0,0);
+      const mockedAccount = new Account(0,0,"",0,0,0);
 
-      service.sendIncome(mockedAccount).subscribe((accountData: Account) => {
+      service.updateAccountsTable(mockedAccount).subscribe((accountData: Account) => {
         expect(accountData).toEqual(mockedAccount);
       });
 
-      const request = httpTestingController.expectOne(`${environment.apiUrl}/income`);
+      const request = httpTestingController.expectOne(`${environment.apiUrl}/account`);
       expect(request.request.method).toEqual('PUT');
       request.flush(mockedAccount);
     });
