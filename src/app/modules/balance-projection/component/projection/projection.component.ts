@@ -33,7 +33,7 @@ export class ProjectionComponent implements OnInit {
         label: function (toolTipItem, data) {
           //console.log("$" + data.datasets[toolTipItem.datasetIndex].data[toolTipItem.index]);
           let amount = data.datasets[toolTipItem.datasetIndex].data[toolTipItem.index];
-          return data.labels[toolTipItem.index] as string + ": $" + amount + " (" + Math.round(((<number>amount/(<number>data.datasets[toolTipItem.datasetIndex].data[0] + <number>data.datasets[toolTipItem.datasetIndex].data[1]))*100)) + "%)";
+          return data.labels[toolTipItem.index] as string + ": $" + (<number>amount/100) + " (" + Math.round(((<number>amount/(<number>data.datasets[toolTipItem.datasetIndex].data[0] + <number>data.datasets[toolTipItem.datasetIndex].data[1]))*100)) + "%)";
         }
       }
     }
@@ -54,7 +54,7 @@ export class ProjectionComponent implements OnInit {
           return "Pay Period " + tooltipItem[0].label.toString();//displays "Pay Period" and the pay period number (i.e. Pay Period 2)
         },
         label: function (tooltipItem) {
-          return "$" + Number(tooltipItem.value).toFixed(2);//displays the balance with two decimal places
+          return "$" + (Number(tooltipItem.value)/100).toFixed(2);//displays the balance with two decimal places
         }
       }
     },
@@ -71,7 +71,7 @@ export class ProjectionComponent implements OnInit {
         ticks: {
           // Include a dollar sign in the tick marks
           callback: function (tooltipItem) {
-            return '$' + tooltipItem;
+            return '$' + (<number>tooltipItem/100).toFixed(2);
           },
           fontSize: 16
         }

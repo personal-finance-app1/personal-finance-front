@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts';
+import { FormatCurrencyPipe } from 'src/app/pipes/format-currency.pipe';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class ProjectionService {
     
     let points:number[] = [];
     let labels:Label[] = [];
-    let currentBalance: number = balance;
+    let currentBalance: number = balance * 100;
     for (let i: number = 0; i <= payPeriods; i++) {
       if(i > 0) currentBalance += (income - expenses);
       currentBalance = Number(Math.round(parseFloat(currentBalance + 'e2')) + 'e-2');
