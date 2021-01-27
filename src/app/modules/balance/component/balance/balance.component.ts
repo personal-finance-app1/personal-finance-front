@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { NgForm } from '@angular/forms';
 import { BalanceService } from '../../service/balance.service';
 import { DeclareBalanceComponent } from '../declare-balance/declare-balance.component';
 import{numberValidator} from "../../../../validators/numbervalidator";
+import { MatDialog } from '@angular/material/dialog';
 
 /**
  * The balance component is responsible for tracking user balance.
@@ -47,20 +48,21 @@ export class BalanceComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  /**The updateAccountBalance is called when the user pushes the button to update the account balance.
+  /**
+   * The updateAccountBalance is called when the user pushes the button to update the account balance.
    * We can use this method to push values to the global service.
    */
-  public updateAccountBalance(balanceInput:any): void {
-    //here, we make sure the account balance is valid
-    // we do not do any manual setting as we are subscribed to the service observable in the cstr.
-    if(this.balanceService.validateAccountBalance(balanceInput)){
-      this.balanceService.setBalance(balanceInput); //if valid balance, update the balance service
-      this.invalidMessage=''; //set message to empty string, in case it has been set to an invalid string before
-    } else {
-      this.invalidMessage = this.INVALID_BALANCE_MESSAGE;
-    }
+  public updateAccountBalance(): void {
+    //
+  }
 
+  /**
+   * The declare account balance method is used to declare the account balance. We can use this
+   * method to push values to the global service.
+   */
+  public declareAccountBalance(): void {
+    //stub
   }
 }

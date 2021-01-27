@@ -26,3 +26,15 @@
 .btn{
     margin-left: 100px;
 }
+
+.loginStyle{
+
+    border: 2px solid #b5b6d2;
+    border-radius: 10%;
+    width: 400px;
+    height: 365px;
+    margin:60px;
+    background-color: #ecebec;
+
+}
+

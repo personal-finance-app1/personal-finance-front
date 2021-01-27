@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
+import { Observable, Subject } from 'rxjs';
 
 
 @Injectable({
@@ -11,42 +12,43 @@ import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 export class AuthService {
 
   private userData: any;
+  authChange = new Subject<boolean>();
 
-  constructor(private fireStore: AngularFirestore, private auth: AngularFireAuth) {
-    this.auth.authState.subscribe(user => {
-      if (user) {
-        this.userData = user;
-      }
-      else {
-        this.userData = null;
-      }
-    })
-  }
+
+  constructor(private fireStore: AngularFirestore, private auth: AngularFireAuth) {}
 
   /**
-   * Method for validating user credentials with Firebase, stores user
-   * credentials if authorized user is found.
-   * 
-   * @param username String
-   * @param password String
-   * @returns boolean indicating whether credentials are authenticated by
-   *          firebase
-   */
-  public login(username: string, password: string): boolean {
-    this.auth.signInWithEmailAndPassword(username, password).then(
-      (result) => {
-        this.userData = result.user;
-      }).catch((error) => {
-        alert("Username and Password are invalid !!");
-        console.log(error)
+  * Method for validating user credentials with Firebase, stores user
+  * credentials if authorized user is found.
+  * 
+  * @param username String
+  * @param password String
+  * @returns Promise<boolean> indicating whether credentials are authenticated by
+  *          firebase
+  */
+  async login(username: string, password: string): Promise<boolean> {
 
+    let isLoginSuccess: boolean = false;
+
+    try {
+
+      isLoginSuccess = await this.auth.signInWithEmailAndPassword(username, password).then(
+        (result) => {
+          this.userData = result.user;
+          this.authChange.next(true);
+          return true;
+
+        }
+      ).catch((error) => {
+        alert("Username and Password are invalid !!");
+        return false;
       });
 
-    if (this.userData == null) {
-      return false;
-    }
-    else {
-      return true;
+      return isLoginSuccess;
+
+    } catch (error) {
+
+      return isLoginSuccess;
     }
   }
 
@@ -60,6 +62,7 @@ export class AuthService {
   public logout() {
     this.auth.signOut().then(() => {
       this.userData = null;
+      //this.authChange.next(false);
     })
 
     return;
@@ -104,10 +107,17 @@ export class AuthService {
   public getEmail(): String {
     if (this.userData == null) {
       return null;
-    }
-
-    else {
+    } else {
       return this.userData.email;
     }
+  }
+
+  /**  
+   * Method to determine if there is a user logged in   
+   * @param none   
+   * @returns Boolean - result of evaluating userData == null   
+   */
+  public isLoggedIn() : boolean {  
+    return this.userData != null; 
   }
 }
