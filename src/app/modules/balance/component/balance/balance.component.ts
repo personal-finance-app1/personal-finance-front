@@ -41,8 +41,8 @@ export class BalanceComponent implements OnInit {
   }
         
     //whenever an external component changes the balance state, then accept the pushed balance value.
-    this.balanceService.notificationObservableSubject.subscribe((pushedBalanceValue)=> {
-      this.accountBalance = pushedBalanceValue;
+    this.balanceService.notificationObservableSubject.subscribe((nextAccount)=> {
+      this.accountBalance = nextAccount.balance;
     })
   }
 
