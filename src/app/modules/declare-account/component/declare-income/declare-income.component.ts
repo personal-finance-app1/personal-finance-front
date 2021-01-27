@@ -12,7 +12,6 @@ export class DeclareIncomeComponent implements OnInit {
 
   error: String;
   account: Account;
-  currentIncome: number;
   
   constructor(private da: DeclareAccountService) {
     account$.subscribe((account) => {
@@ -44,7 +43,6 @@ export class DeclareIncomeComponent implements OnInit {
     } else {
       this.error = "";
       this.account.income = income*100;
-      this.currentIncome = income;
 
       //Reset input value
       
