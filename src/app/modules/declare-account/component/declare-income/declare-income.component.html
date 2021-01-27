@@ -20,7 +20,7 @@
                 #incomeInput="ngModel"
               />   
               <mat-error *ngIf="incomeInput.hasError('required')">Field must not be empty.</mat-error>
-              <mat-error *ngIf="incomeInput.hasError('required')">{{ error }}</mat-error>                   
+              <mat-error *ngIf="!incomeInput.hasError('required')">{{ error }}</mat-error>
             </mat-form-field>
             
             <button

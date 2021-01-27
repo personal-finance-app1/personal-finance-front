@@ -31,6 +31,7 @@ export class DeclareExpensesComponent implements OnInit {
   public updateAccount(expenses:any){
 
     expenses *= 100;
+    
     if(expenses < 0){
       this.error = "Error: Input must be positive.";
 
