@@ -10,7 +10,7 @@ import { DeclareAccountService } from '../../service/declare-account.service';
 })
 export class DeclareExpensesComponent implements OnInit {
 
-  error: String;
+  error: string;
   account: Account;
   
   constructor(private da: DeclareAccountService) {
@@ -29,23 +29,17 @@ export class DeclareExpensesComponent implements OnInit {
    * @param expenses 
    */
   public updateAccount(expenses:any){
-    let v = expenses;
-    console.log("value= " + v);
+
+    expenses *= 100;
     if(expenses < 0){
       this.error = "Error: Input must be positive.";
-      
-      //Reset input value
 
-    } else if(Math.floor(expenses * 100) != (expenses * 100)){
+    } else if(expenses % 1 != 0){
       this.error = "Error: Input cannot exceed two decimal places.";
-
-      //Reset input value
 
     } else {
       this.error = "";
-      this.account.expenses = expenses*100;
-
-      //Reset input value
+      this.account.expenses = expenses;
       
       this.da.updateAccountsTable(this.account).subscribe((response: Account)  => {
         account$.next(response);
