@@ -33,7 +33,6 @@ export class ProjectionComponent implements OnInit {
     tooltips: {
       callbacks: {
         label: function (toolTipItem, data) {
-          //console.log("$" + data.datasets[toolTipItem.datasetIndex].data[toolTipItem.index]);
           let amount = data.datasets[toolTipItem.datasetIndex].data[toolTipItem.index];
           return data.labels[toolTipItem.index] as string + ": $" + amount;
         }
@@ -119,7 +118,7 @@ export class ProjectionComponent implements OnInit {
         this.createChart();
       });
 
-    this.account = new Account(0, 0, "", 1500.12, 1300.47, 300);
+    this.account = new Account(0, "userid", "", 1500.12, 1300.47, 300);
     this.doughnutChartData = [
       [this.account.expenses, this.account.income]
     ];
@@ -128,10 +127,7 @@ export class ProjectionComponent implements OnInit {
   }
 
   /**
-   * Graphs the balance over a number of pay periods for an account, as well as the income and expenses.
-   * The balance is graphed in a line chart.
-   * The income and expenses are graphed in a doughnut chart.
-   * @returns void
+   * Graphs the balance over a number of pay periods for an account.
    */
   createChart(): void {
     //this.title = "Projected Balance";
@@ -154,9 +150,5 @@ export class ProjectionComponent implements OnInit {
   onInputChange(event: MatSliderChange) {
     this.payPeriods = event.value;
     this.createChart();
-  }
-
-  getAccount(): void {
-
   }
 }

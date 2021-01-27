@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-import { Color, BaseChartDirective, Label } from 'ng2-charts';
+import { ChartDataSets } from 'chart.js';
+import { Label } from 'ng2-charts';
 
 @Injectable({
   providedIn: 'root'
