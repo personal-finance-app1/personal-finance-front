@@ -20,7 +20,7 @@ export const environment = {
   apiUrl: 'http://localhost:8082/personal-finance'
 };
 
-export let account$: BehaviorSubject<Account> = new BehaviorSubject<Account>(new Account(-1,"", "",0,0,0));
+export let account$: BehaviorSubject<Account> = new BehaviorSubject<Account>(new Account(1,"1", "test",0,0,0));
 
 
 

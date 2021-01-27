@@ -15,12 +15,6 @@ export class DeclareAccountService {
     private as:AuthService
     ) { }
 
-  options = {
-    headers : new HttpHeaders({
-      'Content-type' : 'application/json'
-    }),
-    withCredentials:true
-  };
 
   /**
   * Updates the Accounts table.
@@ -31,10 +25,7 @@ export class DeclareAccountService {
     let token = this.as.getToken();
     let options = { headers: new HttpHeaders({'Authorization': token}) };
 
-    console.log(options);
-
-    console.log("After Headers")
-    console.log(options.headers)
+    console.log(account)
     return this.http.patch(`${environment.apiUrl}/accounts`, account, options) as Observable<Account>;
   }
 }

@@ -47,7 +47,7 @@ export class DeclareExpensesComponent implements OnInit {
 
     } else {
       this.error = "";
-      this.account.expenses = expenses*100;
+      this.account.expenses = expenses;
       
       this.da.updateAccountsTable(this.account).subscribe((response: Account)  => {
         account$.next(response);
