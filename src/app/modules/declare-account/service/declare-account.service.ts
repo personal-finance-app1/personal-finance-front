@@ -27,16 +27,14 @@ export class DeclareAccountService {
   * @param account Returns the updated account from the database.
   */
   public updateAccountsTable(account:Account): Observable<Account>{
-    console.log("Before Headers")
-    console.log(account)
-    
-    let options = {headers: new Headers()};
-    let token = this.as.getToken;
-    let jwt = token()
-    options.headers.append('Authorization', jwt);
 
-    console.log("After Headers")
-    console.log(options.headers)
-    return this.http.patch(`${environment.apiUrl}/accounts`, account) as Observable<Account>;
+    let token = this.as.getToken();
+
+    console.log(token);
+
+    return this.http.patch(`${environment.apiUrl}/accounts`, account, {
+      //headers: new HttpHeaders().set('Authorization', "hello")
+      headers: new HttpHeaders({'Authorization': token})
+  }) as Observable<Account>;
   }
 }
