@@ -38,23 +38,18 @@ export class DeclareIncomeComponent implements OnInit {
    * @ returns none
    */
   public updateAccount(income:number){
+
+    income *= 100;
     
     if(income < 0){
       this.error = "Error: Input must be positive.";
-      
-      //Reset input value
 
-    } else if(Math.floor(income * 100) != (income * 100)){
+    } else if(income % 1 != 0){
       this.error = "Error: Input cannot exceed two decimal places.";
-
-      //Reset input value
 
     } else {
       this.error = "";
-      this.account.income = income*100;
-      this.currentIncome = income;
-
-      //Reset input value
+      this.account.income = income;
       
       this.da.updateAccountsTable(this.account).subscribe((response: Account)  => {
         account$.next(response);
@@ -66,8 +61,8 @@ export class DeclareIncomeComponent implements OnInit {
   public validateInput(value: string): Boolean {
     let regex = /[1-9]0{2,}|[0-9]+(.[0-9][0-9])(?![\w\d])/
     if(regex.test(value)){
-      return true
       this.error 
+      return true
     }
     else {
       return false
@@ -75,30 +70,3 @@ export class DeclareIncomeComponent implements OnInit {
   }
 
 }
-
-
-
-// public async updateExpenses() 
-//   {
-
-//     this.account.expenses *= 100;
-
-//     if (this.account.expenses < 0) {
-//       this.account.expenses = 0;
-//       this.error = "Error: Input must be positive.";
-//     }
-//     else if (this.account.expenses % 1 != 0) {
-//       this.account.expenses = 0;
-//       this.error = "Error: Input cannot exceed two decimal places.";
-//     }
-//     else {
-//       this.declareExpensesService.updateAccountsTable(this.account).subscribe((data) => {
-//         if (data) {
-//           account$.next(data)
-//         }
-//         else {
-//           this.error = "Error: Retrieved account doesn't exist."
-//         }
-//       })
-//     }
-//   }
