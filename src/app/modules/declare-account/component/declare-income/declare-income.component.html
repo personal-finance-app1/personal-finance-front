@@ -16,7 +16,6 @@
                 appearance="fill"
                 ngModel
                 name="income"
-                required
                 #incomeInput="ngModel"
               />   
               <mat-error *ngIf="incomeInput.hasError('required')">Field must not be empty.</mat-error>
@@ -33,7 +32,7 @@
             </button>
             <br/>
             <span class="current-income-span"
-              >Current Income: $ {{ account.income/100 }}
+              >Current Income: ${{ account.income/100 }}
             </span>
           </span>
         </mat-label>
