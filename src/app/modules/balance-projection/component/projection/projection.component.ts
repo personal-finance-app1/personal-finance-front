@@ -33,7 +33,6 @@ export class ProjectionComponent implements OnInit {
     tooltips: {
       callbacks: {
         label: function (toolTipItem, data) {
-          //console.log("$" + data.datasets[toolTipItem.datasetIndex].data[toolTipItem.index]);
           let amount = data.datasets[toolTipItem.datasetIndex].data[toolTipItem.index];
           return data.labels[toolTipItem.index] as string + ": $" + amount;
         }
@@ -112,22 +111,25 @@ export class ProjectionComponent implements OnInit {
 
   ngOnInit(): void {
     //get the account from the environment variable and the corresponding information
-    //this.account = account$.value;
-    account$.subscribe((account)=>{
-      //console.log(x)
-      this.account = account;
-      this.createChart();
-      this.doughnutChartData = [
-        [this.account.expenses, this.account.income]
-      ];
-    });
+    account$.subscribe(
+      (account) => {
+        this.account = account;
+        this.doughnutChartData = [
+          [this.account.expenses, this.account.income]
+        ];
+        this.createChart();
+      });
+
+    this.account = new Account(0, "userid", "", 1500.12, 1300.47, 300);
+    this.doughnutChartData = [
+      [this.account.expenses, this.account.income]
+    ];
+
+    this.createChart();
   }
 
   /**
-   * Graphs the balance over a number of pay periods for an account, as well as the income and expenses.
-   * The balance is graphed in a line chart.
-   * The income and expenses are graphed in a doughnut chart.
-   * @returns void
+   * Graphs the balance over a number of pay periods for an account.
    */
   createChart(): void {
     //this.title = "Projected Balance";
@@ -150,10 +152,5 @@ export class ProjectionComponent implements OnInit {
   onInputChange(event: MatSliderChange) {
     this.payPeriods = event.value;
     this.createChart();
-  }
-
-  setAccount(account:Account) : void {
-    console.log("Account updated");
-    this.account = account;
   }
 }
