@@ -5,7 +5,6 @@
       (ngSubmit)="updateAccount(expensesInput.value)"
       fxLayoutAlign="start stretch"
     >
-      <div class="expenses_title">Expenses</div>
       <div fxLayout="row" class="mat_input">
         <mat-label>
           <mat-icon class="material-icons-outlined">attach_money</mat-icon>
@@ -32,6 +31,7 @@
             >
               Update
             </button>
+            <br/>
             <span class="current-expenses-span" *ngIf="currentExpenses"
               >Current Expenses: $ {{currentExpenses }}
             </span>
@@ -40,15 +40,4 @@
       </div>
       <mat-error *ngIf="error">{{ error }}</mat-error>
     </form>
-  </section>
-  
-
-  <!-- 
-
-<label for= "expensesInput"> <span>Please enter your bi-weekly expenses</span> </label>
-<input name ="expensesInput" type = "number" placeholder= "0.00" [(ngModel)]="account.expenses">
-<button (click) = "updateExpenses()">Submit</button> 
-<br>
-<div *ngIf="error">{{error}}</div>
-
-  -->
+</section>

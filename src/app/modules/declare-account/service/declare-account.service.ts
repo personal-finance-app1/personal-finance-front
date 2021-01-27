@@ -19,8 +19,8 @@ export class DeclareAccountService {
   };
 
   /**
-   * Updates the Accounts table.
-  * @param account Returns the updated account from the database.
+   * Updates the given account in the database.
+  * @param account Returns the updated account.
   */
   public updateAccountsTable(account:Account): Observable<Account>{
     console.log(account)

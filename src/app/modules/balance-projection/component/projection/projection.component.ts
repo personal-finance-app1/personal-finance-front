@@ -108,7 +108,6 @@ export class ProjectionComponent implements OnInit {
     //get the account from the environment variable and the corresponding information
     //this.account = account$.value;
     account$.subscribe((account)=>{
-      //console.log(x)
       this.account = account;
       this.createChart();
       this.doughnutChartData = [

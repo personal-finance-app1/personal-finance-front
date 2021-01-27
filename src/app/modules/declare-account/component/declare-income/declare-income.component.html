@@ -5,7 +5,6 @@
       (ngSubmit)="updateAccount(incomeInput.value)"
       fxLayoutAlign="start stretch"
     >
-      <div class="income_title">Income</div>
       <div fxLayout="row" class="mat_input">
         <mat-label>
           <mat-icon class="material-icons-outlined">attach_money</mat-icon>
@@ -32,6 +31,7 @@
             >
               Update
             </button>
+            <br/>
             <span class="current-income-span" *ngIf="currentIncome"
               >Current Income: $ {{currentIncome }}
             </span>
