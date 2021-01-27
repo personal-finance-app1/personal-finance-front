@@ -64,7 +64,7 @@ export class AuthService {
   public logout() {
     this.auth.signOut().then(() => {
       this.userData = null;
-      this.authChange.next(false);
+      //this.authChange.next(false);
     })
 
     return;

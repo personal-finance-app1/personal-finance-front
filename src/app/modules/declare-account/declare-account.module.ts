@@ -4,8 +4,9 @@ import { DeclareExpensesComponent } from './component/declare-expenses/declare-e
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { DeclareIncomeComponent } from './component/declare-income/declare-income.component';
 import { MaterialBuildModule } from 'src/app/material.module';
+import { DeclareIncomeComponent } from './component/declare-income/declare-income.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { MaterialBuildModule } from 'src/app/material.module';
     CommonModule,
     HttpClientModule,
     MaterialBuildModule
-  ],  
+  ],
   exports: [
     DeclareExpensesComponent,
     DeclareIncomeComponent

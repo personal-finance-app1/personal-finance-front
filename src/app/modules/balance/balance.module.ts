@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BalanceComponent } from './component/balance/balance.component';
+import { DeclareBalanceComponent } from './component/declare-balance/declare-balance.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,7 +12,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
-    BalanceComponent
+    BalanceComponent,
+    DeclareBalanceComponent
   ],
   imports: [
     BrowserModule,
@@ -22,6 +24,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MaterialBuildModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-  ]
+  ] ,
+  exports:[BalanceComponent,DeclareBalanceComponent]
 })
 export class BalanceModule { }

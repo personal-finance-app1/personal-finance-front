@@ -5,7 +5,6 @@
       (ngSubmit)="updateAccount(expensesInput.value)"
       fxLayoutAlign="start stretch"
     >
-      <div class="expenses_title">Expenses</div>
       <div fxLayout="row" class="mat_input">
         <mat-label>
           <mat-icon class="material-icons-outlined">attach_money</mat-icon>
@@ -17,7 +16,6 @@
                 appearance="fill"
                 ngModel
                 name="expenses"
-                required
                 #expensesInput="ngModel"
               />   
               <mat-error *ngIf="expensesInput.hasError('required')">Field must not be empty.</mat-error>
@@ -28,17 +26,17 @@
               mat-raised-button
               color="warn"
               type="submit"
-              [disabled]="f.invalid"
+              [disabled]="f.invalid || !inputValidator(expensesInput.value)"
             >
               Update
             </button>
-            <span class="current-expenses-span" *ngIf="currentExpenses"
-              >Current Expenses: $ {{ account.expenses/100 }}
+            <br/>
+            <span class="current-expenses-span" 
+              >Current Expenses: ${{ account.expenses/100 }}
             </span>
           </span>
         </mat-label>
       </div>
       <mat-error *ngIf="error">{{ error }}</mat-error>
     </form>
-  </section>
-  
+</section>

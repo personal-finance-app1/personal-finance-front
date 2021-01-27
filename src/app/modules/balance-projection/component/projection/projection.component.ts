@@ -19,9 +19,7 @@ export interface Tile {
   styleUrls: ['./projection.component.css']
 })
 export class ProjectionComponent implements OnInit {
-
   account: Account;
-
   doughnutChartLabels: Label[] = ['Expenses', 'Income'];
   doughnutChartData: MultiDataSet;
   doughnutChartOptions: ChartOptions = {
@@ -34,13 +32,12 @@ export class ProjectionComponent implements OnInit {
       callbacks: {
         label: function (toolTipItem, data) {
           let amount = data.datasets[toolTipItem.datasetIndex].data[toolTipItem.index];
-          return data.labels[toolTipItem.index] as string + ": $" + amount;
+          return data.labels[toolTipItem.index] as string + ": $" + (<number>amount/100) + " (" + Math.round(((<number>amount/(<number>data.datasets[toolTipItem.datasetIndex].data[0] + <number>data.datasets[toolTipItem.datasetIndex].data[1]))*100)) + "%)";
         }
       }
     }
   };
-  doughnutColors: Color[] = [{ backgroundColor: ['rgba(231, 10, 91,1)', 'rgba(106,245,106,1)'], borderWidth: 2, borderColor: '#DDD' }];
-
+  doughnutColors: Color[] = [{ backgroundColor: ['rgba(242, 105, 38,1)', 'rgba(115, 165, 194,1)'], borderWidth: 2, borderColor: '#DDD' }];
   lineChartData: ChartDataSets[];
   lineChartLabels: Label[];
   lineChartOptions: ChartOptions = {
@@ -56,7 +53,7 @@ export class ProjectionComponent implements OnInit {
           return "Pay Period " + tooltipItem[0].label.toString();//displays "Pay Period" and the pay period number (i.e. Pay Period 2)
         },
         label: function (tooltipItem) {
-          return "$" + Number(tooltipItem.value).toFixed(2);//displays the balance with two decimal places
+          return "$" + (Number(tooltipItem.value)/100).toFixed(2);//displays the balance with two decimal places
         }
       }
     },
@@ -73,7 +70,7 @@ export class ProjectionComponent implements OnInit {
         ticks: {
           // Include a dollar sign in the tick marks
           callback: function (tooltipItem) {
-            return '$' + tooltipItem;
+            return '$' + (<number>tooltipItem/100).toFixed(2);
           },
           fontSize: 16
         }
@@ -90,13 +87,10 @@ export class ProjectionComponent implements OnInit {
       }]
     }
   };
-
   lineChartColors: Color[];
   lineChartPlugins: any;
-
   //title: string;
   payPeriods: number = 6;
-
   tiles: Tile[] = [
     { text: '', cols: 1, rows: 1, color: 'rgba(0,0,0,0)' },
     { text: 'Chart', cols: 2, rows: 5, color: 'rgba(0,0,0,0)' },
@@ -111,21 +105,14 @@ export class ProjectionComponent implements OnInit {
 
   ngOnInit(): void {
     //get the account from the environment variable and the corresponding information
-    account$.subscribe(
-      (account) => {
-        this.account = account;
-        this.doughnutChartData = [
-          [this.account.expenses, this.account.income]
-        ];
-        this.createChart();
-      });
-
-    this.account = new Account(0, "userid", "", 1500.12, 1300.47, 300);
-    this.doughnutChartData = [
-      [this.account.expenses, this.account.income]
-    ];
-
-    this.createChart();
+    //this.account = account$.value;
+    account$.subscribe((account)=>{
+      this.account = account;
+      this.createChart();
+      this.doughnutChartData = [
+        [this.account.expenses, this.account.income]
+      ];
+    });
   }
 
   /**
@@ -139,16 +126,15 @@ export class ProjectionComponent implements OnInit {
     this.lineChartLabels = chartData.labels;
     this.lineChartColors = [
       {
-        backgroundColor: 'rgba(115, 165, 194,0.3)',
-        borderColor: 'rgba( 115, 165, 194)',
-        pointBackgroundColor: 'rgba( 115, 165, 194,1)',
+        backgroundColor: 'rgba(253, 181, 21,0.3)',
+        borderColor: 'rgba( 253, 181, 21)',
+        pointBackgroundColor: 'rgba( 253, 181, 21,1)',
         pointBorderColor: '#fff',
         pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgba( 115, 165, 194,0.8)'
+        pointHoverBorderColor: 'rgba( 253, 181, 21,0.8)'
       }
     ];
   }
-
   onInputChange(event: MatSliderChange) {
     this.payPeriods = event.value;
     this.createChart();

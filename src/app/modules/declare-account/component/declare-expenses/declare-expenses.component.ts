@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Account } from 'src/app/models/account';
+import { numberValidator } from 'src/app/validators/numbervalidator';
 import { account$ } from 'src/environments/environment';
 import { DeclareAccountService } from '../../service/declare-account.service';
 
@@ -12,15 +13,13 @@ import { DeclareAccountService } from '../../service/declare-account.service';
   styleUrls: ['./declare-expenses.component.css']
 })
 export class DeclareExpensesComponent implements OnInit {
-
+  public inputValidator: any = numberValidator;
   error: string;
-  account: Account = new Account(0,"","",0,0,0);
+  account: Account;
   
-  currentExpenses: number;
-
   constructor(private da: DeclareAccountService) {
-    account$.subscribe((response) => {
-     this.account = response;
+    account$.subscribe((account) => {
+     this.account = account;
     });
   }
 
@@ -31,14 +30,12 @@ export class DeclareExpensesComponent implements OnInit {
    * Checks to see if user input is negative or over two decimal places.
    * Then updates the expenses field on the Accounts table in the database.
    * Then updates the global account with the response from the database.
-   * 
-   * @ param none
-   * @ returns none
+   * @param expenses 
    */
   public updateAccount(expenses:any){
 
     expenses *= 100;
-
+    
     if(expenses < 0){
       this.error = "Error: Input must be positive.";
 

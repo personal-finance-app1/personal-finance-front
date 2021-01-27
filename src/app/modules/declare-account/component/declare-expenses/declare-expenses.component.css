@@ -1,12 +1,38 @@
 .expenses_section {
-    width: 800px;
-    position: fixed;
+    /* width: 800px; */
+    /* position: fixed; */
     bottom: 10px;
     left: 10px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+  }
+
+  mat-form-field {
+    width: 200px;
   }
   
-  mat-form-field {
+  .mat_input {
+    font-family: Futura-Std-Book;
+    font-size: 150%;
+    /* flex-direction: row;
+    box-sizing: border-box;
+    display: flex; */
+  }
+  
+  .expense_title {
+    font-family: Futura-Std-Book;
+    font-size: 200%;
+    margin: 10px;
+  }
+  
+  .current-expenses-span {
+    margin: 30px;
+  }
+
+
+
+
+
+  /* mat-form-field {
     width: 350px;
   }
   
@@ -26,5 +52,4 @@
     color: #403932;
     font-size: 0.75em;
     margin: 30px;
-  }
-  
+  } */

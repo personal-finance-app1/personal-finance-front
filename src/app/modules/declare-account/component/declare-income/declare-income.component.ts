@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Account } from 'src/app/models/account';
+import { numberValidator } from 'src/app/validators/numbervalidator';
 import { account$ } from 'src/environments/environment';
 import { DeclareAccountService } from '../../service/declare-account.service';
 
@@ -12,15 +13,13 @@ import { DeclareAccountService } from '../../service/declare-account.service';
   styleUrls: ['./declare-income.component.css']
 })
 export class DeclareIncomeComponent implements OnInit {
-
+  public inputValidator: any = numberValidator;
   error: string;
-  account: Account = new Account(0,"","",0,0,0);
-  
-  currentIncome: number;
+  account: Account; //might need to init
   
   constructor(private da: DeclareAccountService) {
-    account$.subscribe((response) => {
-     this.account = response;
+    account$.subscribe((account) => {
+     this.account = account;
     });
   }
 
@@ -31,9 +30,7 @@ export class DeclareIncomeComponent implements OnInit {
    * Checks to see if user input is negative or over two decimal places.
    * Then updates the expenses field on the Accounts table in the database.
    * Then updates the global account with the response from the database.
-   * 
-   * @ param none
-   * @ returns none
+   * @param income 
    */
   public updateAccount(income:number){
 
@@ -51,7 +48,6 @@ export class DeclareIncomeComponent implements OnInit {
       
       this.da.updateAccountsTable(this.account).subscribe((response: Account)  => {
         account$.next(response);
-        console.log("test");
       });
     }
   }
