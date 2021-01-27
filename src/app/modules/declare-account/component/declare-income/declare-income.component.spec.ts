@@ -34,7 +34,6 @@ describe('DeclareIncomeComponent', () => {
 
     xit('user input is negative', () => {
       spyOn(service, 'updateAccountsTable');
-      //component.account.expenses = -1;
       component.updateAccount(-1);
       expect(component.error).toBe("Error: Input must be positive.");
       expect(component.account.expenses).toEqual(0);
@@ -42,7 +41,6 @@ describe('DeclareIncomeComponent', () => {
 
     xit('user input has a over two decimal places', () => {
       spyOn(service, 'updateAccountsTable');
-      //component.account.expenses = 1.001;
       component.updateAccount(1.001);
       expect(component.error).toBe("Error: Input cannot exceed two decimal places.");
       expect(component.account.expenses).toEqual(0);

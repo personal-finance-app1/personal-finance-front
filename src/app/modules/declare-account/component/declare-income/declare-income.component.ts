@@ -11,31 +11,23 @@ import { DeclareAccountService } from '../../service/declare-account.service';
 export class DeclareIncomeComponent implements OnInit {
 
   error: String;
-  account: Account = new Account(1, 1,"",51,52,53); //accountId, userId, name, income, expenses, balance;
-  
+  account: Account;
   currentIncome: number;
   
   constructor(private da: DeclareAccountService) {
-    account$.subscribe((response) => {
-     this.account = response;
+    account$.subscribe((account) => {
+     this.account = account;
     });
   }
 
   ngOnInit(): void {
   }
 
-  /** DECLARE EXPENSES DESCRIPTION
+  /**
    * Checks to see if user input is negative or over two decimal places.
    * Then updates the expenses field on the Accounts table in the database.
    * Then updates the global account with the response from the database.
-   */
-
-  /**
-   * Validates user input, checking if it is positive and has a proper decimal, 
-   * and calls the DeclareIncomeService sendIncome method
-   * 
-   * @ param none
-   * @ returns none
+   * @param income 
    */
   public updateAccount(income:number){
     
@@ -66,8 +58,8 @@ export class DeclareIncomeComponent implements OnInit {
   public validateInput(value: string): Boolean {
     let regex = /[1-9]0{2,}|[0-9]+(.[0-9][0-9])(?![\w\d])/
     if(regex.test(value)){
+      this.error = "";
       return true
-      this.error 
     }
     else {
       return false
@@ -75,30 +67,3 @@ export class DeclareIncomeComponent implements OnInit {
   }
 
 }
-
-
-
-// public async updateExpenses() 
-//   {
-
-//     this.account.expenses *= 100;
-
-//     if (this.account.expenses < 0) {
-//       this.account.expenses = 0;
-//       this.error = "Error: Input must be positive.";
-//     }
-//     else if (this.account.expenses % 1 != 0) {
-//       this.account.expenses = 0;
-//       this.error = "Error: Input cannot exceed two decimal places.";
-//     }
-//     else {
-//       this.declareExpensesService.updateAccountsTable(this.account).subscribe((data) => {
-//         if (data) {
-//           account$.next(data)
-//         }
-//         else {
-//           this.error = "Error: Retrieved account doesn't exist."
-//         }
-//       })
-//     }
-//   }

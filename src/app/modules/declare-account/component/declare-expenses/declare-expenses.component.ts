@@ -11,31 +11,23 @@ import { DeclareAccountService } from '../../service/declare-account.service';
 export class DeclareExpensesComponent implements OnInit {
 
   error: String;
-  account: Account = new Account(1, 1,"",51,52,53); //accountId, userId, name, income, expenses, balance;
-  
+  account: Account;
   currentExpenses: number;
   
   constructor(private da: DeclareAccountService) {
-    account$.subscribe((response) => {
-     this.account = response;
+    account$.subscribe((account) => {
+     this.account = account;
     });
   }
 
   ngOnInit(): void {
   }
 
-  /** DECLARE EXPENSES DESCRIPTION
+  /**
    * Checks to see if user input is negative or over two decimal places.
    * Then updates the expenses field on the Accounts table in the database.
    * Then updates the global account with the response from the database.
-   */
-
-  /**
-   * Validates user input, checking if it is positive and has a proper decimal, 
-   * and calls the DeclareIncomeService sendIncome method
-   * 
-   * @ param none
-   * @ returns none
+   * @param expenses 
    */
   public updateAccount(expenses:any){
     let v = expenses;
