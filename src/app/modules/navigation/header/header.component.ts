@@ -42,8 +42,9 @@ export class HeaderComponent {
   visibilityLogoutButton() {
     if (this.isAuth) {
       this.isVisibility = "visible";
-    } else
+    } else {
       this.isVisibility = "hidden";
+    }
   }
 
 }

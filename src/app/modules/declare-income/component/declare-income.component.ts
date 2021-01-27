@@ -18,7 +18,7 @@ export class DeclareIncomeComponent implements OnInit {
     // account$.subscribe((response) => {
     //   this.account = response;
     // });
-    this.account = new Account(1, 1,"JohnProjection",51,52,53); //accountId, userId, name, income, expenses, balance
+    this.account = new Account(1, "userid","JohnProjection",51,52,53); //accountId, userId, name, income, expenses, balance
   }
 
   ngOnInit(): void {
@@ -28,8 +28,7 @@ export class DeclareIncomeComponent implements OnInit {
    * Validates user input, checking if it is positive and has a proper decimal, 
    * and calls the DeclareIncomeService sendIncome method
    * 
-   * @ param none
-   * @ returns none
+   * @param {any} income - The income input to update the account with
    */
   public onSubmit(income:any){
     let v = income;
