@@ -32,10 +32,11 @@ export class DeclareAccountService {
     
     let options = {headers: new Headers()};
     let token = this.as.getToken;
-    options.headers.set('Authorization', `Bearer ${token}`);
+    let jwt = token()
+    options.headers.append('Authorization', jwt);
 
     console.log("After Headers")
-    console.log(account)
+    console.log(options.headers)
     return this.http.patch(`${environment.apiUrl}/accounts`, account) as Observable<Account>;
   }
 }
