@@ -6,6 +6,7 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class BalanceService {
+  isDeclareOpen: boolean = false;
 
   public readonly notificationObservableSubject: Subject<number>;
   constructor() {

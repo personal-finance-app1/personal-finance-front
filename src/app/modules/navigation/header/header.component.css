@@ -1,6 +1,37 @@
-a {
+.mat-toolbar {
+  background: #474C55;
+}
+
+#title {
+  font-family: Futura-Std-Bold;
+  font-size: 40px;
+  color: #B9B9BA;
+}
+
+#logout {
+  font-family: Futura-Std-Bold;
+  font-size: 20px;
+  color: #B9B9BA;
+}
+
+#logo {
+  position: relative;
+  height: 60%;
+  width: auto;
+}
+
+img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+mat-toolbar {
+  height: 10vh;
+}
+
+/* a {
   text-decoration: none;
-  /* color: white; */
 }
 
 a:hover,
@@ -18,11 +49,14 @@ a:active {
   padding-left: 5px;
 }
 
+.nav-text {
+  color: #FCB414;
+}
+
 #logo {
   width: auto;
   height: auto;
-  max-width: 50px;
-  max-height: 50px;
+
 }
 
 mat-select {
@@ -32,3 +66,8 @@ mat-select {
   max-height: 100px;
   float: right;
 }
+
+.mat-toolbar {
+  background: #474C55;
+  height: 20%;
+} */

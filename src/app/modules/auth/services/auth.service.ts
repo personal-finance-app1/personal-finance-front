@@ -1,38 +1,67 @@
-import { Injectable, SystemJsNgModuleLoader } from '@angular/core';
-import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth'; 
-import * as firebase from 'firebase/app';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private token : String;
-  private userName : String;
+  private userData: any;
 
-  constructor() { }
+  constructor(private fireStore: AngularFirestore, private auth: AngularFireAuth) {
+    this.auth.authState.subscribe(user => {
+      if (user) {
+        this.userData = user;
+      }
+      else {
+        this.userData = null;
+      }
+    })
+  }
 
   /**
-   * Method for validating user credentials with Firebase, stores JWT if one
-   *  is returned.
+   * Method for validating user credentials with Firebase, stores user
+   * credentials if authorized user is found.
    * 
    * @param username String
    * @param password String
    * @returns boolean indicating whether credentials are authenticated by
    *          firebase
    */
-  public login(username: string, password: string) : boolean {
-    return false;
+  public login(username: string, password: string): boolean {
+    this.auth.signInWithEmailAndPassword(username, password).then(
+      (result) => {
+        this.userData = result.user;
+      }).catch((error) => {
+        alert("Username and Password are invalid !!");
+        console.log(error)
+
+      });
+
+    if (this.userData == null) {
+      return false;
+    }
+    else {
+      return true;
+    }
   }
 
   /**
-   * Method for logging user out of application, invalidates token with Firebase,
-   *  and removes token from AuthService.
+   * Method for logging user out of application. Invalidates token with
+   * Firebase, and removes user credentials from AuthService.
    * 
    * @param none
    * @returns none
    */
   public logout() {
+    this.auth.signOut().then(() => {
+      this.userData = null;
+    })
+
     return;
   }
 
@@ -42,8 +71,14 @@ export class AuthService {
    * @returns String - JWT retrieved from Firebase after successful
    *          authentication
    */
-  public getToken() : string {
-    return null;
+  public getToken(): string {
+    if (this.userData == null) {
+      return null;
+    }
+
+    else {
+      return this.userData.getIdToken();
+    }
   }
 
   /**
@@ -51,7 +86,28 @@ export class AuthService {
    * @param none
    * @returns String - Username stored in JWT returned from Firebase
    */
-  public getUsername() : String {
-    return null;
-  }  
+  public getDisplayName(): String {
+    if (this.userData == null) {
+      return null;
+    }
+
+    else {
+      return this.userData.displayName;
+    }
+  }
+
+  /**
+   * Method for retrieving user's email address
+   * @param none
+   * @returns String - Email stored in 
+   */
+  public getEmail(): String {
+    if (this.userData == null) {
+      return null;
+    }
+
+    else {
+      return this.userData.email;
+    }
+  }
 }

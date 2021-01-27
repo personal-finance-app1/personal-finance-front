@@ -48,9 +48,9 @@ import { environment } from '../../../environments/environment';
     MatMenuModule,
     MatGridListModule,
     ReactiveFormsModule,
-    AngularFireModule,
-    AngularFirestoreModule,
-    AngularFireAuthModule,    
+    AngularFireModule.initializeApp(environment.firebaseConfig), 
+    AngularFireAuthModule, 
+    AngularFirestoreModule,    
   ],
   exports: [
     MatButtonModule,

@@ -1,0 +1,50 @@
+<mat-tab-group [dynamicHeight]="true">
+
+  <mat-tab label="Update Account">
+    <ng-template matTabContent>
+      
+      <mat-grid-list cols="3" rowHeight="50vh" gutterSize="25px">
+        
+        <mat-grid-tile>
+          <mat-grid-tile-header><span>Income</span></mat-grid-tile-header>
+          <app-declare-income></app-declare-income>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-grid-tile-header><span>Expenses</span></mat-grid-tile-header>
+          <app-declare-expenses></app-declare-expenses>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-grid-tile-header><span>Balance</span></mat-grid-tile-header>
+          <app-balance></app-balance>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab label="Projected Balance">
+    <ng-template matTabContent>
+      <app-projection></app-projection>
+    </ng-template>
+  </mat-tab>
+
+</mat-tab-group>
+
+<!-- <div class="body">
+ <mat-grid-list cols="12" rowHeight="100px"[gutterSize]="'25px'">
+    <mat-grid-tile
+        *ngFor="let tile of tiles; let i = index"
+        [colspan]="tile.cols"
+        [rowspan]="tile.rows"
+        [style.background]="tile.color"
+        >
+        <mat-grid-tile-header style="background-color: #F26925;">
+          <h3>{{tile.text}}</h3>
+        </mat-grid-tile-header>
+      <app-declare-income *ngIf="i == 0"></app-declare-income>
+      <div class="proj"><app-projection *ngIf="i == 1"></app-projection></div>
+      <app-declare-expenses *ngIf="i ==2"></app-declare-expenses>
+      <app-balance *ngIf="i == 3"></app-balance>
+    </mat-grid-tile>
+  </mat-grid-list> 
+</div> -->

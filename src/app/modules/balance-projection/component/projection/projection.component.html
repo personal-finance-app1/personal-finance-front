@@ -10,15 +10,15 @@
             </div>
         </div>
         <div *ngIf="i == 3" row="1" rowspan="">
-            <label style="font-size: large;" for="periodSlider">Pay Periods:
+            <label *ngIf="lineChartData" style="font-size: large;" for="periodSlider">Pay Periods:
                 {{payPeriods}}<br></label>
 
-            <mat-slider matTooltip="Info about the action" id="periodSlider" style="width: 20vw;" min="2" max="52"
+            <mat-slider *ngIf="lineChartData" matTooltip="Info about the action" id="periodSlider" style="width: 20vw;" min="2" max="52"
                 value="{{payPeriods}}" step="1" (input)="onInputChange($event)"></mat-slider>
 
         </div>
         <div *ngIf="i == 1">
-            <div style="width: 65vw;">
+            <div style="width: 55vw;">
                 <canvas *ngIf="lineChartData" baseChart  [datasets]="lineChartData"
                 [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" chartType="line"></canvas>
             </div>

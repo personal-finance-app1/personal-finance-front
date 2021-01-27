@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Account } from 'src/app/models/account';
 import { ProjectionComponent } from './projection.component';
 
 describe('ProjectionComponent', () => {
@@ -16,7 +17,8 @@ describe('ProjectionComponent', () => {
     fixture = TestBed.createComponent(ProjectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    component.getAccount();
+    //component.getAccount();
+    component.setAccount(new Account(0,0,"",0,0,0));
   });
 
   it('should be created', () => {
