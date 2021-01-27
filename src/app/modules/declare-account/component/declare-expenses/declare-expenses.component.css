@@ -7,12 +7,15 @@
   }
 
   mat-form-field {
-    width: 250px;
+    width: 200px;
   }
   
   .mat_input {
     font-family: Futura-Std-Book;
     font-size: 150%;
+    /* flex-direction: row;
+    box-sizing: border-box;
+    display: flex; */
   }
   
   .expense_title {
