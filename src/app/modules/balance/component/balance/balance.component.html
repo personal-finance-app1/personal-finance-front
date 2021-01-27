@@ -19,14 +19,15 @@
               name="balance"
               #balanceInput="ngModel"
             />   
-            <mat-error *ngIf="balanceInput.hasError('required')">{{this.INVALID_BALANCE_MESSAGE}}</mat-error>     
+
+            <mat-error *ngIf="balanceInput.hasError('required') && !inputValidator(balanceInput.value)">{{this.INVALID_BALANCE_MESSAGE}}</mat-error>     
           </mat-form-field>
 
           <button
             mat-raised-button
             color="warn"
             type="submit"
-            [disabled]="f.invalid"
+            [disabled]="f.invalid || !inputValidator(balanceInput.value)"
           >
             Update
           </button>

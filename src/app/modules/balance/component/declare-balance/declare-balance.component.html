@@ -5,7 +5,7 @@
         <span fxLayoutGap="10px">
             <mat-form-field class="mat-input">
                 <mat-label>Enter a balance</mat-label>
-                <input matInput [(ngModel)]="declareBalance">
+                <input matInput [(ngModel)]="declareBalance" #declareInput="ngModel">
                 <mat-error >Error msg</mat-error>
             </mat-form-field>
         </span>
@@ -15,7 +15,7 @@
         color="warn"
         mat-raised-button
         (click)="this.declareAccountBalance()" 
-        [disabled]="!this.balanceService.validateAccountBalance(this.declareBalance)" 
+        [disabled]="!this.balanceService.validateAccountBalance(this.declareBalance) || !this.inputValidator(declareInput.value)" 
         ised-button [mat-dialog-close]="true">Ok</button>
     </div>
 </div>
