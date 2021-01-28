@@ -1,3 +1,28 @@
+html, body { height: 100%; }
+body { 
+  margin: 0; 
+  font-family: Futura-Std-Medium;
+}
+
+@font-face {
+  font-family: Futura-Std-Bold;
+  src: url(assets/fonts/Futura-Std-Bold.otf) format('truetype');
+}
+
+@font-face {
+  font-family: Futura-Std-Book;
+  src: url(assets/fonts/Futura-Std-Book.otf) format('truetype');
+}
+
+@font-face {
+  font-family: Futura-Std-Heavy;
+  src: url(assets/fonts/Futura-Std-Heavy.otf) format('truetype');
+}
+
+@font-face {
+  font-family: Futura-Std-Medium;
+  src: url(assets/fonts/Futura-Std-Medium.otf) format('truetype');
+}
 /* You can add global styles to this file, and also import other style files */
 
 html,

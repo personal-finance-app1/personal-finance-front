@@ -1,29 +1,39 @@
 .balance_section {
-  /* width: 800px; */
-  /* position: fixed; */
+  /* width: 800px;
+  position: fixed; */
   bottom: 10px;
   right: 10px;
   /* border: 1px solid black; */
 }
 
 mat-form-field {
-  width: 350px;
+  width: 200px;
 }
 
 .mat_input {
+  font-family: Futura-Std-Book;
   font-size: 150%;
 }
 
 .balance_title {
+  font-family: Futura-Std-Book;
   font-size: 200%;
-  padding: 20px;
-  border-bottom: 1px solid black;
+  /* padding: 20px; */
+  /* border-bottom: 1px solid black;
   background-color: #f26925;
-  color: white;
+  color: white; */
+  margin: 10px;
 }
 
 .current-balance-span {
-  color:#403932;
-  font-size: 0.75em;
+  /* color: #403932;
+  font-size: 0.75em; */
   margin: 30px;
 }
+
+
+.mat-raised-button {
+  background-color: #F26925;
+}
+
+

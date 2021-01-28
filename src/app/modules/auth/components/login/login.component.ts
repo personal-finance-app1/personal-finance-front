@@ -4,6 +4,9 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { HeaderComponent } from 'src/app/modules/navigation/header/header.component';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { account$, environment } from 'src/environments/environment';
+import { Account } from 'src/app/models/account';
 
 
 
@@ -21,7 +24,7 @@ export class LoginComponent implements OnInit, OnChanges {
   color = "red";
   isLogin: boolean = false;
 
-  constructor(private authSerice: AuthService, private router: Router) { }
+  constructor(private authSerice: AuthService, private router: Router, private httpClient:HttpClient) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -43,9 +46,23 @@ export class LoginComponent implements OnInit, OnChanges {
   async onLogin() {
 
     let isLogin = await this.authSerice.login(this.loginForm.value.username, this.loginForm.value.password);
+    let token = this.authSerice.getToken();
+    let options = {headers: new HttpHeaders({'Authorization': token})};
+
 
     if (isLogin) {
-      this.router.navigate(['/homepage']);
+      this.httpClient.get(`${environment.apiUrl}/accounts/`,options).subscribe(
+        (resp:Account[]) => {
+          console.log("Retrieved account from database!", resp);
+          let account:Account = resp[0];
+          account.balance = account$.getValue().balance;
+          account$.next(account);
+          this.router.navigate(['/home']);
+        },
+        (err) => {
+          console.log("Could not retrieve the accounts from this user", err);
+        }
+      );
     }
     else {
       window.location.reload();

@@ -4,6 +4,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 import { Observable, Subject } from 'rxjs';
+import { account$ } from 'src/environments/environment';
+import { Account } from 'src/app/models/account';
 
 
 @Injectable({
@@ -12,6 +14,7 @@ import { Observable, Subject } from 'rxjs';
 export class AuthService {
 
   private userData: any;
+  private token: string;
   authChange = new Subject<boolean>();
 
 
@@ -35,6 +38,7 @@ export class AuthService {
       isLoginSuccess = await this.auth.signInWithEmailAndPassword(username, password).then(
         (result) => {
           this.userData = result.user;
+          this.userData.getIdToken().then((tokenId) => { this.token = tokenId; });
           this.authChange.next(true);
           return true;
 
@@ -62,7 +66,8 @@ export class AuthService {
   public logout() {
     this.auth.signOut().then(() => {
       this.userData = null;
-      this.authChange.next(false);
+      account$.next(new Account(0,"","",0,0,0));
+      //this.authChange.next(false);
     })
 
     return;
@@ -80,7 +85,7 @@ export class AuthService {
     }
 
     else {
-      return this.userData.getIdToken();
+      return this.token;
     }
   }
 

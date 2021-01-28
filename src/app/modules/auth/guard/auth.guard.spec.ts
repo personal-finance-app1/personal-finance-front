@@ -7,7 +7,7 @@ describe('AuthGuard', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(AuthGuard);
+    guard = new AuthGuard(null,null);
   });
 
   it('should be created', () => {

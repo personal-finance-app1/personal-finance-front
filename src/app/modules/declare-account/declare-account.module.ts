@@ -4,18 +4,25 @@ import { DeclareExpensesComponent } from './component/declare-expenses/declare-e
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { MaterialBuildModule } from 'src/app/material.module';
+import { DeclareIncomeComponent } from './component/declare-income/declare-income.component';
 
 
 @NgModule({
-  declarations: [DeclareExpensesComponent],
+  declarations: [
+    DeclareExpensesComponent,
+    DeclareIncomeComponent
+  ],
   imports: [
     FormsModule,
     BrowserModule,
     CommonModule,
     HttpClientModule,
+    MaterialBuildModule
   ],
   exports: [
     DeclareExpensesComponent,
+    DeclareIncomeComponent
   ]
 })
-export class DeclareExpensesModule { }
+export class DeclareAccountModule { }
