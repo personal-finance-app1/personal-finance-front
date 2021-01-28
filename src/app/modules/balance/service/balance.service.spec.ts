@@ -40,24 +40,6 @@ describe('BalanceService', () => {
     });
   });
 
-  describe('setBalance', () => {
-    xit('set balance should return false for negative balances', () => {
-      expect(service.setBalance(-100)).toBeFalsy();
-    });
-  });
-
-  describe('setBalance', () => {
-    xit('set balance should return false for a balance of zero', () => {
-      expect(service.setBalance(0)).toBeFalsy();
-    });
-  });
-
-  describe('getBalance', () => {
-    xit('get balance should return null with no set balance', () => {
-      expect(service.getBalance()).toBeNull();
-    });
-  });
-
   describe('getBalance', () => {
     it('get balance should return number with a set balance', () => {
       service.setBalance(10);
