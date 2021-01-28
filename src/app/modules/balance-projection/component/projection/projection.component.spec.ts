@@ -18,7 +18,6 @@ describe('ProjectionComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     //component.getAccount();
-    component.setAccount(new Account(0,0,"",0,0,0));
   });
 
   it('should be created', () => {
