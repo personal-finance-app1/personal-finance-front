@@ -14,6 +14,7 @@ import { Account } from 'src/app/models/account';
 export class AuthService {
 
   private userData: any;
+  private token: string;
   authChange = new Subject<boolean>();
 
 
@@ -37,6 +38,7 @@ export class AuthService {
       isLoginSuccess = await this.auth.signInWithEmailAndPassword(username, password).then(
         (result) => {
           this.userData = result.user;
+          this.userData.getIdToken().then((tokenId) => { this.token = tokenId; });
           this.authChange.next(true);
           return true;
 
@@ -83,7 +85,7 @@ export class AuthService {
     }
 
     else {
-      return this.userData.getIdToken();
+      return this.token;
     }
   }
 

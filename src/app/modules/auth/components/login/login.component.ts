@@ -4,7 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { HeaderComponent } from 'src/app/modules/navigation/header/header.component';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { account$, environment } from 'src/environments/environment';
 import { Account } from 'src/app/models/account';
 
@@ -49,12 +49,16 @@ export class LoginComponent implements OnInit, OnChanges {
     let token = this.authSerice.getToken();
     let options = {headers: new HttpHeaders({'Authorization': token})};
 
+
     if (isLogin) {
-      this.httpClient.get(`${environment.apiUrl}/account/`, options).subscribe(
-        (resp:Account) => {
-          account$.next(resp);
-          console.log("Retrieved account from database!");
+      this.httpClient.get(`${environment.apiUrl}/accounts/`,options).subscribe(
+        (resp:Account[]) => {
+          console.log("Retrieved account from database!", resp);
+          account$.next(resp[0]);
           this.router.navigate(['/home']);
+        },
+        (err) => {
+          console.log("Could not retrieve the accounts from this user", err);
         }
       );
     }

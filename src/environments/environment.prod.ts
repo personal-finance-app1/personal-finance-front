@@ -15,4 +15,4 @@ export const environment = {
   }
 };
 
-export let account$: BehaviorSubject<Account> = new BehaviorSubject<Account>(new Account(-1,0, "",0,0,0));
+export let account$: BehaviorSubject<Account> = new BehaviorSubject<Account>(new Account(-1,"", "",0,0,0));
