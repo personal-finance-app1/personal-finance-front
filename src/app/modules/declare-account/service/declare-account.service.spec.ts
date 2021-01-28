@@ -3,6 +3,7 @@ import { Account } from 'src/app/models/account';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { DeclareAccountService } from './declare-account.service';
 import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
 
 describe('DeclareAccountService', () => {
 
@@ -11,7 +12,7 @@ describe('DeclareAccountService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, AngularFireModule.initializeApp(environment.firebaseConfig)],
       providers: [DeclareAccountService]
     });
 
@@ -29,15 +30,15 @@ describe('DeclareAccountService', () => {
   });
 
   describe('updateAccountsTable method', () => {
-    xit('should return Observable that matches the mocked data', () => { // Successful
+    it('should return Observable that matches the mocked data', () => { // Successful
       const mockedAccount = new Account(0,"","",0,0,0);
 
       service.updateAccountsTable(mockedAccount).subscribe((accountData: Account) => {
         expect(accountData).toEqual(mockedAccount);
       });
 
-      const request = httpTestingController.expectOne(`${environment.apiUrl}/account`);
-      expect(request.request.method).toEqual('PUT');
+      const request = httpTestingController.expectOne(`${environment.apiUrl}/accounts`);
+      expect(request.request.method).toEqual('PATCH');
       request.flush(mockedAccount);
     });
   });

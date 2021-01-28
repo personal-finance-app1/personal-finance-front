@@ -12,7 +12,7 @@ import { DeclareAccountService } from '../../service/declare-account.service';
 export class DeclareExpensesComponent implements OnInit {
   public inputValidator: any = numberValidator;
   error: string;
-  account: Account;
+  account: Account = new Account(0, "", "", 0, 0, 0);
   expensesEntered: string;
   
   constructor(private da: DeclareAccountService) {
