@@ -3,27 +3,27 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Account } from 'src/app/models/account';
 import { environment } from 'src/environments/environment';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeclareAccountService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private authService: AuthService) { }
 
-  options = {
-    headers : new HttpHeaders({
-      'Content-type' : 'application/json'
-    }),
-    withCredentials:true
-  };
+ 
 
   /**
    * Updates the given account in the database.
   * @param account Returns the updated account.
   */
   public updateAccountsTable(account:Account): Observable<Account>{
+
+    let token = this.authService.getToken();
+    let options = { headers : new HttpHeaders({'Authorization' : token})};
+
     console.log(account)
-    return this.http.patch(`${environment.apiUrl}/accounts`, account) as Observable<Account>;
+    return this.http.patch(`${environment.apiUrl}/accounts`, account, options) as Observable<Account>;
   }
 }
