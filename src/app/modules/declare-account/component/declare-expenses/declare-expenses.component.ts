@@ -13,6 +13,7 @@ export class DeclareExpensesComponent implements OnInit {
   public inputValidator: any = numberValidator;
   error: string;
   account: Account;
+  expensesEntered: string;
   
   constructor(private da: DeclareAccountService) {
     account$.subscribe((account) => {
@@ -21,6 +22,10 @@ export class DeclareExpensesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  clearExpensesEntered() {
+    this.expensesEntered = " ";
   }
 
   /**
@@ -62,6 +67,8 @@ export class DeclareExpensesComponent implements OnInit {
       this.da.updateAccountsTable(this.account).subscribe((response: Account)  => {
         account$.next(response);
       });
+
+      this.clearExpensesEntered();
     }
   }
 }

@@ -2,6 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DeclareAccountService } from '../../service/declare-account.service';
 import { DeclareExpensesComponent } from './declare-expenses.component';
+import { FormsModule } from '@angular/forms';
 
 describe('DeclareExpensesComponent', () => {
   let component: DeclareExpensesComponent;
@@ -10,7 +11,7 @@ describe('DeclareExpensesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule,FormsModule],
       declarations: [DeclareExpensesComponent]
     })
       .compileComponents();

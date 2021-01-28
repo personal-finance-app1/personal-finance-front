@@ -5,7 +5,7 @@ import { ProjectionComponent } from './projection.component';
 describe('ProjectionComponent', () => {
   let component: ProjectionComponent;
   let fixture: ComponentFixture<ProjectionComponent>;
-
+  let testAccount: Account;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ProjectionComponent ]
@@ -17,8 +17,9 @@ describe('ProjectionComponent', () => {
     fixture = TestBed.createComponent(ProjectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    testAccount = new Account(1,"jasmine","test-account",300.12,210.11,100.14);
+    component.account = testAccount
     //component.getAccount();
-    component.setAccount(new Account(0,0,"",0,0,0));
   });
 
   it('should be created', () => {

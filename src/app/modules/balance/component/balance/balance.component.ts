@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BalanceService } from '../../service/balance.service';
 import { DeclareBalanceComponent } from '../declare-balance/declare-balance.component';
 import{numberValidator} from "../../../../validators/numbervalidator";
+import { account$ } from 'src/environments/environment';
 
 /**
  * The balance component is responsible for tracking user balance.
@@ -23,6 +24,7 @@ export class BalanceComponent implements OnInit {
   public accountBalance: number|null;
   public isDeclare: boolean = false; 
   public error: string = "";
+  balanceEntered: string;
   /**This read only variable will hold the message we'll send to the user, if they enter an invalid balance. */
   public readonly INVALID_BALANCE_MESSAGE: string = "Please enter a valid currency value.";
   public readonly NEGATIVE_BALANCE_MESSAGE: string = "Error: Input must be positive.";
@@ -41,16 +43,22 @@ export class BalanceComponent implements OnInit {
     this.invalidMessage = '';
     this.accountBalance = null; //set account balance to null to indicate it has not been set yet,
   } else {
-    this.accountBalance = injectedBalanceService.getBalance();
+    this.accountBalance = account$.getValue().balance;
   }
         
     //whenever an external component changes the balance state, then accept the pushed balance value.
-    this.balanceService.notificationObservableSubject.subscribe((nextAccount)=> {
-      this.accountBalance = nextAccount.balance;
-    })
+    
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    account$.subscribe((nextAccount)=> {
+      this.accountBalance = nextAccount.balance;
+    });
+  }
+
+  clearBalanceEntered() {
+    this.balanceEntered = " ";
+  }
 
   /**
    * Checks to see if user input is negative or over two decimal places.
@@ -77,6 +85,7 @@ export class BalanceComponent implements OnInit {
       this.balanceService.setBalance(balanceInput); //if valid balance, update the balance service
       this.invalidMessage=''; //set message to empty string, in case it has been set to an invalid string before
       this.error='';
+      this.clearBalanceEntered();
     } else {
       this.invalidMessage = this.INVALID_BALANCE_MESSAGE;
     }
