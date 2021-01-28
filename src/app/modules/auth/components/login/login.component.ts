@@ -50,13 +50,14 @@ export class LoginComponent implements OnInit, OnChanges {
     let options = {headers: new HttpHeaders({'Authorization': token})};
 
     if (isLogin) {
-      this.httpClient.get(`${environment.apiUrl}/account/`, options).subscribe(
-        (resp:Account) => {
-          account$.next(resp);
-          console.log("Retrieved account from database!");
-          this.router.navigate(['/home']);
-        }
-      );
+      // this.httpClient.get(`${environment.apiUrl}/account/`, options).subscribe(
+      //   (resp:Account) => {
+      //     account$.next(resp);
+      //     console.log("Retrieved account from database!");
+      //     this.router.navigate(['/home']);
+      //   }
+      // );
+      this.router.navigate(['/home']);
     }
     else {
       window.location.reload();
