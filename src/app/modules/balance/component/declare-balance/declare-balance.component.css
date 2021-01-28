@@ -10,4 +10,20 @@
 .mat-input {
   font-size: 150%;
   width: 300px;
+  
 }
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #F26925 !important;
+ }
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color:#F26925 !important;
+ }
+
+.mat-raised-button {
+  background-color: #F26925;
+}
+
