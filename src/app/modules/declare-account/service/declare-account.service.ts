@@ -12,7 +12,7 @@ export class DeclareAccountService {
 
   constructor(
     private http:HttpClient,
-    private as:AuthService
+    private authService:AuthService
     ) { }
 
 
@@ -22,7 +22,7 @@ export class DeclareAccountService {
   */
   public updateAccountsTable(account:Account): Observable<Account>{
     
-    let token = this.as.getToken();
+    let token = this.authService.getToken();
     let options = { headers: new HttpHeaders({'Authorization': token}) };
 
     console.log(account)
