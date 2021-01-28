@@ -18,6 +18,10 @@
   background-color: #F26925 !important;
  }
 
+ ::ng-deep.mat-form-field {
+  padding: 12px;
+ }
+
 ::ng-deep .mat-focused .mat-form-field-label {
   /*change color of label*/
   color:#F26925 !important;

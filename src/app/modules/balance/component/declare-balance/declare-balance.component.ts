@@ -42,7 +42,8 @@ export class DeclareBalanceComponent implements OnInit {
     }
   }
 
-  /**The declare account balance method is used to declare the account balance. We can use this
+  /**
+   * The declare account balance method is used to declare the account balance. We can use this
    * method to push values to the global service.
    */
   public declareAccountBalance(): void {
