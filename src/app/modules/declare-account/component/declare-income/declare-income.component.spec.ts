@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DeclareAccountService } from '../../service/declare-account.service';
 import { DeclareIncomeComponent } from './declare-income.component';
-
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 describe('DeclareIncomeComponent', () => {
   let component: DeclareIncomeComponent;
   let fixture: ComponentFixture<DeclareIncomeComponent>;
@@ -9,7 +10,9 @@ describe('DeclareIncomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeclareIncomeComponent ]
+      imports:[FormsModule],
+      declarations: [ DeclareIncomeComponent ],
+      providers:[HttpClient,HttpHandler]
     })
     .compileComponents();
   });
