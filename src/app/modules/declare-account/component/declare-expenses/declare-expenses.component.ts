@@ -13,6 +13,7 @@ export class DeclareExpensesComponent implements OnInit {
   public inputValidator: any = numberValidator;
   error: string;
   account: Account;
+  expensesEntered: string;
   
   constructor(private da: DeclareAccountService) {
     account$.subscribe((account) => {
@@ -21,6 +22,26 @@ export class DeclareExpensesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  clearExpensesEntered() {
+    this.expensesEntered = " ";
+  }
+
+  /**
+   * Checks to see if user input is negative or over two decimal places.
+   * @param expenses 
+   */
+  public checkInput(expenses: number) {
+    if(expenses < 0){
+      this.error = "Error: Input must be positive.";
+
+    } else if((expenses*100) % 1 != 0){
+      this.error =   "Error: Input cannot exceed two decimal places.";
+
+    } else {
+      this.error = "";
+    }
   }
 
   /**
@@ -46,6 +67,8 @@ export class DeclareExpensesComponent implements OnInit {
       this.da.updateAccountsTable(this.account).subscribe((response: Account)  => {
         account$.next(response);
       });
+
+      this.clearExpensesEntered();
     }
   }
 }

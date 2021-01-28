@@ -4,6 +4,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 import { Observable, Subject } from 'rxjs';
+import { account$ } from 'src/environments/environment';
+import { Account } from 'src/app/models/account';
 
 
 @Injectable({
@@ -62,6 +64,7 @@ export class AuthService {
   public logout() {
     this.auth.signOut().then(() => {
       this.userData = null;
+      account$.next(new Account(0,"","",0,0,0));
       //this.authChange.next(false);
     })
 

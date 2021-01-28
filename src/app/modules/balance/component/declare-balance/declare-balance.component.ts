@@ -16,6 +16,7 @@ export class DeclareBalanceComponent implements OnInit {
   public declareBalance : number;
   public balanceService: BalanceService;
   public inputValidator: any =  numberValidator;
+  error: string = "";
  
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private injectedBalanceService:BalanceService) {
     this.balanceService = injectedBalanceService;
@@ -23,6 +24,22 @@ export class DeclareBalanceComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  }
+
+  /**
+   * Checks to see if user input is negative or over two decimal places.
+   * @param balance 
+   */
+  public checkInput(balance: number) {
+    if(balance < 0){
+      this.error = "Error: Input must be positive.";
+
+    } else if((balance*100) % 1 != 0){
+      this.error = "Error: Input cannot exceed two decimal places.";
+
+    } else {
+      this.error = "";
+    }
   }
 
   /**The declare account balance method is used to declare the account balance. We can use this
