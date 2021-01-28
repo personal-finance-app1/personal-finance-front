@@ -23,6 +23,7 @@ export class BalanceComponent implements OnInit {
   public accountBalance: number|null;
   public isDeclare: boolean = false; 
   public error: string = "";
+  balanceEntered: string;
   /**This read only variable will hold the message we'll send to the user, if they enter an invalid balance. */
   public readonly INVALID_BALANCE_MESSAGE: string = "Please enter a valid currency value.";
   public readonly NEGATIVE_BALANCE_MESSAGE: string = "Error: Input must be positive.";
@@ -52,6 +53,10 @@ export class BalanceComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  clearBalanceEntered() {
+    this.balanceEntered = " ";
+  }
+
   /**
    * Checks to see if user input is negative or over two decimal places.
    * @param balance 
@@ -77,6 +82,7 @@ export class BalanceComponent implements OnInit {
       this.balanceService.setBalance(balanceInput); //if valid balance, update the balance service
       this.invalidMessage=''; //set message to empty string, in case it has been set to an invalid string before
       this.error='';
+      this.clearBalanceEntered();
     } else {
       this.invalidMessage = this.INVALID_BALANCE_MESSAGE;
     }

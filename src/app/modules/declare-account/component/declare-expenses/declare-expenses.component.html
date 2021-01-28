@@ -14,7 +14,7 @@
                 type="number"
                 matInput
                 appearance="fill"
-                ngModel
+                [(ngModel)]="expensesEntered"
                 name="expenses"
                 #expensesInput="ngModel"
                 (keyup)="checkInput(expensesInput.value)"
