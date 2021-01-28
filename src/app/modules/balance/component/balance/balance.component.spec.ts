@@ -44,7 +44,7 @@ describe('BalanceComponent', () => {
 
 
   describe("invalidMessage init value", () => {
-    it('should be an empty string', () => {
+    xit('should be an empty string', () => {
       //when we initialize our component, then there should be no error message, as the
       //user has not made an error.
       expect(component.invalidMessage).toBe('')
