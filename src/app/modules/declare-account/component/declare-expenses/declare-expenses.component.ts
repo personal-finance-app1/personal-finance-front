@@ -25,6 +25,22 @@ export class DeclareExpensesComponent implements OnInit {
 
   /**
    * Checks to see if user input is negative or over two decimal places.
+   * @param expenses 
+   */
+  public checkInput(expenses: number) {
+    if(expenses < 0){
+      this.error = "Error: Input must be positive.";
+
+    } else if((expenses*100) % 1 != 0){
+      this.error =   "Error: Input cannot exceed two decimal places.";
+
+    } else {
+      this.error = "";
+    }
+  }
+
+  /**
+   * Checks to see if user input is negative or over two decimal places.
    * Then updates the expenses field on the Accounts table in the database.
    * Then updates the global account with the response from the database.
    * @param expenses 

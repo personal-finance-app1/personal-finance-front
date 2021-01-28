@@ -18,9 +18,10 @@
               ngModel
               name="balance"
               #balanceInput="ngModel"
+              (keyup)="checkInput(balanceInput.value)"
             />   
 
-            <mat-error *ngIf="balanceInput.hasError('required') && !inputValidator(balanceInput.value)">{{this.INVALID_BALANCE_MESSAGE}}</mat-error>     
+            <mat-error *ngIf="balanceInput.hasError('required') && !inputValidator(balanceInput.value)">{{this.INVALID_BALANCE_MESSAGE}}</mat-error>  
           </mat-form-field>
 
           <button
@@ -36,12 +37,13 @@
           <span class="current-balance-span" 
           >  
           {{  this.balanceService.validateAccountBalance(this.accountBalance) ? 
-                      'Current Balance: $' + accountBalance               :
+                      'Current Balance: $' + accountBalance.toFixed(2)               :
                       'Undeclared' 
             }}
           </span>
         </span>
       </mat-label>
     </div>
+    <mat-error *ngIf="error">{{ error }}</mat-error>
   </form>
 </section>

@@ -13,7 +13,7 @@
             <label *ngIf="lineChartData" style="font-size: large;" for="periodSlider">Pay Periods:
                 {{payPeriods}}<br></label>
 
-            <mat-slider *ngIf="lineChartData" matTooltip="Info about the action" id="periodSlider" style="width: 20vw;" min="2" max="52"
+            <mat-slider *ngIf="lineChartData" matTooltip="Info about the action" id="periodSlider" style="width: 20vw;" min="2" max="26"
                 value="{{payPeriods}}" step="1" (input)="onInputChange($event)"></mat-slider>
 
         </div>

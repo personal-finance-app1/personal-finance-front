@@ -17,6 +17,7 @@
                 ngModel
                 name="expenses"
                 #expensesInput="ngModel"
+                (keyup)="checkInput(expensesInput.value)"
               />   
               <mat-error *ngIf="expensesInput.hasError('required')">Field must not be empty.</mat-error>
               <mat-error *ngIf="!expensesInput.hasError('required')">{{ error }}</mat-error>                   
@@ -32,7 +33,7 @@
             </button>
             <br/>
             <span class="current-expenses-span" 
-              >Current Expenses: ${{ account.expenses/100 }}
+              >Current Expenses: ${{ (account.expenses/100).toFixed(2) }}
             </span>
           </span>
         </mat-label>
