@@ -16,7 +16,7 @@ export class BalanceService {
   }
 
   //eventually going to take out for global service field
-  private account:Account;
+  //private account:Account;
 
   /**The validate account balance is used to ensure the user has entered a valid declaring or update balance.
    * returns boolean which indicates if the balance is valid or invalid.
@@ -33,7 +33,9 @@ export class BalanceService {
   public setBalance(balance: number): boolean {
     //let isValidBalance:boolean = this.validateAccountBalance(balance);
     //if (isValidBalance) {
-      account$.getValue().balance = balance;
+      let account : Account = account$.getValue();
+      account.balance = balance;
+      account$.next(account);
       //this.notificationObservableSubject.next(this.account); //notify listeners (separate components who use this value) that value has changed so they can update
     //}
     //return isValidBalance;
@@ -47,6 +49,6 @@ export class BalanceService {
   public getBalance(): number | null {
     // let returnBalance:number | null = this.validateAccountBalance(account$.getValue().balance) ? account$.getValue().balance : null;
     // return returnBalance;
-    return account$.getValue().balance;
+    return account$.getValue().balance == 0 ? null : account$.getValue().balance;
   }
 }

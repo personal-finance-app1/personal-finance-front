@@ -65,7 +65,9 @@ export class DeclareIncomeComponent implements OnInit {
       this.account.income = income;
       
       this.da.updateAccountsTable(this.account).subscribe((response: Account)  => {
-        account$.next(response);
+        let account:Account = response;
+        account.balance = account$.getValue().balance;
+        account$.next(account);
       });
 
       this.clearIncomeEntered();

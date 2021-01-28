@@ -65,7 +65,9 @@ export class DeclareExpensesComponent implements OnInit {
       this.account.expenses = expenses;
       
       this.da.updateAccountsTable(this.account).subscribe((response: Account)  => {
-        account$.next(response);
+        let account:Account = response;
+        account.balance = account$.getValue().balance;
+        account$.next(account);
       });
 
       this.clearExpensesEntered();

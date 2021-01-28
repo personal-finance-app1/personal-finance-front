@@ -54,7 +54,9 @@ export class LoginComponent implements OnInit, OnChanges {
       this.httpClient.get(`${environment.apiUrl}/accounts/`,options).subscribe(
         (resp:Account[]) => {
           console.log("Retrieved account from database!", resp);
-          account$.next(resp[0]);
+          let account:Account = resp[0];
+          account.balance = account$.getValue().balance;
+          account$.next(account);
           this.router.navigate(['/home']);
         },
         (err) => {
