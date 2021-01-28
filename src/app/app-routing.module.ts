@@ -10,12 +10,8 @@ import { DeclareExpensesComponent } from './modules/declare-account/component/de
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'expenses', component: DeclareExpensesComponent },
-  { path: 'declareincome', component: DeclareIncomeComponent },
-  { path: 'balance', component: BalanceComponent },
-  { path: 'homepage', component: HomepageComponent },
-  { path: 'proj', component: ProjectionComponent },
-  { path: '', redirectTo: 'homepage', pathMatch: 'full' },
+  { path: 'home', component: HomepageComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({

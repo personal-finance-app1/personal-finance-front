@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit, OnChanges {
     let isLogin = await this.authSerice.login(this.loginForm.value.username, this.loginForm.value.password);
 
     if (isLogin) {
-      this.router.navigate(['/homepage']);
+      this.router.navigate(['/home']);
     }
     else {
       window.location.reload();
