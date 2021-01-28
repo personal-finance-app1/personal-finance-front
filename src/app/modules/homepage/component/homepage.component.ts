@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Account } from 'src/app/models/account';
 import { account$ } from 'src/environments/environment';
+import { AuthService } from '../../auth/services/auth.service';
 
 export interface Tile {
   color: string;
@@ -19,7 +21,7 @@ export class HomepageComponent implements OnInit {
 
   account : Account;
 
-  constructor() { }
+  constructor(private authService:AuthService, private router:Router) { }
 
   ngOnInit(): void {
   }
